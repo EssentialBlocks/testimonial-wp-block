@@ -53,7 +53,7 @@ function create_block_testimonial_block_init() {
 	);
 
 	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/testimonial' ) ) {
-    register_block_type( 'create-block/testimonial', array(
+    register_block_type( 'block/testimonial', array(
       'editor_script' => 'create-block-testimonial-block-editor',
       'style'         => 'create-block-testimonial-block',
     ) );
