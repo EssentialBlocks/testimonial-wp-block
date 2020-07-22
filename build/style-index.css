@@ -53,6 +53,10 @@
   color: #666666;
   display: inline-block; }
 
+.eb-typography-base div {
+  display: flex;
+  justify-content: space-between; }
+
 .image-avatar {
   height: 100px;
   width: 100%;
