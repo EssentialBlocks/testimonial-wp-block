@@ -1,12 +1,9 @@
 {
-	"name": "block/testimonial",
+	"name": "block/testimonial-wp-block",
 	"title": "Testimonial",
 	"category": "widgets",
 	"description": "",
-	"textdomain": "testimonial",
-	"supports": {
-		"html": false
-	},
+	"textdomain": "testimonial-wp-block",
 	"editorScript": "file:./build/index.js",
 	"style": "file:./build/style-index.css"
 }

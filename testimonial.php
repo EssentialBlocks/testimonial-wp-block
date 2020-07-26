@@ -6,7 +6,7 @@
  * Author:          The WordPress Contributors
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:     testimonial 
+ * Text Domain:     testimonial-wp-block
  *
  * @package         block
  */
@@ -53,7 +53,7 @@ function create_block_testimonial_block_init() {
 	);
 
 	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/testimonial' ) ) {
-    register_block_type( 'block/testimonial', array(
+    register_block_type( 'block/testimonial-wp-block', array(
       'editor_script' => 'create-block-testimonial-block-editor',
       'style'         => 'create-block-testimonial-block',
     ) );
