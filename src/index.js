@@ -9,7 +9,7 @@ import attributes from "./attributes";
 
 registerBlockType("block/testimonial-wp-block", {
 	title: __("Testimonial", "block"),
-	description: __("", "block"),
+	description: __("Display testimonials & gain instant credibility", "block"),
 	category: "widgets",
 	icon,
 	attributes,

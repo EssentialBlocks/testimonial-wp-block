@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     Testimonial
- * Description:     Example block written with ESNext standard and JSX support – build step required.
+ * Description:     Display testimonials & gain instant credibility
  * Version:         0.1.0
  * Author:          The WordPress Contributors
  * License:         GPL-2.0-or-later
