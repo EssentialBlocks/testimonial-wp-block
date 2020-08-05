@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     Testimonial WP Block
+ * Plugin Name:     Testimonial Block
  * Plugin URI:      https://essential-blocks.com
  * Description:     Display testimonials & gain instant credibility
  * Version:         1.0.0

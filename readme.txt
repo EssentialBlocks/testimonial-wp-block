@@ -1,4 +1,4 @@
-=== Testimonial WP Block ===
+=== Testimonial Block ===
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, alam789
 Tags: block, blocks, testimonial, testimonials, testimony, testimonial showcase, gutenberg, gutenberg blocks
 Requires at least: 5.0
