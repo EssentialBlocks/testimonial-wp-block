@@ -7,7 +7,7 @@ Stable tag: 1.0.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Let the visitors compare images & make your website interactive
+Display testimonials & gain instant credibility for your website or service.
 
 == Description ==
 
