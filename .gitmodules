@@ -4,3 +4,6 @@
 [submodule "util/dimensions-control"]
 	path = util/dimensions-control
 	url = git@github.com:EssentialBlocks/dimensions-control.git
+[submodule "util/image-avatar"]
+	path = util/image-avatar
+	url = git@github.com:EssentialBlocks/image-avatar.git
