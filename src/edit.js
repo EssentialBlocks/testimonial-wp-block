@@ -1,4 +1,9 @@
 /**
+ * Import React Features
+*/
+import { useEffect } from "@wordpress/element";
+
+/**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
@@ -23,9 +28,11 @@ import {
 } from "./constants";
 
 const Edit = (props) => {
-	const { isSelected, attributes, setAttributes } = props;
+	const { attributes, setAttributes, clientId, isSelected } = props;
 	const {
-		fontSize,
+		blockId,
+		blockMeta,
+		avaterContainerFontSize,
 		displayAvatar,
 		avatarInline,
 		avatarPosition,
@@ -107,6 +114,53 @@ const Edit = (props) => {
 		bgAttachment,
 	} = attributes;
 
+	// this useEffect is for creating a unique id for each block's unique className by a random unique number
+	useEffect(() => {
+		// const current_block_id = attributes.blockId;
+
+		const BLOCK_PREFIX = "eb-testimonial";
+		const unique_id =
+			BLOCK_PREFIX + "-" + Math.random().toString(36).substr(2, 7);
+
+		/**
+		 * Define and Generate Unique Block ID
+		 */
+		if (!blockId) {
+			setAttributes({ blockId: unique_id });
+		}
+
+		/**
+		 * Assign New Unique ID when duplicate BlockId found
+		 * Mostly happens when User Duplicate a Block
+		 */
+		const all_blocks = wp.data.select("core/block-editor").getBlocks();
+
+		let duplicateFound = false;
+		const fixDuplicateBlockId = (blocks) => {
+			if (duplicateFound) return;
+			for (const item of blocks) {
+				const { innerBlocks } = item;
+				if (Object.keys(innerBlocks).length === 0 && item.attributes.blockId === blockId) {
+					if (item.clientId !== clientId) {
+						setAttributes({ blockId: unique_id });
+						console.log("found a duplicate");
+						duplicateFound = true;
+						return;
+					} else if (innerBlocks.length > 0) {
+						fixDuplicateBlockId(innerBlocks);
+					}
+				} else if (innerBlocks.length > 0) {
+					fixDuplicateBlockId(innerBlocks);
+				}
+			}
+		};
+
+		fixDuplicateBlockId(all_blocks);
+	}, []);
+
+	/**
+	 * Assign CSS in variable for use in Markup
+	*/
 	const containerStyle = {
 		backgroundImage:
 			backgroundType === "image" && backgroundImageURL
@@ -137,7 +191,7 @@ const Edit = (props) => {
 		order: avatarOrder,
 		justifyContent: avatarPosition,
 		alignItems: avatarAlign,
-		fontSize: `${fontSize}px`,
+		fontSize: `${avaterContainerFontSize}px`,
 		flexDirection: avatarInline ? "row" : "column",
 	};
 
@@ -204,10 +258,22 @@ const Edit = (props) => {
 		fontSize: `${quoteSize || DEFAULT_QUOTE_SIZE}${quoteSizeUnit}`,
 	};
 
+	// Set All Style in "blockMeta" Attribute
+	useEffect(() => {
+		const styleObject = {
+			// desktop: desktopAllStyles,
+			// tab: tabAllStyles,
+			// mobile: mobileAllStyles,
+		};
+		if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
+			setAttributes({ blockMeta: styleObject });
+		}
+	}, [attributes]);
+
 	return [
 		isSelected && <Inspector {...props} />,
 		// Edit view here
-		<div className="eb-testimonial-wrapper">
+		<div className={`"eb-testimonial-wrapper ${blockId}"`} data-id={blockId}>
 			<div className="eb-testimonial-container" style={containerStyle}>
 				<div className="eb-avatar-container" style={avatarContainerStyle}>
 					<div

@@ -7,7 +7,7 @@ import save from "./save";
 import icon from "./icon";
 import attributes from "./attributes";
 
-registerBlockType("block/testimonial-wp-block", {
+registerBlockType("testimonial-wp-block/testimonial", {
 	title: __("Testimonial", "block"),
 	description: __("Display testimonials & gain instant credibility", "block"),
 	category: "widgets",

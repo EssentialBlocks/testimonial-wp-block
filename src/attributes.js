@@ -1,5 +1,15 @@
 const attributes = {
-	fontSize: {
+	blockId: {
+		type: "string",
+	},
+	blockRoot: {
+		type: "string",
+		default: "essential_block",
+	},
+	blockMeta: {
+		type: "object",
+	},
+	avaterContainerFontSize: {
 		type: "number",
 		default: 16,
 	},
@@ -92,6 +102,7 @@ const attributes = {
 	backgroundImageURL: {
 		type: "string",
 	},
+	//Margin
 	linkedMargin: {
 		type: "boolean",
 		default: false,
@@ -108,6 +119,33 @@ const attributes = {
 	marginLeft: {
 		type: "number",
 	},
+	//Margin Tab
+	tabMarginTop: {
+		type: "number",
+	},
+	tabMarginRight: {
+		type: "number",
+	},
+	tabMarginBottom: {
+		type: "number",
+	},
+	tabMarginLeft: {
+		type: "number",
+	},
+	//Margin Mobile
+	mobMarginTop: {
+		type: "number",
+	},
+	mobMarginRight: {
+		type: "number",
+	},
+	mobMarginBottom: {
+		type: "number",
+	},
+	mobMarginLeft: {
+		type: "number",
+	},
+	//Padding
 	linkedPadding: {
 		type: "boolean",
 		default: false,
@@ -124,6 +162,33 @@ const attributes = {
 	paddingLeft: {
 		type: "number",
 	},
+	//Padding Tab
+	tabPaddingTop: {
+		type: "number",
+	},
+	tabPaddingRight: {
+		type: "number",
+	},
+	tabPaddingBottom: {
+		type: "number",
+	},
+	tabPaddingLeft: {
+		type: "number",
+	},
+	//Padding Mobile
+	mobPaddingTop: {
+		type: "number",
+	},
+	mobPaddingRight: {
+		type: "number",
+	},
+	mobPaddingBottom: {
+		type: "number",
+	},
+	mobPaddingLeft: {
+		type: "number",
+	},
+
 	shadowColor: {
 		type: "string",
 	},
