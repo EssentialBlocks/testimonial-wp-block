@@ -1,4 +1,8 @@
 const attributes = {
+	resOption: {
+		type: "string",
+		default: "desktop",
+	},
 	blockId: {
 		type: "string",
 	},
@@ -208,7 +212,23 @@ const attributes = {
 		type: "string",
 		default: "px",
 	},
+	tabMarginUnit: {
+		type: "string",
+		default: "px",
+	},
+	mobMarginUnit: {
+		type: "string",
+		default: "px",
+	},
 	paddingUnit: {
+		type: "string",
+		default: "px",
+	},
+	tabPaddingUnit: {
+		type: "string",
+		default: "px",
+	},
+	mobPaddingUnit: {
 		type: "string",
 		default: "px",
 	},
