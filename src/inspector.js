@@ -42,6 +42,7 @@ import UnitControl from "../util/unit-control";
 import FontPicker from "../util/typography-control/FontPicker";
 import ColorControl from "../util/color-control";
 import ResPanelBody from "./ResPanelBody";
+import TypographyDropdown from "../util/typography-control";
 
 class Inspector extends Component {
 	render() {
@@ -179,6 +180,11 @@ class Inspector extends Component {
 			descriptionLineHeightUnit === "em" ? 10 : 100;
 
 		const resRequiredProps = {
+			setAttributes,
+			resOption,
+		};
+		const typoRequiredProps = {
+			attributes,
 			setAttributes,
 			resOption,
 		};
@@ -527,383 +533,21 @@ class Inspector extends Component {
 				/>
 
 				<PanelBody title={__("Typography")} initialOpen={false}>
-					<UnitControl
-						selectedUnit={quoteSizeUnit}
-						unitTypes={[
-							{ label: "px", value: "px" },
-							{ label: "%", value: "%" },
-							{ label: "em", value: "em" },
-						]}
-						onClick={(quoteSizeUnit) => setAttributes({ quoteSizeUnit })}
+					<TypographyDropdown
+						baseLabel="Username"
+						typographyPrefixConstant={'username'}
+						typoRequiredProps={typoRequiredProps}
 					/>
-
-					<RangeControl
-						label={__("Quote Size")}
-						value={quoteSize}
-						onChange={(quoteSize) => setAttributes({ quoteSize })}
-						step={QUOTE_SIZE_STEP}
-						min={0}
-						max={QUOTE_SIZE_MAX}
+					<TypographyDropdown
+						baseLabel="Company"
+						typographyPrefixConstant={"company"}
+						typoRequiredProps={typoRequiredProps}
 					/>
-
-					<BaseControl label={__("Username")} className="eb-typography-base">
-						<Dropdown
-							className="eb-typography-dropdown"
-							contentClassName="my-popover-content-classname"
-							position="bottom right"
-							renderToggle={({ isOpen, onToggle }) => (
-								<Button
-									isSmall
-									onClick={onToggle}
-									aria-expanded={isOpen}
-									icon="edit"
-								></Button>
-							)}
-							renderContent={() => (
-								<div style={{ padding: "1rem" }}>
-									<FontPicker
-										label={__("Font Family")}
-										value={nameFontFamily}
-										onChange={(nameFontFamily) =>
-											setAttributes({ nameFontFamily })
-										}
-									/>
-
-									<UnitControl
-										selectedUnit={nameSizeUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "%", value: "%" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(nameSizeUnit) => setAttributes({ nameSizeUnit })}
-									/>
-
-									<RangeControl
-										label={__("Font Size")}
-										value={nameFontSize}
-										onChange={(nameFontSize) => setAttributes({ nameFontSize })}
-										step={NAME_SIZE_STEP}
-										min={0}
-										max={NAME_SIZE_MAX}
-									/>
-
-									<SelectControl
-										label={__("Font Weight")}
-										value={nameFontWeight}
-										options={FONT_WEIGHTS}
-										onChange={(nameFontWeight) =>
-											setAttributes({ nameFontWeight })
-										}
-									/>
-
-									<SelectControl
-										label={__("Text Transform")}
-										value={nameTextTransform}
-										options={TEXT_TRANSFORM}
-										onChange={(nameTextTransform) =>
-											setAttributes({ nameTextTransform })
-										}
-									/>
-
-									<SelectControl
-										label={__("Text Decoration")}
-										value={nameTextDecoration}
-										options={TEXT_DECORATION}
-										onChange={(nameTextDecoration) =>
-											setAttributes({ nameTextDecoration })
-										}
-									/>
-
-									<UnitControl
-										selectedUnit={nameLetterSpacingUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(nameLetterSpacingUnit) =>
-											setAttributes({ nameLetterSpacingUnit })
-										}
-									/>
-
-									<RangeControl
-										label={__("Letter Spacing")}
-										value={nameLetterSpacing}
-										onChange={(nameLetterSpacing) =>
-											setAttributes({ nameLetterSpacing })
-										}
-										min={0}
-										max={NAME_SPACING_MAX}
-										step={NAME_SPACING_STEP}
-									/>
-
-									<UnitControl
-										selectedUnit={nameLineHeightUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(nameLineHeightUnit) =>
-											setAttributes({ nameLineHeightUnit })
-										}
-									/>
-
-									<RangeControl
-										label={__("Line Height")}
-										value={nameLineHeight}
-										onChange={(nameLineHeight) =>
-											setAttributes({ nameLineHeight })
-										}
-										min={0}
-										max={NAME_LINE_HEIGHT_MAX}
-										step={NAME_LINE_HEIGHT_STEP}
-									/>
-								</div>
-							)}
-						/>
-					</BaseControl>
-
-					<BaseControl label={__("Company")} className="eb-typography-base">
-						<Dropdown
-							className="eb-typography-dropdown"
-							contentClassName="my-popover-content-classcompany"
-							position="bottom right"
-							renderToggle={({ isOpen, onToggle }) => (
-								<Button
-									isSmall
-									onClick={onToggle}
-									aria-expanded={isOpen}
-									icon="edit"
-								></Button>
-							)}
-							renderContent={() => (
-								<div style={{ padding: "1rem" }}>
-									<FontPicker
-										label={__("Font Family")}
-										value={companyFontFamily}
-										onChange={(companyFontFamily) =>
-											setAttributes({ companyFontFamily })
-										}
-									/>
-
-									<UnitControl
-										selectedUnit={companySizeUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "%", value: "%" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(companySizeUnit) =>
-											setAttributes({ companySizeUnit })
-										}
-									/>
-
-									<RangeControl
-										label={__("Font Size")}
-										value={companyFontSize}
-										onChange={(companyFontSize) =>
-											setAttributes({ companyFontSize })
-										}
-										step={COMPANY_SIZE_STEP}
-										min={0}
-										max={COMPANY_SIZE_MAX}
-									/>
-
-									<SelectControl
-										label={__("Font Weight")}
-										value={companyFontWeight}
-										options={FONT_WEIGHTS}
-										onChange={(companyFontWeight) =>
-											setAttributes({ companyFontWeight })
-										}
-									/>
-
-									<SelectControl
-										label={__("Text Transform")}
-										value={companyTextTransform}
-										options={TEXT_TRANSFORM}
-										onChange={(companyTextTransform) =>
-											setAttributes({ companyTextTransform })
-										}
-									/>
-
-									<SelectControl
-										label={__("Text Decoration")}
-										value={companyTextDecoration}
-										options={TEXT_DECORATION}
-										onChange={(companyTextDecoration) =>
-											setAttributes({ companyTextDecoration })
-										}
-									/>
-
-									<UnitControl
-										selectedUnit={companyLetterSpacingUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(companyLetterSpacingUnit) =>
-											setAttributes({ companyLetterSpacingUnit })
-										}
-									/>
-
-									<RangeControl
-										label={__("Letter Spacing")}
-										value={companyLetterSpacing}
-										onChange={(companyLetterSpacing) =>
-											setAttributes({ companyLetterSpacing })
-										}
-										min={0}
-										max={COMPANY_SPACING_MAX}
-										step={COMPANY_SPACING_STEP}
-									/>
-
-									<UnitControl
-										selectedUnit={companyLineHeightUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(companyLineHeightUnit) =>
-											setAttributes({ companyLineHeightUnit })
-										}
-									/>
-
-									<RangeControl
-										label={__("Line Height")}
-										value={companyLineHeight}
-										onChange={(companyLineHeight) =>
-											setAttributes({ companyLineHeight })
-										}
-										min={0}
-										max={COMPANY_LINE_HEIGHT_MAX}
-										step={COMPANY_LINE_HEIGHT_STEP}
-									/>
-								</div>
-							)}
-						/>
-					</BaseControl>
-
-					<BaseControl label={__("Description")} className="eb-typography-base">
-						<Dropdown
-							className="eb-typography-dropdown"
-							contentClassName="my-popover-content-classdescription"
-							position="bottom right"
-							renderToggle={({ isOpen, onToggle }) => (
-								<Button
-									isSmall
-									onClick={onToggle}
-									aria-expanded={isOpen}
-									icon="edit"
-								></Button>
-							)}
-							renderContent={() => (
-								<div style={{ padding: "1rem" }}>
-									<FontPicker
-										label={__("Font Family")}
-										value={descriptionFontFamily}
-										onChange={(descriptionFontFamily) =>
-											setAttributes({ descriptionFontFamily })
-										}
-									/>
-
-									<UnitControl
-										selectedUnit={descriptionSizeUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "%", value: "%" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(descriptionSizeUnit) =>
-											setAttributes({ descriptionSizeUnit })
-										}
-									/>
-
-									<RangeControl
-										label={__("Font Size")}
-										value={descriptionFontSize}
-										onChange={(descriptionFontSize) =>
-											setAttributes({ descriptionFontSize })
-										}
-										step={DESCRIPTION_SIZE_STEP}
-										min={0}
-										max={DESCRIPTION_SIZE_MAX}
-									/>
-
-									<SelectControl
-										label={__("Font Weight")}
-										value={descriptionFontWeight}
-										options={FONT_WEIGHTS}
-										onChange={(descriptionFontWeight) =>
-											setAttributes({ descriptionFontWeight })
-										}
-									/>
-
-									<SelectControl
-										label={__("Text Transform")}
-										value={descriptionTextTransform}
-										options={TEXT_TRANSFORM}
-										onChange={(descriptionTextTransform) =>
-											setAttributes({ descriptionTextTransform })
-										}
-									/>
-
-									<SelectControl
-										label={__("Text Decoration")}
-										value={descriptionTextDecoration}
-										options={TEXT_DECORATION}
-										onChange={(descriptionTextDecoration) =>
-											setAttributes({ descriptionTextDecoration })
-										}
-									/>
-
-									<UnitControl
-										selectedUnit={descriptionLetterSpacingUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(descriptionLetterSpacingUnit) =>
-											setAttributes({ descriptionLetterSpacingUnit })
-										}
-									/>
-
-									<RangeControl
-										label={__("Letter Spacing")}
-										value={descriptionLetterSpacing}
-										onChange={(descriptionLetterSpacing) =>
-											setAttributes({ descriptionLetterSpacing })
-										}
-										min={0}
-										max={DESCRIPTION_SPACING_MAX}
-										step={DESCRIPTION_SPACING_STEP}
-									/>
-
-									<UnitControl
-										selectedUnit={descriptionLineHeightUnit}
-										unitTypes={[
-											{ label: "px", value: "px" },
-											{ label: "em", value: "em" },
-										]}
-										onClick={(descriptionLineHeightUnit) =>
-											setAttributes({ descriptionLineHeightUnit })
-										}
-									/>
-
-									<RangeControl
-										label={__("Line Height")}
-										value={descriptionLineHeight}
-										onChange={(descriptionLineHeight) =>
-											setAttributes({ descriptionLineHeight })
-										}
-										min={0}
-										max={DESCRIPTION_LINE_HEIGHT_MAX}
-										step={DESCRIPTION_LINE_HEIGHT_STEP}
-									/>
-								</div>
-							)}
-						/>
-					</BaseControl>
+					<TypographyDropdown
+						baseLabel="Description"
+						typographyPrefixConstant={"description"}
+						typoRequiredProps={typoRequiredProps}
+					/>
 				</PanelBody>
 
 				<PanelBody title={__("Box Shadow")} initialOpen={false}>

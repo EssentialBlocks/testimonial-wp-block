@@ -26,6 +26,11 @@ import {
 	DEFAULT_QUOTE_COLOR,
 	DEFAULT_COMPANY_COLOR,
 } from "./constants";
+import {
+	softMinifyCssStrings,
+	isCssExists,
+	generateTypographyStyles,
+} from "./helpers";
 
 const Edit = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -157,6 +162,36 @@ const Edit = (props) => {
 
 		fixDuplicateBlockId(all_blocks);
 	}, []);
+
+	//
+	// CSS/styling Codes Starts from Here
+
+	const {
+		typoStylesDesktop: usernameTypoStylesDesktop,
+		typoStylesTab: usernameTypoStylesTab,
+		typoStylesMobile: usernameTypoStylesMobile,
+	} = generateTypographyStyles({
+		attributes,
+		prefixConstant: 'username',
+	});
+
+	const {
+		typoStylesDesktop: companyTypoStylesDesktop,
+		typoStylesTab: companyTypoStylesTab,
+		typoStylesMobile: companyTypoStylesMobile,
+	} = generateTypographyStyles({
+		attributes,
+		prefixConstant: 'company',
+	});
+	const {
+		typoStylesDesktop: descriptionTypoStylesDesktop,
+		typoStylesTab: descriptionTypoStylesTab,
+		typoStylesMobile: descriptionTypoStylesMobile,
+	} = generateTypographyStyles({
+		attributes,
+		prefixConstant: 'description',
+	});
+
 
 	/**
 	 * Assign CSS in variable for use in Markup
