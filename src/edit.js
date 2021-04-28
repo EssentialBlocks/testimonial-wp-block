@@ -1,13 +1,14 @@
 /**
  * Import React Features
 */
+import { useBlockProps, RichText } from "@wordpress/block-editor";
 import { useEffect } from "@wordpress/element";
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { MediaUpload, RichText } = wp.blockEditor;
+const { MediaUpload } = wp.blockEditor;
 const { Button } = wp.components;
 
 /**
@@ -35,6 +36,7 @@ import {
 const Edit = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
 	const {
+		resOption,
 		blockId,
 		blockMeta,
 		avaterContainerFontSize,
@@ -64,17 +66,37 @@ const Edit = (props) => {
 		marginRight,
 		marginBottom,
 		marginLeft,
+		tabMarginTop,
+		tabMarginRight,
+		tabMarginBottom,
+		tabMarginLeft,
+		mobMarginTop,
+		mobMarginRight,
+		mobMarginBottom,
+		mobMarginLeft,
+		marginUnit,
+		tabMarginUnit,
+		mobMarginUnit,
 		paddingTop,
 		paddingRight,
 		paddingBottom,
 		paddingLeft,
+		tabPaddingTop,
+		tabPaddingRight,
+		tabPaddingBottom,
+		tabPaddingLeft,
+		mobPaddingTop,
+		mobPaddingRight,
+		mobPaddingBottom,
+		mobPaddingLeft,
+		paddingUnit,
+		tabPaddingUnit,
+		mobPaddingUnit,
 		shadowColor,
 		shadowHOffset,
 		shadowVOffset,
 		shadowSpread,
 		shadowBlur,
-		marginUnit,
-		paddingUnit,
 		quoteSizeUnit,
 		companyColor,
 		nameFontFamily,
@@ -163,9 +185,8 @@ const Edit = (props) => {
 		fixDuplicateBlockId(all_blocks);
 	}, []);
 
-	//
-	// CSS/styling Codes Starts from Here
 
+	//Generate Author Typography
 	const {
 		typoStylesDesktop: usernameTypoStylesDesktop,
 		typoStylesTab: usernameTypoStylesTab,
@@ -175,6 +196,7 @@ const Edit = (props) => {
 		prefixConstant: 'username',
 	});
 
+	//Generate Comapny Typography
 	const {
 		typoStylesDesktop: companyTypoStylesDesktop,
 		typoStylesTab: companyTypoStylesTab,
@@ -183,6 +205,8 @@ const Edit = (props) => {
 		attributes,
 		prefixConstant: 'company',
 	});
+
+	//Generate Description Typography
 	const {
 		typoStylesDesktop: descriptionTypoStylesDesktop,
 		typoStylesTab: descriptionTypoStylesTab,
@@ -192,192 +216,274 @@ const Edit = (props) => {
 		prefixConstant: 'description',
 	});
 
-
 	/**
 	 * Assign CSS in variable for use in Markup
 	*/
-	const containerStyle = {
-		backgroundImage:
-			backgroundType === "image" && backgroundImageURL
-				? `url('${backgroundImageURL}')`
-				: "none",
-		backgroundColor: backgroundColor || DEFAULT_BACKGROUND,
-		backgroundPosition:
-			bgPosition === "custom"
-				? `${bgXPos}${bgXPosUnit} ${bgYPos}${bgYPosUnit}`
-				: bgPosition,
-		backgroundSize: bgSize === "custom" ? bgWidth + bgWidthUnit : bgSize,
-		backgroundRepeat: bgRepeat || "none",
-		backgroundAttachment: bgAttachment,
-		margin: `${marginTop || 0}${marginUnit} ${marginRight || 0}${marginUnit} ${
-			marginBottom || 0
-		}${marginUnit} ${marginLeft || 0}${marginUnit}`,
-		padding: `${paddingTop || 10}${paddingUnit} ${
-			paddingRight || 10
-		}${paddingUnit} ${paddingBottom || 10}${paddingUnit} ${
-			paddingLeft || 10
-		}${paddingUnit}`,
-		boxShadow: `${shadowHOffset || 0}px ${shadowVOffset || 0}px ${
-			shadowBlur || 0
-		}px ${shadowSpread || 0}px ${shadowColor || DEFAULT_SHADOW_COLOR}`,
-	};
+	const containerStyle = `
+		.eb-testimonial-wrapper.${blockId} {
+			background-image: ${backgroundType === "image" && backgroundImageURL ? "url('" +backgroundImageURL +"')" : "none"};
+			background-color: ${backgroundColor || DEFAULT_BACKGROUND};
+			background-position:
+				${bgPosition === "custom"
+					? bgXPos + bgXPosUnit + " " + bgYPos + bgYPosUnit
+					: ""};
+			background-size: ${bgSize === "custom" ? bgWidth + bgWidthUnit : bgSize};
+			background-repeat: ${bgRepeat || "none"};
+			background-attachment: ${bgAttachment};
+			margin: ${marginTop || 10}${marginUnit}  ${marginRight || 10}${marginUnit} 
+			${marginBottom || 10}${marginUnit} ${marginLeft || 10}${marginUnit};
+			padding: ${paddingTop || 10}${paddingUnit}  ${paddingRight || 10}${paddingUnit} 
+					${paddingBottom || 10}${paddingUnit} ${paddingLeft || 10}${paddingUnit};
+			box-shadow: ${shadowHOffset || 0}px ${shadowVOffset || 0}px ${shadowBlur || 0}px 
+					${shadowSpread || 0}px ${shadowColor || DEFAULT_SHADOW_COLOR};
+		}
+	`;
 
-	const avatarContainerStyle = {
-		order: avatarOrder,
-		justifyContent: avatarPosition,
-		alignItems: avatarAlign,
-		fontSize: `${avaterContainerFontSize}px`,
-		flexDirection: avatarInline ? "row" : "column",
-	};
+	const tabContainerStyle = `
+		.eb-testimonial-wrapper.${blockId} {
+			margin: ${tabMarginTop || 10}${tabMarginUnit}  ${tabMarginRight || 10}${tabMarginUnit} 
+			${tabMarginBottom || 10}${tabMarginUnit} ${tabMarginLeft || 10}${tabMarginUnit};
+			padding: ${tabPaddingTop || 10}${tabPaddingUnit}  ${tabPaddingRight || 10}${tabPaddingUnit} 
+					${tabPaddingBottom || 10}${tabPaddingUnit} ${tabPaddingLeft || 10}${tabPaddingUnit};
+		}
+	`;
 
-	const imageContainerStyle = {
-		order: imagePosition,
-	};
+	const mobContainerStyle = `
+		.eb-testimonial-wrapper.${blockId} {
+			margin: ${mobMarginTop || 10}${mobMarginUnit}  ${mobMarginRight || 10}${mobMarginUnit} 
+			${mobMarginBottom || 10}${mobMarginUnit} ${mobMarginLeft || 10}${mobMarginUnit};
+			padding: ${mobPaddingTop || 10}${mobPaddingUnit}  ${mobPaddingRight || 10}${mobPaddingUnit} 
+					${mobPaddingBottom || 10}${mobPaddingUnit} ${mobPaddingLeft || 10}${mobPaddingUnit};
+		}
+	`;
 
-	const userInfoStyle = {
-		textAlign: textAlign,
-		justifyContent: userInfoPos,
-		alignSelf: userInfoAlign,
-	};
+	const avatarContainerStyle = `
+		.${blockId} .eb-avatar-container {
+			order: ${avatarOrder};
+			justify-content: ${avatarPosition};
+			align-items: ${avatarAlign};
+			font-size: ${avaterContainerFontSize}px;
+			flex-direction: ${avatarInline ? "row" : "column"};
+		}
+	`;
 
-	const userNameStyle = {
-		fontSize: `${nameFontSize || DEFAULT_NAME_SIZE}${nameSizeUnit}`,
-		fontFamily: nameFontFamily,
-		fontWeight: nameFontWeight,
-		textTransform: nameTextTransform,
-		textDecoration: nameTextDecoration,
-		letterSpacing: nameLetterSpacing
-			? `${nameLetterSpacing}${nameLetterSpacingUnit}`
-			: undefined,
-		lineHeight: nameLineHeight
-			? `${nameLineHeight}${nameLineHeightUnit}`
-			: undefined,
-		color: userNameColor || DEFAULT_NAME_COLOR,
-	};
+	const imageContainerStyle = `
+		.${blockId} .image-container {
+			order: ${imagePosition};
+			display: ${displayAvatar ? "block" : "none"};
+		}
+		.${blockId} .eb-avatar-style {
+			background-image: url(${imageUrl});
+			border-radius: ${borderRadius}%;
+			display: ${imageUrl ? "block" : "none"};
+		}
+	`;
 
-	const companyNameStyle = {
-		fontSize: `${companyFontSize || DEFAULT_COMPANY_SIZE}${companySizeUnit}`,
-		fontFamily: companyFontFamily,
-		fontWeight: companyFontWeight,
-		textTransform: companyTextTransform,
-		textDecoration: companyTextDecoration,
-		letterSpacing: companyLetterSpacing
-			? `${companyLetterSpacing}${companyLetterSpacingUnit}`
-			: undefined,
-		lineHeight: companyLineHeight
-			? `${companyLineHeight}${companyLineHeightUnit}`
-			: undefined,
-		color: companyColor || DEFAULT_COMPANY_COLOR,
-	};
+	const userInfoStyle = `
+		.${blockId} .eb-userinfo-container {
+			textAlign: ${textAlign};
+			justifyContent: ${userInfoPos};
+			alignSelf: ${userInfoAlign};
+		}
+	`;
 
-	const descriptionStyle = {
-		fontSize: `${
-			descriptionFontSize || DEFAULT_DESCRIPTION_SIZE
-		}${descriptionSizeUnit}`,
-		fontFamily: descriptionFontFamily,
-		fontWeight: descriptionFontWeight,
-		textTransform: descriptionTextTransform,
-		textDecoration: descriptionTextDecoration,
-		letterSpacing: descriptionLetterSpacing
-			? `${descriptionLetterSpacing}${companyLetterSpacingUnit}`
-			: undefined,
-		lineHeight: descriptionLineHeight
-			? `${descriptionLineHeight}${companyLineHeightUnit}`
-			: undefined,
-		color: descriptionColor || DEFAULT_DESCRIPTION_COLOR,
-		paddingRight: 20,
-	};
+	const userNameStyle = `
+		.${blockId} .eb-testimonial-username {
+			${usernameTypoStylesDesktop}
+			color: ${userNameColor || DEFAULT_NAME_COLOR};
+		}
+	`;
 
-	const quoteStyle = {
-		color: quoteColor || DEFAULT_QUOTE_COLOR,
-		fontSize: `${quoteSize || DEFAULT_QUOTE_SIZE}${quoteSizeUnit}`,
-	};
+	const userNameStyleTab = `
+		.${blockId} .eb-testimonial-username {
+			${usernameTypoStylesTab}
+		}
+	`;
+
+	const userNameStyleMobile = `
+		.${blockId} .eb-testimonial-username {
+			${usernameTypoStylesMobile}
+		}
+	`;
+
+	const companyNameStyle = `
+		.${blockId} .eb-testimonial-company { 
+			${companyTypoStylesDesktop}
+			color: ${companyColor || DEFAULT_COMPANY_COLOR};
+		}
+	`;
+	const companyNameStyleTab = `
+		.${blockId} .eb-testimonial-company { 
+			${companyTypoStylesTab}
+		}
+	`;
+	const companyNameStyleMobile = `
+		.${blockId} .eb-testimonial-company { 
+			${companyTypoStylesMobile}
+		}
+	`;
+
+	const descriptionStyle = `
+		.${blockId} .eb-description-container p {
+			${descriptionTypoStylesDesktop}
+			color: ${descriptionColor || DEFAULT_DESCRIPTION_COLOR};
+			paddingRight: 20;
+		}
+	`;
+	const descriptionStyleTab = `
+		.${blockId} .eb-description-container p { 
+			${descriptionTypoStylesTab}
+		}
+	`;
+	const descriptionStyleMobile = `
+		.${blockId} .eb-description-container p { 
+			${descriptionTypoStylesMobile}
+		}
+	`;
+
+	const quoteStyle = `
+		.${blockId} .eb-testimonial-quote-style {
+			color: ${quoteColor || DEFAULT_QUOTE_COLOR};
+			fontSize: ${quoteSize || DEFAULT_QUOTE_SIZE}${quoteSizeUnit};
+		}
+	`;
+
+	const desktopAllStyles = `
+		${containerStyle}
+		${avatarContainerStyle}
+		${imageContainerStyle}
+		${userInfoStyle}
+		${userNameStyle}
+		${companyNameStyle}
+		${descriptionStyle}
+		${quoteStyle}
+	`;
+
+	const tabAllStyles = `
+		${tabContainerStyle}
+		${userNameStyleTab}
+		${companyNameStyleTab}
+		${descriptionStyleTab}
+	`;
+
+	const mobileAllStyles = `
+		${mobContainerStyle}
+		${userNameStyleMobile}
+		${companyNameStyleMobile}
+		${descriptionStyleMobile}
+	`;
 
 	// Set All Style in "blockMeta" Attribute
 	useEffect(() => {
 		const styleObject = {
-			// desktop: desktopAllStyles,
-			// tab: tabAllStyles,
-			// mobile: mobileAllStyles,
+			desktop: desktopAllStyles,
+			tab: tabAllStyles,
+			mobile: mobileAllStyles,
 		};
 		if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
 			setAttributes({ blockMeta: styleObject });
 		}
 	}, [attributes]);
 
+	const blockProps = useBlockProps({
+		className: `eb-guten-block-main-parent-wrapper`,
+	});
+
 	return [
 		isSelected && <Inspector {...props} />,
-		// Edit view here
-		<div className={`"eb-testimonial-wrapper ${blockId}"`} data-id={blockId}>
-			<div className="eb-testimonial-container" style={containerStyle}>
-				<div className="eb-avatar-container" style={avatarContainerStyle}>
-					<div
-						className="image-container"
-						style={{
-							...imageContainerStyle,
-							display: displayAvatar ? "block" : "none",
-						}}
-					>
+		<div {...blockProps}>
+			<style>
+				{`
+				${desktopAllStyles}
+
+				/* mimmikcssStart */
+
+				${resOption === "tab" ? tabAllStyles : " "}
+				${resOption === "mobile" ? tabAllStyles + mobileAllStyles : " "}
+
+				/* mimmikcssEnd */
+
+				@media all and (max-width: 1024px) {	
+
+					/* tabcssStart */			
+					${softMinifyCssStrings(tabAllStyles)}
+					/* tabcssEnd */			
+				
+				}
+				
+				@media all and (max-width: 767px) {
+					
+					/* mobcssStart */			
+					${softMinifyCssStrings(mobileAllStyles)}
+					/* mobcssEnd */			
+				
+				}
+				`}
+			</style>
+			// Edit view here
+			<div className={`"eb-testimonial-wrapper ${blockId}"`} data-id={blockId}>
+				<div className="eb-testimonial-container">
+					<div className="eb-avatar-container">
 						<div
-							className="eb-avatar-style"
-							style={{
-								backgroundImage: `url(${imageUrl})`,
-								borderRadius: `${borderRadius}%`,
-								display: imageUrl ? "block" : "none",
-							}}
-						/>
-						<MediaUpload
-							onSelect={(media) =>
-								setAttributes({
-									imageUrl: media.url,
-									imageId: media.id,
-								})
-							}
-							type="image"
-							value={imageId}
-							render={({ open }) =>
-								!imageUrl && (
-									<Button
-										className="eb-testimonial-image components-button"
-										label={__("Upload Image")}
-										icon="format-image"
-										onClick={open}
-									/>
-								)
-							}
-						/>
+							className="image-container"
+						>
+							<div
+								className="eb-avatar-style"
+								// style={{
+								// 	backgroundImage: `url(${imageUrl})`,
+								// 	borderRadius: `${borderRadius}%`,
+								// 	display: imageUrl ? "block" : "none",
+								// }}
+							/>
+							<MediaUpload
+								onSelect={(media) =>
+									setAttributes({
+										imageUrl: media.url,
+										imageId: media.id,
+									})
+								}
+								type="image"
+								value={imageId}
+								render={({ open }) =>
+									!imageUrl && (
+										<Button
+											className="eb-testimonial-image components-button"
+											label={__("Upload Image")}
+											icon="format-image"
+											onClick={open}
+										/>
+									)
+								}
+							/>
+						</div>
+
+						<div className="eb-userinfo-container">
+							<RichText
+								tagName="p"
+								className="eb-testimonial-username"
+								value={userName}
+								onChange={(newName) => setAttributes({ userName: newName })}
+							/>
+
+							<RichText
+								tagName="p"
+								className="eb-testimonial-company"
+								value={companyName}
+								onChange={(newName) => setAttributes({ companyName: newName })}
+							/>
+						</div>
 					</div>
 
-					<div className="eb-userinfo-container" style={userInfoStyle}>
-						<RichText
-							tagName="p"
-							className="eb-testimonial-username"
-							value={userName}
-							onChange={(newName) => setAttributes({ userName: newName })}
-							style={userNameStyle}
+					<div className="eb-description-container">
+						<div
+							className="fas fa-quote-left eb-testimonial-quote-style"
 						/>
-
 						<RichText
 							tagName="p"
-							className="eb-testimonial-company"
-							value={companyName}
-							onChange={(newName) => setAttributes({ companyName: newName })}
-							style={companyNameStyle}
+							value={description}
+							onChange={(newText) => setAttributes({ description: newText })}
 						/>
 					</div>
-				</div>
-
-				<div className="eb-description-container">
-					<div
-						className="fas fa-quote-left eb-testimonial-quote-style"
-						style={quoteStyle}
-					/>
-					<RichText
-						tagName="p"
-						value={description}
-						onChange={(newText) => setAttributes({ description: newText })}
-						style={descriptionStyle}
-					/>
 				</div>
 			</div>
 		</div>,
