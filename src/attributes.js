@@ -50,17 +50,17 @@ const attributes = {
 		default: 1,
 	},
 	userName: {
-		selector: ".username-one",
+		selector: ".eb-testimonial-username",
 		source: "html",
 		default: "John Doe",
 	},
 	companyName: {
-		selector: ".company-one",
+		selector: ".eb-testimonial-company",
 		source: "html",
 		default: "Company Name",
 	},
 	description: {
-		selector: ".description-one",
+		selector: ".eb-testimonial-description",
 		source: "html",
 		default:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

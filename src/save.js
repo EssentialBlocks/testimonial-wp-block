@@ -3,24 +3,9 @@
  */
 const { RichText } = wp.blockEditor;
 
-/**
- * Internal dependencies
- */
-import {
-	DEFAULT_BACKGROUND,
-	DEFAULT_SHADOW_COLOR,
-	DEFAULT_NAME_SIZE,
-	DEFAULT_NAME_COLOR,
-	DEFAULT_COMPANY_SIZE,
-	DEFAULT_COMPANY_COLOR,
-	DEFAULT_DESCRIPTION_SIZE,
-	DEFAULT_DESCRIPTION_COLOR,
-	DEFAULT_QUOTE_SIZE,
-	DEFAULT_QUOTE_COLOR,
-} from "./constants";
-
 const Save = ({ attributes }) => {
 	const {
+		blockId,
 		avatarInline,
 		userName,
 		companyName,
@@ -28,7 +13,7 @@ const Save = ({ attributes }) => {
 	} = attributes;
 
 	return (
-		<div className="eb-testimonial-wrapper">
+		<div className={`eb-testimonial-wrapper ${blockId}`} data-id={blockId}>
 			<div className="eb-testimonial-container">
 				<div
 					className={`eb-avatar-container ${
@@ -41,13 +26,13 @@ const Save = ({ attributes }) => {
 					<div className="eb-userinfo-container">
 						<RichText.Content
 							tagName="p"
-							className="username-one"
+							className="eb-testimonial-username"
 							value={userName}
 						/>
 
 						<RichText.Content
 							tagName="p"
-							className="company-one"
+							className="eb-testimonial-company"
 							value={companyName}
 						/>
 					</div>
@@ -59,7 +44,7 @@ const Save = ({ attributes }) => {
 					/>
 					<RichText.Content
 						tagName="p"
-						className="description-one"
+						className="eb-testimonial-description"
 						value={description}
 					/>
 				</div>

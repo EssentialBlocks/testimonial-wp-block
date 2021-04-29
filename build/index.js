@@ -1434,17 +1434,17 @@ var attributes = _objectSpread(_objectSpread({
     "default": 1
   },
   userName: {
-    selector: ".username-one",
+    selector: ".eb-testimonial-username",
     source: "html",
     "default": "John Doe"
   },
   companyName: {
-    selector: ".company-one",
+    selector: ".eb-testimonial-company",
     source: "html",
     "default": "Company Name"
   },
   description: {
-    selector: ".description-one",
+    selector: ".eb-testimonial-description",
     source: "html",
     "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   },
@@ -2232,25 +2232,25 @@ var Edit = function Edit(props) {
   */
 
 
-  var containerStyle = "\n\t\t.eb-testimonial-wrapper.".concat(blockId, " {\n\t\t\tbackground-image: ").concat(backgroundType === "image" && backgroundImageURL ? "url('" + backgroundImageURL + "')" : "none", ";\n\t\t\tbackground-color: ").concat(backgroundColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_BACKGROUND"], ";\n\t\t\tbackground-position:\n\t\t\t\t").concat(bgPosition === "custom" ? bgXPos + bgXPosUnit + " " + bgYPos + bgYPosUnit : "", ";\n\t\t\tbackground-size: ").concat(bgSize === "custom" ? bgWidth + bgWidthUnit : bgSize, ";\n\t\t\tbackground-repeat: ").concat(bgRepeat || "none", ";\n\t\t\tbackground-attachment: ").concat(bgAttachment, ";\n\t\t\tmargin: ").concat(marginTop || 10).concat(marginUnit, "  ").concat(marginRight || 10).concat(marginUnit, " \n\t\t\t").concat(marginBottom || 10).concat(marginUnit, " ").concat(marginLeft || 10).concat(marginUnit, ";\n\t\t\tpadding: ").concat(paddingTop || 10).concat(paddingUnit, "  ").concat(paddingRight || 10).concat(paddingUnit, " \n\t\t\t\t\t").concat(paddingBottom || 10).concat(paddingUnit, " ").concat(paddingLeft || 10).concat(paddingUnit, ";\n\t\t\tbox-shadow: ").concat(shadowHOffset || 0, "px ").concat(shadowVOffset || 0, "px ").concat(shadowBlur || 0, "px \n\t\t\t\t\t").concat(shadowSpread || 0, "px ").concat(shadowColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_SHADOW_COLOR"], ";\n\t\t}\n\t");
+  var containerStyle = "\n\t\t.".concat(blockId, " {\n\t\t\tbackground-image: ").concat(backgroundType === "image" && backgroundImageURL ? "url('" + backgroundImageURL + "')" : "none", ";\n\t\t\tbackground-color: ").concat(backgroundColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_BACKGROUND"], ";\n\t\t\tbackground-position:\n\t\t\t\t").concat(bgPosition === "custom" ? bgXPos + bgXPosUnit + " " + bgYPos + bgYPosUnit : "unset", ";\n\t\t\tbackground-size: ").concat(bgSize === "custom" ? bgWidth + bgWidthUnit : "auto", ";\n\t\t\tbackground-repeat: ").concat(bgRepeat || "inherit", ";\n\t\t\tbackground-attachment: ").concat(bgAttachment || "unset", ";\n\t\t\tmargin: ").concat(marginTop || 10).concat(marginUnit, "  ").concat(marginRight || 10).concat(marginUnit, " \n\t\t\t").concat(marginBottom || 10).concat(marginUnit, " ").concat(marginLeft || 10).concat(marginUnit, ";\n\t\t\tpadding: ").concat(paddingTop || 10).concat(paddingUnit, "  ").concat(paddingRight || 10).concat(paddingUnit, " \n\t\t\t\t\t").concat(paddingBottom || 10).concat(paddingUnit, " ").concat(paddingLeft || 10).concat(paddingUnit, ";\n\t\t\tbox-shadow: ").concat(shadowHOffset || 0, "px ").concat(shadowVOffset || 0, "px ").concat(shadowBlur || 0, "px \n\t\t\t\t\t").concat(shadowSpread || 0, "px ").concat(shadowColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_SHADOW_COLOR"], ";\n\t\t}\n\t");
   var tabContainerStyle = "\n\t\t.eb-testimonial-wrapper.".concat(blockId, " {\n\t\t\tmargin: ").concat(tabMarginTop || 10).concat(tabMarginUnit, "  ").concat(tabMarginRight || 10).concat(tabMarginUnit, " \n\t\t\t").concat(tabMarginBottom || 10).concat(tabMarginUnit, " ").concat(tabMarginLeft || 10).concat(tabMarginUnit, ";\n\t\t\tpadding: ").concat(tabPaddingTop || 10).concat(tabPaddingUnit, "  ").concat(tabPaddingRight || 10).concat(tabPaddingUnit, " \n\t\t\t\t\t").concat(tabPaddingBottom || 10).concat(tabPaddingUnit, " ").concat(tabPaddingLeft || 10).concat(tabPaddingUnit, ";\n\t\t}\n\t");
-  var mobContainerStyle = "\n\t\t.eb-testimonial-wrapper.".concat(blockId, " {\n\t\t\tmargin: ").concat(mobMarginTop || 10).concat(mobMarginUnit, "  ").concat(mobMarginRight || 10).concat(mobMarginUnit, " \n\t\t\t").concat(mobMarginBottom || 10).concat(mobMarginUnit, " ").concat(mobMarginLeft || 10).concat(mobMarginUnit, ";\n\t\t\tpadding: ").concat(mobPaddingTop || 10).concat(mobPaddingUnit, "  ").concat(mobPaddingRight || 10).concat(mobPaddingUnit, " \n\t\t\t\t\t").concat(mobPaddingBottom || 10).concat(mobPaddingUnit, " ").concat(mobPaddingLeft || 10).concat(mobPaddingUnit, ";\n\t\t}\n\t");
+  var mobContainerStyle = "\n\t\t.eb-testimonial-wrapper.".concat(blockId, " {\n\t\t\tmargin: ").concat(mobMarginTop || 10).concat(mobMarginUnit, "  ").concat(mobMarginRight || 10).concat(mobMarginUnit, " \n\t\t\t").concat(mobMarginBottom || 10).concat(mobMarginUnit, " ").concat(mobMarginLeft || 10).concat(mobMarginUnit, ";\n\t\t\tpadding: ").concat(mobPaddingTop || 10).concat(mobPaddingUnit, " ").concat(mobPaddingRight || 10).concat(mobPaddingUnit, " \n\t\t\t\t\t").concat(mobPaddingBottom || 10).concat(mobPaddingUnit, " ").concat(mobPaddingLeft || 10).concat(mobPaddingUnit, ";\n\t\t}\n\t");
   var avatarContainerStyle = "\n\t\t.".concat(blockId, " .eb-avatar-container {\n\t\t\torder: ").concat(avatarOrder, ";\n\t\t\tjustify-content: ").concat(avatarPosition, ";\n\t\t\talign-items: ").concat(avatarAlign, ";\n\t\t\tfont-size: ").concat(avaterContainerFontSize, "px;\n\t\t\tflex-direction: ").concat(avatarInline ? "row" : "column", ";\n\t\t}\n\t");
   var imageContainerStyle = "\n\t\t.".concat(blockId, " .image-container {\n\t\t\torder: ").concat(imagePosition, ";\n\t\t\tdisplay: ").concat(displayAvatar ? "block" : "none", ";\n\t\t}\n\t\t.").concat(blockId, " .eb-avatar-style {\n\t\t\tbackground-image: url(").concat(imageUrl, ");\n\t\t\tborder-radius: ").concat(borderRadius, "%;\n\t\t\tdisplay: ").concat(imageUrl ? "block" : "none", ";\n\t\t}\n\t");
-  var userInfoStyle = "\n\t\t.".concat(blockId, " .eb-userinfo-container {\n\t\t\ttextAlign: ").concat(textAlign, ";\n\t\t\tjustifyContent: ").concat(userInfoPos, ";\n\t\t\talignSelf: ").concat(userInfoAlign, ";\n\t\t}\n\t");
+  var userInfoStyle = "\n\t\t.".concat(blockId, " .eb-userinfo-container {\n\t\t\ttext-align: ").concat(textAlign, ";\n\t\t\tjustify-content: ").concat(userInfoPos, ";\n\t\t\talign-self: ").concat(userInfoAlign, ";\n\t\t}\n\t");
   var userNameStyle = "\n\t\t.".concat(blockId, " .eb-testimonial-username {\n\t\t\t").concat(usernameTypoStylesDesktop, "\n\t\t\tcolor: ").concat(userNameColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_NAME_COLOR"], ";\n\t\t}\n\t");
   var userNameStyleTab = "\n\t\t.".concat(blockId, " .eb-testimonial-username {\n\t\t\t").concat(usernameTypoStylesTab, "\n\t\t}\n\t");
   var userNameStyleMobile = "\n\t\t.".concat(blockId, " .eb-testimonial-username {\n\t\t\t").concat(usernameTypoStylesMobile, "\n\t\t}\n\t");
   var companyNameStyle = "\n\t\t.".concat(blockId, " .eb-testimonial-company { \n\t\t\t").concat(companyTypoStylesDesktop, "\n\t\t\tcolor: ").concat(companyColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_COMPANY_COLOR"], ";\n\t\t}\n\t");
   var companyNameStyleTab = "\n\t\t.".concat(blockId, " .eb-testimonial-company { \n\t\t\t").concat(companyTypoStylesTab, "\n\t\t}\n\t");
   var companyNameStyleMobile = "\n\t\t.".concat(blockId, " .eb-testimonial-company { \n\t\t\t").concat(companyTypoStylesMobile, "\n\t\t}\n\t");
-  var descriptionStyle = "\n\t\t.".concat(blockId, " .eb-description-container p {\n\t\t\t").concat(descriptionTypoStylesDesktop, "\n\t\t\tcolor: ").concat(descriptionColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_DESCRIPTION_COLOR"], ";\n\t\t\tpaddingRight: 20;\n\t\t}\n\t");
+  var descriptionStyle = "\n\t\t.".concat(blockId, " .eb-description-container p {\n\t\t\t").concat(descriptionTypoStylesDesktop, "\n\t\t\tcolor: ").concat(descriptionColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_DESCRIPTION_COLOR"], ";\n\t\t\tpadding-right: 20;\n\t\t}\n\t");
   var descriptionStyleTab = "\n\t\t.".concat(blockId, " .eb-description-container p { \n\t\t\t").concat(descriptionTypoStylesTab, "\n\t\t}\n\t");
   var descriptionStyleMobile = "\n\t\t.".concat(blockId, " .eb-description-container p { \n\t\t\t").concat(descriptionTypoStylesMobile, "\n\t\t}\n\t");
-  var quoteStyle = "\n\t\t.".concat(blockId, " .eb-testimonial-quote-style {\n\t\t\tcolor: ").concat(quoteColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_QUOTE_COLOR"], ";\n\t\t\tfontSize: ").concat(quoteSize || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_QUOTE_SIZE"]).concat(quoteSizeUnit, ";\n\t\t}\n\t");
-  var desktopAllStyles = "\n\t\t".concat(containerStyle, "\n\t\t").concat(avatarContainerStyle, "\n\t\t").concat(imageContainerStyle, "\n\t\t").concat(userInfoStyle, "\n\t\t").concat(userNameStyle, "\n\t\t").concat(companyNameStyle, "\n\t\t").concat(descriptionStyle, "\n\t\t").concat(quoteStyle, "\n\t");
-  var tabAllStyles = "\n\t\t".concat(tabContainerStyle, "\n\t\t").concat(userNameStyleTab, "\n\t\t").concat(companyNameStyleTab, "\n\t\t").concat(descriptionStyleTab, "\n\t");
-  var mobileAllStyles = "\n\t\t".concat(mobContainerStyle, "\n\t\t").concat(userNameStyleMobile, "\n\t\t").concat(companyNameStyleMobile, "\n\t\t").concat(descriptionStyleMobile, "\n\t"); // Set All Style in "blockMeta" Attribute
+  var quoteStyle = "\n\t\t.".concat(blockId, " .eb-testimonial-quote-style {\n\t\t\tcolor: ").concat(quoteColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_QUOTE_COLOR"], ";\n\t\t\tfont-size: ").concat(quoteSize || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_QUOTE_SIZE"]).concat(quoteSizeUnit, ";\n\t\t}\n\t");
+  var desktopAllStyles = "\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(containerStyle) ? containerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(avatarContainerStyle) ? avatarContainerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(imageContainerStyle) ? imageContainerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(userInfoStyle) ? userInfoStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(userNameStyle) ? userNameStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(companyNameStyle) ? companyNameStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(descriptionStyle) ? descriptionStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(quoteStyle) ? quoteStyle : " ", "\n\t");
+  var tabAllStyles = "\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(tabContainerStyle) ? tabContainerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(userNameStyleTab) ? userNameStyleTab : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(companyNameStyleTab) ? companyNameStyleTab : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(descriptionStyleTab) ? descriptionStyleTab : " ", "\n\t");
+  var mobileAllStyles = "\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(mobContainerStyle) ? mobContainerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(userNameStyleMobile) ? userNameStyleMobile : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(companyNameStyleMobile) ? companyNameStyleMobile : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(descriptionStyleMobile) ? descriptionStyleMobile : " ", "\n\t"); // Set All Style in "blockMeta" Attribute
 
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var styleObject = {
@@ -2268,8 +2268,8 @@ var Edit = function Edit(props) {
   var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"])({
     className: "eb-guten-block-main-parent-wrapper"
   });
-  return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_2__["default"], props), /*#__PURE__*/React.createElement("div", blockProps, /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(desktopAllStyles, "\n\n\t\t\t\t/* mimmikcssStart */\n\n\t\t\t\t").concat(resOption === "tab" ? tabAllStyles : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? tabAllStyles + mobileAllStyles : " ", "\n\n\t\t\t\t/* mimmikcssEnd */\n\n\t\t\t\t@media all and (max-width: 1024px) {\t\n\n\t\t\t\t\t/* tabcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t\t/* tabcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\t@media all and (max-width: 767px) {\n\t\t\t\t\t\n\t\t\t\t\t/* mobcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t\t/* mobcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t")), "// Edit view here", /*#__PURE__*/React.createElement("div", {
-    className: "\"eb-testimonial-wrapper ".concat(blockId, "\""),
+  return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_2__["default"], props), /*#__PURE__*/React.createElement("div", blockProps, /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(desktopAllStyles, "\n\n\t\t\t\t/* mimmikcssStart */\n\n\t\t\t\t").concat(resOption === "tab" ? tabAllStyles : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? tabAllStyles + mobileAllStyles : " ", "\n\n\t\t\t\t/* mimmikcssEnd */\n\n\t\t\t\t@media all and (max-width: 1024px) {\t\n\n\t\t\t\t\t/* tabcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t\t/* tabcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\t@media all and (max-width: 767px) {\n\t\t\t\t\t\n\t\t\t\t\t/* mobcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t\t/* mobcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
+    className: "eb-testimonial-wrapper ".concat(blockId),
     "data-id": blockId
   }, /*#__PURE__*/React.createElement("div", {
     className: "eb-testimonial-container"
@@ -2278,12 +2278,7 @@ var Edit = function Edit(props) {
   }, /*#__PURE__*/React.createElement("div", {
     className: "image-container"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "eb-avatar-style" // style={{
-    // 	backgroundImage: `url(${imageUrl})`,
-    // 	borderRadius: `${borderRadius}%`,
-    // 	display: imageUrl ? "block" : "none",
-    // }}
-
+    className: "eb-avatar-style"
   }), /*#__PURE__*/React.createElement(MediaUpload, {
     onSelect: function onSelect(media) {
       return setAttributes({
@@ -2328,6 +2323,7 @@ var Edit = function Edit(props) {
     className: "fas fa-quote-left eb-testimonial-quote-style"
   }), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"], {
     tagName: "p",
+    className: "eb-testimonial-description",
     value: description,
     onChange: function onChange(newText) {
       return setAttributes({
@@ -3588,25 +3584,21 @@ var Inspector = /*#__PURE__*/function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
 /**
  * WordPress dependencies
  */
 var RichText = wp.blockEditor.RichText;
-/**
- * Internal dependencies
- */
-
-
 
 var Save = function Save(_ref) {
   var attributes = _ref.attributes;
-  var avatarInline = attributes.avatarInline,
+  var blockId = attributes.blockId,
+      avatarInline = attributes.avatarInline,
       userName = attributes.userName,
       companyName = attributes.companyName,
       description = attributes.description;
   return /*#__PURE__*/React.createElement("div", {
-    className: "eb-testimonial-wrapper"
+    className: "eb-testimonial-wrapper ".concat(blockId),
+    "data-id": blockId
   }, /*#__PURE__*/React.createElement("div", {
     className: "eb-testimonial-container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -3619,11 +3611,11 @@ var Save = function Save(_ref) {
     className: "eb-userinfo-container"
   }, /*#__PURE__*/React.createElement(RichText.Content, {
     tagName: "p",
-    className: "username-one",
+    className: "eb-testimonial-username",
     value: userName
   }), /*#__PURE__*/React.createElement(RichText.Content, {
     tagName: "p",
-    className: "company-one",
+    className: "eb-testimonial-company",
     value: companyName
   }))), /*#__PURE__*/React.createElement("div", {
     className: "eb-description-container"
@@ -3631,7 +3623,7 @@ var Save = function Save(_ref) {
     className: "fas fa-quote-left eb-testimonial-quote-style"
   }), /*#__PURE__*/React.createElement(RichText.Content, {
     tagName: "p",
-    className: "description-one",
+    className: "eb-testimonial-description",
     value: description
   }))));
 };

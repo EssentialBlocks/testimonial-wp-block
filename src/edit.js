@@ -220,16 +220,16 @@ const Edit = (props) => {
 	 * Assign CSS in variable for use in Markup
 	*/
 	const containerStyle = `
-		.eb-testimonial-wrapper.${blockId} {
+		.${blockId} {
 			background-image: ${backgroundType === "image" && backgroundImageURL ? "url('" +backgroundImageURL +"')" : "none"};
 			background-color: ${backgroundColor || DEFAULT_BACKGROUND};
 			background-position:
 				${bgPosition === "custom"
 					? bgXPos + bgXPosUnit + " " + bgYPos + bgYPosUnit
-					: ""};
-			background-size: ${bgSize === "custom" ? bgWidth + bgWidthUnit : bgSize};
-			background-repeat: ${bgRepeat || "none"};
-			background-attachment: ${bgAttachment};
+					: "unset"};
+			background-size: ${bgSize === "custom" ? bgWidth + bgWidthUnit : "auto"};
+			background-repeat: ${bgRepeat || "inherit"};
+			background-attachment: ${bgAttachment || "unset"};
 			margin: ${marginTop || 10}${marginUnit}  ${marginRight || 10}${marginUnit} 
 			${marginBottom || 10}${marginUnit} ${marginLeft || 10}${marginUnit};
 			padding: ${paddingTop || 10}${paddingUnit}  ${paddingRight || 10}${paddingUnit} 
@@ -252,7 +252,7 @@ const Edit = (props) => {
 		.eb-testimonial-wrapper.${blockId} {
 			margin: ${mobMarginTop || 10}${mobMarginUnit}  ${mobMarginRight || 10}${mobMarginUnit} 
 			${mobMarginBottom || 10}${mobMarginUnit} ${mobMarginLeft || 10}${mobMarginUnit};
-			padding: ${mobPaddingTop || 10}${mobPaddingUnit}  ${mobPaddingRight || 10}${mobPaddingUnit} 
+			padding: ${mobPaddingTop || 10}${mobPaddingUnit} ${mobPaddingRight || 10}${mobPaddingUnit} 
 					${mobPaddingBottom || 10}${mobPaddingUnit} ${mobPaddingLeft || 10}${mobPaddingUnit};
 		}
 	`;
@@ -281,9 +281,9 @@ const Edit = (props) => {
 
 	const userInfoStyle = `
 		.${blockId} .eb-userinfo-container {
-			textAlign: ${textAlign};
-			justifyContent: ${userInfoPos};
-			alignSelf: ${userInfoAlign};
+			text-align: ${textAlign};
+			justify-content: ${userInfoPos};
+			align-self: ${userInfoAlign};
 		}
 	`;
 
@@ -327,7 +327,7 @@ const Edit = (props) => {
 		.${blockId} .eb-description-container p {
 			${descriptionTypoStylesDesktop}
 			color: ${descriptionColor || DEFAULT_DESCRIPTION_COLOR};
-			paddingRight: 20;
+			padding-right: 20;
 		}
 	`;
 	const descriptionStyleTab = `
@@ -344,33 +344,33 @@ const Edit = (props) => {
 	const quoteStyle = `
 		.${blockId} .eb-testimonial-quote-style {
 			color: ${quoteColor || DEFAULT_QUOTE_COLOR};
-			fontSize: ${quoteSize || DEFAULT_QUOTE_SIZE}${quoteSizeUnit};
+			font-size: ${quoteSize || DEFAULT_QUOTE_SIZE}${quoteSizeUnit};
 		}
 	`;
 
 	const desktopAllStyles = `
-		${containerStyle}
-		${avatarContainerStyle}
-		${imageContainerStyle}
-		${userInfoStyle}
-		${userNameStyle}
-		${companyNameStyle}
-		${descriptionStyle}
-		${quoteStyle}
+		${isCssExists(containerStyle) ? containerStyle : " "}
+		${isCssExists(avatarContainerStyle) ? avatarContainerStyle : " "}
+		${isCssExists(imageContainerStyle) ? imageContainerStyle : " "}
+		${isCssExists(userInfoStyle) ? userInfoStyle : " "}
+		${isCssExists(userNameStyle) ? userNameStyle : " "}
+		${isCssExists(companyNameStyle) ? companyNameStyle : " "}
+		${isCssExists(descriptionStyle) ? descriptionStyle : " "}
+		${isCssExists(quoteStyle) ? quoteStyle : " "}
 	`;
 
 	const tabAllStyles = `
-		${tabContainerStyle}
-		${userNameStyleTab}
-		${companyNameStyleTab}
-		${descriptionStyleTab}
+		${isCssExists(tabContainerStyle) ? tabContainerStyle : " "}
+		${isCssExists(userNameStyleTab) ? userNameStyleTab : " "}
+		${isCssExists(companyNameStyleTab) ? companyNameStyleTab : " "}
+		${isCssExists(descriptionStyleTab) ? descriptionStyleTab : " "}
 	`;
 
 	const mobileAllStyles = `
-		${mobContainerStyle}
-		${userNameStyleMobile}
-		${companyNameStyleMobile}
-		${descriptionStyleMobile}
+		${isCssExists(mobContainerStyle) ? mobContainerStyle : " "}
+		${isCssExists(userNameStyleMobile) ? userNameStyleMobile : " "}
+		${isCssExists(companyNameStyleMobile) ? companyNameStyleMobile : " "}
+		${isCssExists(descriptionStyleMobile) ? descriptionStyleMobile : " "}
 	`;
 
 	// Set All Style in "blockMeta" Attribute
@@ -420,8 +420,7 @@ const Edit = (props) => {
 				}
 				`}
 			</style>
-			// Edit view here
-			<div className={`"eb-testimonial-wrapper ${blockId}"`} data-id={blockId}>
+			<div className={`eb-testimonial-wrapper ${blockId}`} data-id={blockId}>
 				<div className="eb-testimonial-container">
 					<div className="eb-avatar-container">
 						<div
@@ -429,11 +428,6 @@ const Edit = (props) => {
 						>
 							<div
 								className="eb-avatar-style"
-								// style={{
-								// 	backgroundImage: `url(${imageUrl})`,
-								// 	borderRadius: `${borderRadius}%`,
-								// 	display: imageUrl ? "block" : "none",
-								// }}
 							/>
 							<MediaUpload
 								onSelect={(media) =>
@@ -480,6 +474,7 @@ const Edit = (props) => {
 						/>
 						<RichText
 							tagName="p"
+							className="eb-testimonial-description"
 							value={description}
 							onChange={(newText) => setAttributes({ description: newText })}
 						/>
