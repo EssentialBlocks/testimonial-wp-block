@@ -16,22 +16,11 @@ const { Button } = wp.components;
  */
 import Inspector from "./inspector";
 import {
-	DEFAULT_BACKGROUND,
-	DEFAULT_SHADOW_COLOR,
-	DEFAULT_NAME_SIZE,
-	DEFAULT_NAME_COLOR,
-	DEFAULT_COMPANY_SIZE,
-	DEFAULT_DESCRIPTION_SIZE,
-	DEFAULT_DESCRIPTION_COLOR,
-	DEFAULT_QUOTE_SIZE,
-	DEFAULT_QUOTE_COLOR,
-	DEFAULT_COMPANY_COLOR,
-} from "./constants";
-import {
 	softMinifyCssStrings,
 	isCssExists,
 	generateTypographyStyles,
 } from "./helpers";
+import QuoteSVG from "./quoteIconSVG";
 
 const Edit = (props) => {
 	const { attributes, setAttributes, clientId, isSelected } = props;
@@ -99,36 +88,6 @@ const Edit = (props) => {
 		shadowBlur,
 		quoteSizeUnit,
 		companyColor,
-		nameFontFamily,
-		nameFontSize,
-		nameSizeUnit,
-		nameFontWeight,
-		nameTextTransform,
-		nameTextDecoration,
-		nameLetterSpacing,
-		nameLetterSpacingUnit,
-		nameLineHeight,
-		nameLineHeightUnit,
-		companyFontFamily,
-		companyFontSize,
-		companySizeUnit,
-		companyFontWeight,
-		companyTextTransform,
-		companyTextDecoration,
-		companyLetterSpacing,
-		companyLetterSpacingUnit,
-		companyLineHeight,
-		companyLineHeightUnit,
-		descriptionFontFamily,
-		descriptionFontSize,
-		descriptionSizeUnit,
-		descriptionFontWeight,
-		descriptionTextTransform,
-		descriptionTextDecoration,
-		descriptionLetterSpacing,
-		descriptionLetterSpacingUnit,
-		descriptionLineHeight,
-		descriptionLineHeightUnit,
 		bgPosition,
 		bgXPos,
 		bgXPosUnit,
@@ -222,7 +181,7 @@ const Edit = (props) => {
 	const containerStyle = `
 		.${blockId} {
 			background-image: ${backgroundType === "image" && backgroundImageURL ? "url('" +backgroundImageURL +"')" : "none"};
-			background-color: ${backgroundColor || DEFAULT_BACKGROUND};
+			background-color: ${backgroundColor};
 			background-position:
 				${bgPosition === "custom"
 					? bgXPos + bgXPosUnit + " " + bgYPos + bgYPosUnit
@@ -284,13 +243,14 @@ const Edit = (props) => {
 			text-align: ${textAlign};
 			justify-content: ${userInfoPos};
 			align-self: ${userInfoAlign};
+			margin-left: 15px;
 		}
 	`;
 
 	const userNameStyle = `
 		.${blockId} .eb-testimonial-username {
 			${usernameTypoStylesDesktop}
-			color: ${userNameColor || DEFAULT_NAME_COLOR};
+			color: ${userNameColor};
 		}
 	`;
 
@@ -309,7 +269,7 @@ const Edit = (props) => {
 	const companyNameStyle = `
 		.${blockId} .eb-testimonial-company { 
 			${companyTypoStylesDesktop}
-			color: ${companyColor || DEFAULT_COMPANY_COLOR};
+			color: ${companyColor};
 		}
 	`;
 	const companyNameStyleTab = `
@@ -326,7 +286,7 @@ const Edit = (props) => {
 	const descriptionStyle = `
 		.${blockId} .eb-description-container p {
 			${descriptionTypoStylesDesktop}
-			color: ${descriptionColor || DEFAULT_DESCRIPTION_COLOR};
+			color: ${descriptionColor};
 			padding-right: 20;
 		}
 	`;
@@ -342,9 +302,10 @@ const Edit = (props) => {
 	`;
 
 	const quoteStyle = `
-		.${blockId} .eb-testimonial-quote-style {
-			color: ${quoteColor || DEFAULT_QUOTE_COLOR};
-			font-size: ${quoteSize || DEFAULT_QUOTE_SIZE}${quoteSizeUnit};
+		.${blockId} .eb-testimonial-quote-style svg {
+			fill: ${quoteColor};
+			width: ${quoteSize || DEFAULT_QUOTE_SIZE}${quoteSizeUnit};
+			height: ${quoteSize || DEFAULT_QUOTE_SIZE}${quoteSizeUnit};
 		}
 	`;
 
@@ -469,9 +430,9 @@ const Edit = (props) => {
 					</div>
 
 					<div className="eb-description-container">
-						<div
-							className="fas fa-quote-left eb-testimonial-quote-style"
-						/>
+						<div className="fas fa-quote-left eb-testimonial-quote-style">
+							<QuoteSVG />
+						</div>
 						<RichText
 							tagName="p"
 							className="eb-testimonial-description"

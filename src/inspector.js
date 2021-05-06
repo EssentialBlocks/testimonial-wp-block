@@ -1,5 +1,5 @@
 /**
- * WordPress dependencies
+ * WordPress dependencies 
  */
 import { __ } from "@wordpress/i18n";
 import { Component } from "@wordpress/element";
@@ -16,7 +16,6 @@ import {
 	BaseControl,
 	ButtonGroup,
 	SelectControl,
-	Dropdown,
 } from "@wordpress/components";
 
 /**
@@ -33,16 +32,13 @@ import {
 	BACKGROUND_SIZE,
 	BACKGROUND_REPEAT,
 	BACKGROUND_ATTACHMENT,
-	FONT_WEIGHTS,
-	TEXT_DECORATION,
-	TEXT_TRANSFORM,
 } from "./constants";
 import DimensionsControl from "../util/dimensions-control";
 import UnitControl from "../util/unit-control";
-import FontPicker from "../util/typography-control/FontPicker";
 import ColorControl from "../util/color-control";
 import ResPanelBody from "./ResPanelBody";
 import TypographyDropdown from "../util/typography-control";
+import ToggleButton from "../util/toggle-button";
 
 class Inspector extends Component {
 	render() {
@@ -103,35 +99,14 @@ class Inspector extends Component {
 			quoteSizeUnit,
 			companyColor,
 			backgroundType,
-			nameFontFamily,
-			nameFontSize,
 			nameSizeUnit,
-			nameFontWeight,
-			nameTextTransform,
-			nameTextDecoration,
-			nameLetterSpacing,
 			nameLetterSpacingUnit,
-			nameLineHeight,
 			nameLineHeightUnit,
-			companyFontFamily,
-			companyFontSize,
 			companySizeUnit,
-			companyFontWeight,
-			companyTextTransform,
-			companyTextDecoration,
-			companyLetterSpacing,
 			companyLetterSpacingUnit,
-			companyLineHeight,
 			companyLineHeightUnit,
-			descriptionFontFamily,
-			descriptionFontSize,
 			descriptionSizeUnit,
-			descriptionFontWeight,
-			descriptionTextTransform,
-			descriptionTextDecoration,
-			descriptionLetterSpacing,
 			descriptionLetterSpacingUnit,
-			descriptionLineHeight,
 			descriptionLineHeightUnit,
 			bgPosition,
 			bgXPos,
@@ -144,40 +119,6 @@ class Inspector extends Component {
 			bgRepeat,
 			bgAttachment,
 		} = attributes;
-
-		const QUOTE_SIZE_STEP = quoteSizeUnit === "em" ? 0.1 : 1;
-		const QUOTE_SIZE_MAX = quoteSizeUnit === "em" ? 10 : 100;
-
-		const NAME_SIZE_STEP = nameSizeUnit === "em" ? 0.1 : 1;
-		const NAME_SIZE_MAX = nameSizeUnit === "em" ? 10 : 100;
-
-		const NAME_SPACING_STEP = nameLetterSpacingUnit === "em" ? 0.1 : 1;
-		const NAME_SPACING_MAX = nameLetterSpacingUnit === "em" ? 10 : 100;
-
-		const NAME_LINE_HEIGHT_STEP = nameLineHeightUnit === "em" ? 0.1 : 1;
-		const NAME_LINE_HEIGHT_MAX = nameLineHeightUnit === "em" ? 10 : 100;
-
-		const COMPANY_SIZE_STEP = companySizeUnit === "em" ? 0.1 : 1;
-		const COMPANY_SIZE_MAX = companySizeUnit === "em" ? 10 : 100;
-
-		const COMPANY_SPACING_STEP = companyLetterSpacingUnit === "em" ? 0.1 : 1;
-		const COMPANY_SPACING_MAX = companyLetterSpacingUnit === "em" ? 10 : 100;
-
-		const COMPANY_LINE_HEIGHT_STEP = companyLineHeightUnit === "em" ? 0.1 : 1;
-		const COMPANY_LINE_HEIGHT_MAX = companyLineHeightUnit === "em" ? 10 : 100;
-
-		const DESCRIPTION_SIZE_STEP = descriptionSizeUnit === "em" ? 0.1 : 1;
-		const DESCRIPTION_SIZE_MAX = descriptionSizeUnit === "em" ? 10 : 100;
-
-		const DESCRIPTION_SPACING_STEP =
-			descriptionLetterSpacingUnit === "em" ? 0.1 : 1;
-		const DESCRIPTION_SPACING_MAX =
-			descriptionLetterSpacingUnit === "em" ? 10 : 100;
-
-		const DESCRIPTION_LINE_HEIGHT_STEP =
-			descriptionLineHeightUnit === "em" ? 0.1 : 1;
-		const DESCRIPTION_LINE_HEIGHT_MAX =
-			descriptionLineHeightUnit === "em" ? 10 : 100;
 
 		const resRequiredProps = {
 			setAttributes,
@@ -210,23 +151,11 @@ class Inspector extends Component {
 						<BaseControl
 							id="eb-testimonial-image-pos"
 							label={__("Image Position")}
-						>
-							<ButtonGroup id="eb-testimonial-image-pos">
-								{IMG_POSITIONS.map((item) => (
-									<Button
-										isLarge
-										isSecondary={imagePosition !== item.value}
-										isPrimary={imagePosition === item.value}
-										onClick={() =>
-											setAttributes({
-												imagePosition: item.value,
-											})
-										}
-									>
-										{item.label}
-									</Button>
-								))}
-							</ButtonGroup>
+							>
+							<ToggleButton
+								options={IMG_POSITIONS}
+								onChange={(value) => setAttributes({ imagePosition: value })}
+							/>
 						</BaseControl>
 					)}
 

@@ -1,16 +1,5 @@
 const { __ } = wp.i18n;
 
-export const DEFAULT_BACKGROUND = "transparent";
-export const DEFAULT_NAME_COLOR = "#7967ff";
-export const DEFAULT_NAME_SIZE = "20";
-export const DEFAULT_DESCRIPTION_COLOR = "#4a5059";
-export const DEFAULT_DESCRIPTION_SIZE = "18";
-export const DEFAULT_COMPANY_COLOR = "#4a5059";
-export const DEFAULT_COMPANY_SIZE = "14";
-export const DEFAULT_QUOTE_COLOR = "#edf1f7";
-export const DEFAULT_QUOTE_SIZE = "48";
-export const DEFAULT_SHADOW_COLOR = "#000000";
-
 export const COLUMN_NUMBERS = [
 	{ label: __("One"), value: 1 },
 	{ label: __("Two"), value: 2 },

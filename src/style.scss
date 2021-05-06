@@ -66,3 +66,13 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+/* Inspector Design */
+.components-base-control {
+    margin-bottom: 10px !important;
+	.components-base-control__label {
+		margin-bottom: 5px;
+		display: inline-block;
+	}
+}
+

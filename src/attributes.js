@@ -79,24 +79,19 @@ const attributes = {
 	},
 	userNameColor: {
 		type: "string",
+		default: "#7967ff",
 	},
 	descriptionColor: {
 		type: "string",
+		default: "#4a5059",
 	},
 	quoteColor: {
 		type: "string",
-	},
-	userNameFontSize: {
-		type: "number",
-	},
-	companyFontSize: {
-		type: "number",
-	},
-	descriptionFontSize: {
-		type: "number",
+		default: "#edf1f7",
 	},
 	quoteSize: {
 		type: "number",
+		default: 60,
 	},
 	userInfoAlign: {
 		type: "string",
@@ -104,6 +99,7 @@ const attributes = {
 	},
 	backgroundColor: {
 		type: "string",
+		default: "transparent",
 	},
 	backgroundImageURL: {
 		type: "string",
@@ -115,41 +111,53 @@ const attributes = {
 	},
 	marginTop: {
 		type: "number",
+		default: 10,
 	},
 	marginRight: {
 		type: "number",
+		default: 10,
 	},
 	marginBottom: {
 		type: "number",
+		default: 10,
 	},
 	marginLeft: {
 		type: "number",
+		default: 10,
 	},
 	//Margin Tab
 	tabMarginTop: {
 		type: "number",
+		default: 10,
 	},
 	tabMarginRight: {
 		type: "number",
+		default: 10,
 	},
 	tabMarginBottom: {
 		type: "number",
+		default: 10,
 	},
 	tabMarginLeft: {
 		type: "number",
+		default: 10,
 	},
 	//Margin Mobile
 	mobMarginTop: {
 		type: "number",
+		default: 10,
 	},
 	mobMarginRight: {
 		type: "number",
+		default: 10,
 	},
 	mobMarginBottom: {
 		type: "number",
+		default: 10,
 	},
 	mobMarginLeft: {
 		type: "number",
+		default: 10,
 	},
 	//Padding
 	linkedPadding: {
@@ -158,45 +166,58 @@ const attributes = {
 	},
 	paddingTop: {
 		type: "number",
+		default: 10,
 	},
 	paddingRight: {
 		type: "number",
+		default: 10,
 	},
 	paddingBottom: {
 		type: "number",
+		default: 10,
 	},
 	paddingLeft: {
 		type: "number",
+		default: 10,
 	},
 	//Padding Tab
 	tabPaddingTop: {
 		type: "number",
+		default: 10,
 	},
 	tabPaddingRight: {
 		type: "number",
+		default: 10,
 	},
 	tabPaddingBottom: {
 		type: "number",
+		default: 10,
 	},
 	tabPaddingLeft: {
 		type: "number",
+		default: 10,
 	},
 	//Padding Mobile
 	mobPaddingTop: {
 		type: "number",
+		default: 10,
 	},
 	mobPaddingRight: {
 		type: "number",
+		default: 10,
 	},
 	mobPaddingBottom: {
 		type: "number",
+		default: 10,
 	},
 	mobPaddingLeft: {
 		type: "number",
+		default: 10,
 	},
 
 	shadowColor: {
 		type: "string",
+		default: "#000000",
 	},
 	shadowHOffset: {
 		type: "number",
@@ -252,6 +273,7 @@ const attributes = {
 	},
 	companyColor: {
 		type: "string",
+		default: "#4a5059",
 	},
 	backgroundType: {
 		type: "string",

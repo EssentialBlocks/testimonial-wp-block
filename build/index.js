@@ -44,6 +44,17 @@
 
 /***/ }),
 
+/***/ "./util/toggle-button/style.scss":
+/*!***************************************!*\
+  !*** ./util/toggle-button/style.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./util/unit-control/style.scss":
 /*!**************************************!*\
   !*** ./util/unit-control/style.scss ***!
@@ -1461,32 +1472,28 @@ var attributes = _objectSpread(_objectSpread({
     "default": 0
   },
   userNameColor: {
-    type: "string"
+    type: "string",
+    "default": "#7967ff"
   },
   descriptionColor: {
-    type: "string"
+    type: "string",
+    "default": "#4a5059"
   },
   quoteColor: {
-    type: "string"
-  },
-  userNameFontSize: {
-    type: "number"
-  },
-  companyFontSize: {
-    type: "number"
-  },
-  descriptionFontSize: {
-    type: "number"
+    type: "string",
+    "default": "#edf1f7"
   },
   quoteSize: {
-    type: "number"
+    type: "number",
+    "default": 60
   },
   userInfoAlign: {
     type: "string",
     "default": "center"
   },
   backgroundColor: {
-    type: "string"
+    type: "string",
+    "default": "transparent"
   },
   backgroundImageURL: {
     type: "string"
@@ -1497,42 +1504,54 @@ var attributes = _objectSpread(_objectSpread({
     "default": false
   },
   marginTop: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   marginRight: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   marginBottom: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   marginLeft: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   //Margin Tab
   tabMarginTop: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   tabMarginRight: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   tabMarginBottom: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   tabMarginLeft: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   //Margin Mobile
   mobMarginTop: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   mobMarginRight: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   mobMarginBottom: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   mobMarginLeft: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   //Padding
   linkedPadding: {
@@ -1540,45 +1559,58 @@ var attributes = _objectSpread(_objectSpread({
     "default": false
   },
   paddingTop: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   paddingRight: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   paddingBottom: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   paddingLeft: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   //Padding Tab
   tabPaddingTop: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   tabPaddingRight: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   tabPaddingBottom: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   tabPaddingLeft: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   //Padding Mobile
   mobPaddingTop: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   mobPaddingRight: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   mobPaddingBottom: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   mobPaddingLeft: {
-    type: "number"
+    type: "number",
+    "default": 10
   },
   shadowColor: {
-    type: "string"
+    type: "string",
+    "default": "#000000"
   },
   shadowHOffset: {
     type: "number"
@@ -1633,7 +1665,8 @@ var attributes = _objectSpread(_objectSpread({
     "default": "px"
   },
   companyColor: {
-    type: "string"
+    type: "string",
+    "default": "#4a5059"
   },
   backgroundType: {
     type: "string",
@@ -1785,21 +1818,11 @@ var attributes = _objectSpread(_objectSpread({
 /*!**************************!*\
   !*** ./src/constants.js ***!
   \**************************/
-/*! exports provided: DEFAULT_BACKGROUND, DEFAULT_NAME_COLOR, DEFAULT_NAME_SIZE, DEFAULT_DESCRIPTION_COLOR, DEFAULT_DESCRIPTION_SIZE, DEFAULT_COMPANY_COLOR, DEFAULT_COMPANY_SIZE, DEFAULT_QUOTE_COLOR, DEFAULT_QUOTE_SIZE, DEFAULT_SHADOW_COLOR, COLUMN_NUMBERS, DESC_POSITIONS, TEXT_ALIGN, ALIGN_ITEMS, IMG_POSITIONS, BG_TYPES, TEXT_TRANSFORM, FONT_WEIGHTS, TEXT_DECORATION, BACKGROUND_SIZE, BACKGROUND_REPEAT, BACKGROUND_POSITION, BACKGROUND_ATTACHMENT */
+/*! exports provided: COLUMN_NUMBERS, DESC_POSITIONS, TEXT_ALIGN, ALIGN_ITEMS, IMG_POSITIONS, BG_TYPES, TEXT_TRANSFORM, FONT_WEIGHTS, TEXT_DECORATION, BACKGROUND_SIZE, BACKGROUND_REPEAT, BACKGROUND_POSITION, BACKGROUND_ATTACHMENT */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_BACKGROUND", function() { return DEFAULT_BACKGROUND; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_NAME_COLOR", function() { return DEFAULT_NAME_COLOR; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_NAME_SIZE", function() { return DEFAULT_NAME_SIZE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_DESCRIPTION_COLOR", function() { return DEFAULT_DESCRIPTION_COLOR; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_DESCRIPTION_SIZE", function() { return DEFAULT_DESCRIPTION_SIZE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_COMPANY_COLOR", function() { return DEFAULT_COMPANY_COLOR; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_COMPANY_SIZE", function() { return DEFAULT_COMPANY_SIZE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_QUOTE_COLOR", function() { return DEFAULT_QUOTE_COLOR; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_QUOTE_SIZE", function() { return DEFAULT_QUOTE_SIZE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_SHADOW_COLOR", function() { return DEFAULT_SHADOW_COLOR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "COLUMN_NUMBERS", function() { return COLUMN_NUMBERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DESC_POSITIONS", function() { return DESC_POSITIONS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TEXT_ALIGN", function() { return TEXT_ALIGN; });
@@ -1814,16 +1837,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BACKGROUND_POSITION", function() { return BACKGROUND_POSITION; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BACKGROUND_ATTACHMENT", function() { return BACKGROUND_ATTACHMENT; });
 var __ = wp.i18n.__;
-var DEFAULT_BACKGROUND = "transparent";
-var DEFAULT_NAME_COLOR = "#7967ff";
-var DEFAULT_NAME_SIZE = "20";
-var DEFAULT_DESCRIPTION_COLOR = "#4a5059";
-var DEFAULT_DESCRIPTION_SIZE = "18";
-var DEFAULT_COMPANY_COLOR = "#4a5059";
-var DEFAULT_COMPANY_SIZE = "14";
-var DEFAULT_QUOTE_COLOR = "#edf1f7";
-var DEFAULT_QUOTE_SIZE = "48";
-var DEFAULT_SHADOW_COLOR = "#000000";
 var COLUMN_NUMBERS = [{
   label: __("One"),
   value: 1
@@ -2007,8 +2020,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _inspector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inspector */ "./src/inspector.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./helpers */ "./src/helpers.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers */ "./src/helpers.js");
+/* harmony import */ var _quoteIconSVG__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./quoteIconSVG */ "./src/quoteIconSVG.js");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -2103,36 +2116,6 @@ var Edit = function Edit(props) {
       shadowBlur = attributes.shadowBlur,
       quoteSizeUnit = attributes.quoteSizeUnit,
       companyColor = attributes.companyColor,
-      nameFontFamily = attributes.nameFontFamily,
-      nameFontSize = attributes.nameFontSize,
-      nameSizeUnit = attributes.nameSizeUnit,
-      nameFontWeight = attributes.nameFontWeight,
-      nameTextTransform = attributes.nameTextTransform,
-      nameTextDecoration = attributes.nameTextDecoration,
-      nameLetterSpacing = attributes.nameLetterSpacing,
-      nameLetterSpacingUnit = attributes.nameLetterSpacingUnit,
-      nameLineHeight = attributes.nameLineHeight,
-      nameLineHeightUnit = attributes.nameLineHeightUnit,
-      companyFontFamily = attributes.companyFontFamily,
-      companyFontSize = attributes.companyFontSize,
-      companySizeUnit = attributes.companySizeUnit,
-      companyFontWeight = attributes.companyFontWeight,
-      companyTextTransform = attributes.companyTextTransform,
-      companyTextDecoration = attributes.companyTextDecoration,
-      companyLetterSpacing = attributes.companyLetterSpacing,
-      companyLetterSpacingUnit = attributes.companyLetterSpacingUnit,
-      companyLineHeight = attributes.companyLineHeight,
-      companyLineHeightUnit = attributes.companyLineHeightUnit,
-      descriptionFontFamily = attributes.descriptionFontFamily,
-      descriptionFontSize = attributes.descriptionFontSize,
-      descriptionSizeUnit = attributes.descriptionSizeUnit,
-      descriptionFontWeight = attributes.descriptionFontWeight,
-      descriptionTextTransform = attributes.descriptionTextTransform,
-      descriptionTextDecoration = attributes.descriptionTextDecoration,
-      descriptionLetterSpacing = attributes.descriptionLetterSpacing,
-      descriptionLetterSpacingUnit = attributes.descriptionLetterSpacingUnit,
-      descriptionLineHeight = attributes.descriptionLineHeight,
-      descriptionLineHeightUnit = attributes.descriptionLineHeightUnit,
       bgPosition = attributes.bgPosition,
       bgXPos = attributes.bgXPos,
       bgXPosUnit = attributes.bgXPosUnit,
@@ -2202,7 +2185,7 @@ var Edit = function Edit(props) {
     fixDuplicateBlockId(all_blocks);
   }, []); //Generate Author Typography
 
-  var _generateTypographySt = Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["generateTypographyStyles"])({
+  var _generateTypographySt = Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["generateTypographyStyles"])({
     attributes: attributes,
     prefixConstant: 'username'
   }),
@@ -2211,7 +2194,7 @@ var Edit = function Edit(props) {
       usernameTypoStylesMobile = _generateTypographySt.typoStylesMobile; //Generate Comapny Typography
 
 
-  var _generateTypographySt2 = Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["generateTypographyStyles"])({
+  var _generateTypographySt2 = Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["generateTypographyStyles"])({
     attributes: attributes,
     prefixConstant: 'company'
   }),
@@ -2220,7 +2203,7 @@ var Edit = function Edit(props) {
       companyTypoStylesMobile = _generateTypographySt2.typoStylesMobile; //Generate Description Typography
 
 
-  var _generateTypographySt3 = Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["generateTypographyStyles"])({
+  var _generateTypographySt3 = Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["generateTypographyStyles"])({
     attributes: attributes,
     prefixConstant: 'description'
   }),
@@ -2232,25 +2215,25 @@ var Edit = function Edit(props) {
   */
 
 
-  var containerStyle = "\n\t\t.".concat(blockId, " {\n\t\t\tbackground-image: ").concat(backgroundType === "image" && backgroundImageURL ? "url('" + backgroundImageURL + "')" : "none", ";\n\t\t\tbackground-color: ").concat(backgroundColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_BACKGROUND"], ";\n\t\t\tbackground-position:\n\t\t\t\t").concat(bgPosition === "custom" ? bgXPos + bgXPosUnit + " " + bgYPos + bgYPosUnit : "unset", ";\n\t\t\tbackground-size: ").concat(bgSize === "custom" ? bgWidth + bgWidthUnit : "auto", ";\n\t\t\tbackground-repeat: ").concat(bgRepeat || "inherit", ";\n\t\t\tbackground-attachment: ").concat(bgAttachment || "unset", ";\n\t\t\tmargin: ").concat(marginTop || 10).concat(marginUnit, "  ").concat(marginRight || 10).concat(marginUnit, " \n\t\t\t").concat(marginBottom || 10).concat(marginUnit, " ").concat(marginLeft || 10).concat(marginUnit, ";\n\t\t\tpadding: ").concat(paddingTop || 10).concat(paddingUnit, "  ").concat(paddingRight || 10).concat(paddingUnit, " \n\t\t\t\t\t").concat(paddingBottom || 10).concat(paddingUnit, " ").concat(paddingLeft || 10).concat(paddingUnit, ";\n\t\t\tbox-shadow: ").concat(shadowHOffset || 0, "px ").concat(shadowVOffset || 0, "px ").concat(shadowBlur || 0, "px \n\t\t\t\t\t").concat(shadowSpread || 0, "px ").concat(shadowColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_SHADOW_COLOR"], ";\n\t\t}\n\t");
+  var containerStyle = "\n\t\t.".concat(blockId, " {\n\t\t\tbackground-image: ").concat(backgroundType === "image" && backgroundImageURL ? "url('" + backgroundImageURL + "')" : "none", ";\n\t\t\tbackground-color: ").concat(backgroundColor, ";\n\t\t\tbackground-position:\n\t\t\t\t").concat(bgPosition === "custom" ? bgXPos + bgXPosUnit + " " + bgYPos + bgYPosUnit : "unset", ";\n\t\t\tbackground-size: ").concat(bgSize === "custom" ? bgWidth + bgWidthUnit : "auto", ";\n\t\t\tbackground-repeat: ").concat(bgRepeat || "inherit", ";\n\t\t\tbackground-attachment: ").concat(bgAttachment || "unset", ";\n\t\t\tmargin: ").concat(marginTop || 10).concat(marginUnit, "  ").concat(marginRight || 10).concat(marginUnit, " \n\t\t\t").concat(marginBottom || 10).concat(marginUnit, " ").concat(marginLeft || 10).concat(marginUnit, ";\n\t\t\tpadding: ").concat(paddingTop || 10).concat(paddingUnit, "  ").concat(paddingRight || 10).concat(paddingUnit, " \n\t\t\t\t\t").concat(paddingBottom || 10).concat(paddingUnit, " ").concat(paddingLeft || 10).concat(paddingUnit, ";\n\t\t\tbox-shadow: ").concat(shadowHOffset || 0, "px ").concat(shadowVOffset || 0, "px ").concat(shadowBlur || 0, "px \n\t\t\t\t\t").concat(shadowSpread || 0, "px ").concat(shadowColor || DEFAULT_SHADOW_COLOR, ";\n\t\t}\n\t");
   var tabContainerStyle = "\n\t\t.eb-testimonial-wrapper.".concat(blockId, " {\n\t\t\tmargin: ").concat(tabMarginTop || 10).concat(tabMarginUnit, "  ").concat(tabMarginRight || 10).concat(tabMarginUnit, " \n\t\t\t").concat(tabMarginBottom || 10).concat(tabMarginUnit, " ").concat(tabMarginLeft || 10).concat(tabMarginUnit, ";\n\t\t\tpadding: ").concat(tabPaddingTop || 10).concat(tabPaddingUnit, "  ").concat(tabPaddingRight || 10).concat(tabPaddingUnit, " \n\t\t\t\t\t").concat(tabPaddingBottom || 10).concat(tabPaddingUnit, " ").concat(tabPaddingLeft || 10).concat(tabPaddingUnit, ";\n\t\t}\n\t");
   var mobContainerStyle = "\n\t\t.eb-testimonial-wrapper.".concat(blockId, " {\n\t\t\tmargin: ").concat(mobMarginTop || 10).concat(mobMarginUnit, "  ").concat(mobMarginRight || 10).concat(mobMarginUnit, " \n\t\t\t").concat(mobMarginBottom || 10).concat(mobMarginUnit, " ").concat(mobMarginLeft || 10).concat(mobMarginUnit, ";\n\t\t\tpadding: ").concat(mobPaddingTop || 10).concat(mobPaddingUnit, " ").concat(mobPaddingRight || 10).concat(mobPaddingUnit, " \n\t\t\t\t\t").concat(mobPaddingBottom || 10).concat(mobPaddingUnit, " ").concat(mobPaddingLeft || 10).concat(mobPaddingUnit, ";\n\t\t}\n\t");
   var avatarContainerStyle = "\n\t\t.".concat(blockId, " .eb-avatar-container {\n\t\t\torder: ").concat(avatarOrder, ";\n\t\t\tjustify-content: ").concat(avatarPosition, ";\n\t\t\talign-items: ").concat(avatarAlign, ";\n\t\t\tfont-size: ").concat(avaterContainerFontSize, "px;\n\t\t\tflex-direction: ").concat(avatarInline ? "row" : "column", ";\n\t\t}\n\t");
   var imageContainerStyle = "\n\t\t.".concat(blockId, " .image-container {\n\t\t\torder: ").concat(imagePosition, ";\n\t\t\tdisplay: ").concat(displayAvatar ? "block" : "none", ";\n\t\t}\n\t\t.").concat(blockId, " .eb-avatar-style {\n\t\t\tbackground-image: url(").concat(imageUrl, ");\n\t\t\tborder-radius: ").concat(borderRadius, "%;\n\t\t\tdisplay: ").concat(imageUrl ? "block" : "none", ";\n\t\t}\n\t");
-  var userInfoStyle = "\n\t\t.".concat(blockId, " .eb-userinfo-container {\n\t\t\ttext-align: ").concat(textAlign, ";\n\t\t\tjustify-content: ").concat(userInfoPos, ";\n\t\t\talign-self: ").concat(userInfoAlign, ";\n\t\t}\n\t");
-  var userNameStyle = "\n\t\t.".concat(blockId, " .eb-testimonial-username {\n\t\t\t").concat(usernameTypoStylesDesktop, "\n\t\t\tcolor: ").concat(userNameColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_NAME_COLOR"], ";\n\t\t}\n\t");
+  var userInfoStyle = "\n\t\t.".concat(blockId, " .eb-userinfo-container {\n\t\t\ttext-align: ").concat(textAlign, ";\n\t\t\tjustify-content: ").concat(userInfoPos, ";\n\t\t\talign-self: ").concat(userInfoAlign, ";\n\t\t\tmargin-left: 15px;\n\t\t}\n\t");
+  var userNameStyle = "\n\t\t.".concat(blockId, " .eb-testimonial-username {\n\t\t\t").concat(usernameTypoStylesDesktop, "\n\t\t\tcolor: ").concat(userNameColor, ";\n\t\t}\n\t");
   var userNameStyleTab = "\n\t\t.".concat(blockId, " .eb-testimonial-username {\n\t\t\t").concat(usernameTypoStylesTab, "\n\t\t}\n\t");
   var userNameStyleMobile = "\n\t\t.".concat(blockId, " .eb-testimonial-username {\n\t\t\t").concat(usernameTypoStylesMobile, "\n\t\t}\n\t");
-  var companyNameStyle = "\n\t\t.".concat(blockId, " .eb-testimonial-company { \n\t\t\t").concat(companyTypoStylesDesktop, "\n\t\t\tcolor: ").concat(companyColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_COMPANY_COLOR"], ";\n\t\t}\n\t");
+  var companyNameStyle = "\n\t\t.".concat(blockId, " .eb-testimonial-company { \n\t\t\t").concat(companyTypoStylesDesktop, "\n\t\t\tcolor: ").concat(companyColor, ";\n\t\t}\n\t");
   var companyNameStyleTab = "\n\t\t.".concat(blockId, " .eb-testimonial-company { \n\t\t\t").concat(companyTypoStylesTab, "\n\t\t}\n\t");
   var companyNameStyleMobile = "\n\t\t.".concat(blockId, " .eb-testimonial-company { \n\t\t\t").concat(companyTypoStylesMobile, "\n\t\t}\n\t");
-  var descriptionStyle = "\n\t\t.".concat(blockId, " .eb-description-container p {\n\t\t\t").concat(descriptionTypoStylesDesktop, "\n\t\t\tcolor: ").concat(descriptionColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_DESCRIPTION_COLOR"], ";\n\t\t\tpadding-right: 20;\n\t\t}\n\t");
+  var descriptionStyle = "\n\t\t.".concat(blockId, " .eb-description-container p {\n\t\t\t").concat(descriptionTypoStylesDesktop, "\n\t\t\tcolor: ").concat(descriptionColor, ";\n\t\t\tpadding-right: 20;\n\t\t}\n\t");
   var descriptionStyleTab = "\n\t\t.".concat(blockId, " .eb-description-container p { \n\t\t\t").concat(descriptionTypoStylesTab, "\n\t\t}\n\t");
   var descriptionStyleMobile = "\n\t\t.".concat(blockId, " .eb-description-container p { \n\t\t\t").concat(descriptionTypoStylesMobile, "\n\t\t}\n\t");
-  var quoteStyle = "\n\t\t.".concat(blockId, " .eb-testimonial-quote-style {\n\t\t\tcolor: ").concat(quoteColor || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_QUOTE_COLOR"], ";\n\t\t\tfont-size: ").concat(quoteSize || _constants__WEBPACK_IMPORTED_MODULE_3__["DEFAULT_QUOTE_SIZE"]).concat(quoteSizeUnit, ";\n\t\t}\n\t");
-  var desktopAllStyles = "\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(containerStyle) ? containerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(avatarContainerStyle) ? avatarContainerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(imageContainerStyle) ? imageContainerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(userInfoStyle) ? userInfoStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(userNameStyle) ? userNameStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(companyNameStyle) ? companyNameStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(descriptionStyle) ? descriptionStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(quoteStyle) ? quoteStyle : " ", "\n\t");
-  var tabAllStyles = "\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(tabContainerStyle) ? tabContainerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(userNameStyleTab) ? userNameStyleTab : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(companyNameStyleTab) ? companyNameStyleTab : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(descriptionStyleTab) ? descriptionStyleTab : " ", "\n\t");
-  var mobileAllStyles = "\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(mobContainerStyle) ? mobContainerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(userNameStyleMobile) ? userNameStyleMobile : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(companyNameStyleMobile) ? companyNameStyleMobile : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["isCssExists"])(descriptionStyleMobile) ? descriptionStyleMobile : " ", "\n\t"); // Set All Style in "blockMeta" Attribute
+  var quoteStyle = "\n\t\t.".concat(blockId, " .eb-testimonial-quote-style svg {\n\t\t\tfill: ").concat(quoteColor, ";\n\t\t\twidth: ").concat(quoteSize || DEFAULT_QUOTE_SIZE).concat(quoteSizeUnit, ";\n\t\t\theight: ").concat(quoteSize || DEFAULT_QUOTE_SIZE).concat(quoteSizeUnit, ";\n\t\t}\n\t");
+  var desktopAllStyles = "\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(containerStyle) ? containerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(avatarContainerStyle) ? avatarContainerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(imageContainerStyle) ? imageContainerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(userInfoStyle) ? userInfoStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(userNameStyle) ? userNameStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(companyNameStyle) ? companyNameStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(descriptionStyle) ? descriptionStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(quoteStyle) ? quoteStyle : " ", "\n\t");
+  var tabAllStyles = "\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(tabContainerStyle) ? tabContainerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(userNameStyleTab) ? userNameStyleTab : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(companyNameStyleTab) ? companyNameStyleTab : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(descriptionStyleTab) ? descriptionStyleTab : " ", "\n\t");
+  var mobileAllStyles = "\n\t\t".concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(mobContainerStyle) ? mobContainerStyle : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(userNameStyleMobile) ? userNameStyleMobile : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(companyNameStyleMobile) ? companyNameStyleMobile : " ", "\n\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["isCssExists"])(descriptionStyleMobile) ? descriptionStyleMobile : " ", "\n\t"); // Set All Style in "blockMeta" Attribute
 
   Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var styleObject = {
@@ -2268,7 +2251,7 @@ var Edit = function Edit(props) {
   var blockProps = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["useBlockProps"])({
     className: "eb-guten-block-main-parent-wrapper"
   });
-  return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_2__["default"], props), /*#__PURE__*/React.createElement("div", blockProps, /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(desktopAllStyles, "\n\n\t\t\t\t/* mimmikcssStart */\n\n\t\t\t\t").concat(resOption === "tab" ? tabAllStyles : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? tabAllStyles + mobileAllStyles : " ", "\n\n\t\t\t\t/* mimmikcssEnd */\n\n\t\t\t\t@media all and (max-width: 1024px) {\t\n\n\t\t\t\t\t/* tabcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t\t/* tabcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\t@media all and (max-width: 767px) {\n\t\t\t\t\t\n\t\t\t\t\t/* mobcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t\t/* mobcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
+  return [isSelected && /*#__PURE__*/React.createElement(_inspector__WEBPACK_IMPORTED_MODULE_2__["default"], props), /*#__PURE__*/React.createElement("div", blockProps, /*#__PURE__*/React.createElement("style", null, "\n\t\t\t\t".concat(desktopAllStyles, "\n\n\t\t\t\t/* mimmikcssStart */\n\n\t\t\t\t").concat(resOption === "tab" ? tabAllStyles : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? tabAllStyles + mobileAllStyles : " ", "\n\n\t\t\t\t/* mimmikcssEnd */\n\n\t\t\t\t@media all and (max-width: 1024px) {\t\n\n\t\t\t\t\t/* tabcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t\t/* tabcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\t@media all and (max-width: 767px) {\n\t\t\t\t\t\n\t\t\t\t\t/* mobcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t\t/* mobcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t")), /*#__PURE__*/React.createElement("div", {
     className: "eb-testimonial-wrapper ".concat(blockId),
     "data-id": blockId
   }, /*#__PURE__*/React.createElement("div", {
@@ -2321,7 +2304,7 @@ var Edit = function Edit(props) {
     className: "eb-description-container"
   }, /*#__PURE__*/React.createElement("div", {
     className: "fas fa-quote-left eb-testimonial-quote-style"
-  }), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"], {
+  }, /*#__PURE__*/React.createElement(_quoteIconSVG__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"], {
     tagName: "p",
     className: "eb-testimonial-description",
     value: description,
@@ -2765,10 +2748,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
 /* harmony import */ var _util_dimensions_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/dimensions-control */ "./util/dimensions-control/index.js");
 /* harmony import */ var _util_unit_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/unit-control */ "./util/unit-control/index.js");
-/* harmony import */ var _util_typography_control_FontPicker__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/typography-control/FontPicker */ "./util/typography-control/FontPicker.js");
-/* harmony import */ var _util_color_control__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/color-control */ "./util/color-control/index.js");
-/* harmony import */ var _ResPanelBody__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ResPanelBody */ "./src/ResPanelBody.js");
-/* harmony import */ var _util_typography_control__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../util/typography-control */ "./util/typography-control/index.js");
+/* harmony import */ var _util_color_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/color-control */ "./util/color-control/index.js");
+/* harmony import */ var _ResPanelBody__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ResPanelBody */ "./src/ResPanelBody.js");
+/* harmony import */ var _util_typography_control__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../util/typography-control */ "./util/typography-control/index.js");
+/* harmony import */ var _util_toggle_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../util/toggle-button */ "./util/toggle-button/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2792,7 +2775,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 /**
- * WordPress dependencies
+ * WordPress dependencies 
  */
 
 
@@ -2883,35 +2866,14 @@ var Inspector = /*#__PURE__*/function (_Component) {
           quoteSizeUnit = attributes.quoteSizeUnit,
           companyColor = attributes.companyColor,
           backgroundType = attributes.backgroundType,
-          nameFontFamily = attributes.nameFontFamily,
-          nameFontSize = attributes.nameFontSize,
           nameSizeUnit = attributes.nameSizeUnit,
-          nameFontWeight = attributes.nameFontWeight,
-          nameTextTransform = attributes.nameTextTransform,
-          nameTextDecoration = attributes.nameTextDecoration,
-          nameLetterSpacing = attributes.nameLetterSpacing,
           nameLetterSpacingUnit = attributes.nameLetterSpacingUnit,
-          nameLineHeight = attributes.nameLineHeight,
           nameLineHeightUnit = attributes.nameLineHeightUnit,
-          companyFontFamily = attributes.companyFontFamily,
-          companyFontSize = attributes.companyFontSize,
           companySizeUnit = attributes.companySizeUnit,
-          companyFontWeight = attributes.companyFontWeight,
-          companyTextTransform = attributes.companyTextTransform,
-          companyTextDecoration = attributes.companyTextDecoration,
-          companyLetterSpacing = attributes.companyLetterSpacing,
           companyLetterSpacingUnit = attributes.companyLetterSpacingUnit,
-          companyLineHeight = attributes.companyLineHeight,
           companyLineHeightUnit = attributes.companyLineHeightUnit,
-          descriptionFontFamily = attributes.descriptionFontFamily,
-          descriptionFontSize = attributes.descriptionFontSize,
           descriptionSizeUnit = attributes.descriptionSizeUnit,
-          descriptionFontWeight = attributes.descriptionFontWeight,
-          descriptionTextTransform = attributes.descriptionTextTransform,
-          descriptionTextDecoration = attributes.descriptionTextDecoration,
-          descriptionLetterSpacing = attributes.descriptionLetterSpacing,
           descriptionLetterSpacingUnit = attributes.descriptionLetterSpacingUnit,
-          descriptionLineHeight = attributes.descriptionLineHeight,
           descriptionLineHeightUnit = attributes.descriptionLineHeightUnit,
           bgPosition = attributes.bgPosition,
           bgXPos = attributes.bgXPos,
@@ -2923,26 +2885,6 @@ var Inspector = /*#__PURE__*/function (_Component) {
           bgWidthUnit = attributes.bgWidthUnit,
           bgRepeat = attributes.bgRepeat,
           bgAttachment = attributes.bgAttachment;
-      var QUOTE_SIZE_STEP = quoteSizeUnit === "em" ? 0.1 : 1;
-      var QUOTE_SIZE_MAX = quoteSizeUnit === "em" ? 10 : 100;
-      var NAME_SIZE_STEP = nameSizeUnit === "em" ? 0.1 : 1;
-      var NAME_SIZE_MAX = nameSizeUnit === "em" ? 10 : 100;
-      var NAME_SPACING_STEP = nameLetterSpacingUnit === "em" ? 0.1 : 1;
-      var NAME_SPACING_MAX = nameLetterSpacingUnit === "em" ? 10 : 100;
-      var NAME_LINE_HEIGHT_STEP = nameLineHeightUnit === "em" ? 0.1 : 1;
-      var NAME_LINE_HEIGHT_MAX = nameLineHeightUnit === "em" ? 10 : 100;
-      var COMPANY_SIZE_STEP = companySizeUnit === "em" ? 0.1 : 1;
-      var COMPANY_SIZE_MAX = companySizeUnit === "em" ? 10 : 100;
-      var COMPANY_SPACING_STEP = companyLetterSpacingUnit === "em" ? 0.1 : 1;
-      var COMPANY_SPACING_MAX = companyLetterSpacingUnit === "em" ? 10 : 100;
-      var COMPANY_LINE_HEIGHT_STEP = companyLineHeightUnit === "em" ? 0.1 : 1;
-      var COMPANY_LINE_HEIGHT_MAX = companyLineHeightUnit === "em" ? 10 : 100;
-      var DESCRIPTION_SIZE_STEP = descriptionSizeUnit === "em" ? 0.1 : 1;
-      var DESCRIPTION_SIZE_MAX = descriptionSizeUnit === "em" ? 10 : 100;
-      var DESCRIPTION_SPACING_STEP = descriptionLetterSpacingUnit === "em" ? 0.1 : 1;
-      var DESCRIPTION_SPACING_MAX = descriptionLetterSpacingUnit === "em" ? 10 : 100;
-      var DESCRIPTION_LINE_HEIGHT_STEP = descriptionLineHeightUnit === "em" ? 0.1 : 1;
-      var DESCRIPTION_LINE_HEIGHT_MAX = descriptionLineHeightUnit === "em" ? 10 : 100;
       var resRequiredProps = {
         setAttributes: setAttributes,
         resOption: resOption
@@ -2976,20 +2918,14 @@ var Inspector = /*#__PURE__*/function (_Component) {
       }), displayAvatar && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["BaseControl"], {
         id: "eb-testimonial-image-pos",
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Image Position")
-      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ButtonGroup"], {
-        id: "eb-testimonial-image-pos"
-      }, _constants__WEBPACK_IMPORTED_MODULE_5__["IMG_POSITIONS"].map(function (item) {
-        return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-          isLarge: true,
-          isSecondary: imagePosition !== item.value,
-          isPrimary: imagePosition === item.value,
-          onClick: function onClick() {
-            return setAttributes({
-              imagePosition: item.value
-            });
-          }
-        }, item.label);
-      }))), displayAvatar && imageUrl && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      }, /*#__PURE__*/React.createElement(_util_toggle_button__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        options: _constants__WEBPACK_IMPORTED_MODULE_5__["IMG_POSITIONS"],
+        onChange: function onChange(value) {
+          return setAttributes({
+            imagePosition: value
+          });
+        }
+      })), displayAvatar && imageUrl && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
         title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Image Setting")
       }, imageUrl && /*#__PURE__*/React.createElement(_util_image_avatar_ImageAvater__WEBPACK_IMPORTED_MODULE_4__["default"], {
         imageUrl: imageUrl,
@@ -3236,7 +3172,7 @@ var Inspector = /*#__PURE__*/function (_Component) {
             bgAttachment: bgAttachment
           });
         }
-      })), backgroundType === "color" && /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      })), backgroundType === "color" && /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Background Color"),
         color: backgroundColor,
         onChange: function onChange(backgroundColor) {
@@ -3283,22 +3219,22 @@ var Inspector = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
         title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Typography"),
         initialOpen: false
-      }, /*#__PURE__*/React.createElement(_util_typography_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      }, /*#__PURE__*/React.createElement(_util_typography_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
         baseLabel: "Username",
         typographyPrefixConstant: 'username',
         typoRequiredProps: typoRequiredProps
-      }), /*#__PURE__*/React.createElement(_util_typography_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      }), /*#__PURE__*/React.createElement(_util_typography_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
         baseLabel: "Company",
         typographyPrefixConstant: "company",
         typoRequiredProps: typoRequiredProps
-      }), /*#__PURE__*/React.createElement(_util_typography_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      }), /*#__PURE__*/React.createElement(_util_typography_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
         baseLabel: "Description",
         typographyPrefixConstant: "description",
         typoRequiredProps: typoRequiredProps
       })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
         title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Box Shadow"),
         initialOpen: false
-      }, /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, /*#__PURE__*/React.createElement(_util_color_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Shadow Color"),
         color: shadowColor,
         onChange: function onChange(shadowColor) {
@@ -3350,7 +3286,7 @@ var Inspector = /*#__PURE__*/function (_Component) {
         },
         min: 0,
         max: 20
-      })), /*#__PURE__*/React.createElement(_ResPanelBody__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      })), /*#__PURE__*/React.createElement(_ResPanelBody__WEBPACK_IMPORTED_MODULE_9__["default"], {
         title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("Margin & Padding"),
         initialOpen: false,
         resRequiredProps: resRequiredProps
@@ -3572,6 +3508,39 @@ var Inspector = /*#__PURE__*/function (_Component) {
 }(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Inspector);
+
+/***/ }),
+
+/***/ "./src/quoteIconSVG.js":
+/*!*****************************!*\
+  !*** ./src/quoteIconSVG.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function QuoteSVG() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "123.961",
+    height: "123.961",
+    x: "0",
+    y: "0",
+    enableBackground: "new 0 0 123.961 123.961",
+    version: "1.1",
+    viewBox: "0 0 123.961 123.961",
+    xmlSpace: "preserve"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M49.8 29.032c3.1-1.3 4.4-5 3-8l-4.9-10.3c-1.4-2.899-4.8-4.2-7.8-2.899-8.5 3.6-15.8 8.3-21.6 14C11.4 28.532 6.6 36.232 4 44.732c-2.6 8.601-4 20.3-4 35.2v30.7c0 3.3 2.7 6 6 6h39.3c3.3 0 6-2.7 6-6v-39.3c0-3.301-2.7-6-6-6H26.5c.2-10.101 2.6-18.2 7-24.301 3.6-4.898 9-8.898 16.3-11.999zM120.4 29.032c3.1-1.3 4.399-5 3-8l-4.9-10.199c-1.4-2.9-4.8-4.2-7.8-2.9-8.4 3.6-15.601 8.3-21.5 13.9-7.101 6.8-12 14.5-14.601 23-2.6 8.399-3.899 20.1-3.899 35.1v30.7c0 3.3 2.7 6 6 6H116c3.3 0 6-2.7 6-6v-39.3c0-3.301-2.7-6-6-6H97.1c.2-10.101 2.601-18.2 7-24.301 3.6-4.899 9-8.899 16.3-12z"
+  }));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (QuoteSVG);
 
 /***/ }),
 
@@ -4032,6 +4001,81 @@ ImageAvater.propTypes = {
   onDeleteImage: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func.isRequired
 };
 /* harmony default export */ __webpack_exports__["default"] = (ImageAvater);
+
+/***/ }),
+
+/***/ "./util/toggle-button/index.js":
+/*!*************************************!*\
+  !*** ./util/toggle-button/index.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./util/toggle-button/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_1__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+var ToggleButton = function ToggleButton(_ref) {
+  var options = _ref.options,
+      onChange = _ref.onChange,
+      defaultSelected = _ref.defaultSelected;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(defaultSelected || options[0]),
+      _useState2 = _slicedToArray(_useState, 2),
+      selected = _useState2[0],
+      setSelected = _useState2[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    onChange(selected.value);
+  }, [selected]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (defaultSelected) {
+      setSelected(defaultSelected);
+    }
+  }, [defaultSelected]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "switch",
+    className: "eb-switch-control"
+  }, options.map(function (option) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      type: "radio",
+      name: "gh",
+      placeholder: "name",
+      onChange: function onChange() {
+        return setSelected(option);
+      }
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      style: {
+        color: selected.value === option.value ? "white" : "black"
+      }
+    }, option.label));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "slideBg",
+    style: {
+      backgroundColor: "#551ef7",
+      transform: selected == options[0] ? "translateX(0)" : "translateX(100%)"
+    }
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ToggleButton);
 
 /***/ }),
 

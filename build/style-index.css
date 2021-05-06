@@ -57,6 +57,13 @@
   display: flex;
   justify-content: space-between; }
 
+/* Inspector Design */
+.components-base-control {
+  margin-bottom: 10px !important; }
+  .components-base-control .components-base-control__label {
+    margin-bottom: 5px;
+    display: inline-block; }
+
 .image-avatar {
   height: 100px;
   width: 100%;
@@ -171,6 +178,46 @@
 .eb-color-undo :hover {
 	box-shadow: none;
 }
+
+.eb-switch-control {
+  display: flex;
+  border: 1px solid #ededed;
+  padding: 2px;
+  border-radius: 30px;
+  position: relative;
+  font-family: sans-serif;
+  text-align: center;
+  margin-bottom: 8px;
+  margin-top: 8px; }
+  .eb-switch-control input {
+    visibility: hidden;
+    position: absolute;
+    padding: 10px; }
+    .eb-switch-control input:checked + label {
+      color: #fff; }
+  .eb-switch-control .individual:checked ~ span,
+  .eb-switch-control .business:checked ~ span {
+    color: white; }
+  .eb-switch-control .individual:checked ~ .slideBg {
+    transform: translateX(100%); }
+  .eb-switch-control .business:checked ~ .slideBg {
+    transform: translateX(0); }
+  .eb-switch-control label {
+    display: block;
+    padding: 4px;
+    width: 50%;
+    z-index: 1; }
+
+.slideBg {
+  position: absolute;
+  background-color: #551ef7;
+  color: white;
+  border-radius: 30px;
+  height: 100%;
+  width: 50%;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease; }
 
 
 /*# sourceMappingURL=style-index.css.map*/
