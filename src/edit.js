@@ -5,7 +5,7 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
 import { useEffect } from "@wordpress/element";
 
 /**
- * WordPress dependencies
+ * WordPress dependencies 
  */
 const { __ } = wp.i18n;
 const { MediaUpload } = wp.blockEditor;
@@ -19,7 +19,9 @@ import {
 	softMinifyCssStrings,
 	isCssExists,
 	generateTypographyStyles,
+	generateDimensionsControlStyles,
 } from "./helpers";
+
 import QuoteSVG from "./quoteIconSVG";
 
 const Edit = (props) => {
@@ -51,36 +53,6 @@ const Edit = (props) => {
 		backgroundType,
 		backgroundColor,
 		backgroundImageURL,
-		marginTop,
-		marginRight,
-		marginBottom,
-		marginLeft,
-		tabMarginTop,
-		tabMarginRight,
-		tabMarginBottom,
-		tabMarginLeft,
-		mobMarginTop,
-		mobMarginRight,
-		mobMarginBottom,
-		mobMarginLeft,
-		marginUnit,
-		tabMarginUnit,
-		mobMarginUnit,
-		paddingTop,
-		paddingRight,
-		paddingBottom,
-		paddingLeft,
-		tabPaddingTop,
-		tabPaddingRight,
-		tabPaddingBottom,
-		tabPaddingLeft,
-		mobPaddingTop,
-		mobPaddingRight,
-		mobPaddingBottom,
-		mobPaddingLeft,
-		paddingUnit,
-		tabPaddingUnit,
-		mobPaddingUnit,
 		shadowColor,
 		shadowHOffset,
 		shadowVOffset,
@@ -175,6 +147,28 @@ const Edit = (props) => {
 		prefixConstant: 'description',
 	});
 
+	//Generate Margin
+	const {
+		dimensionStylesDesktop: wrapperMarginStylesDesktop,
+		dimensionStylesTab: wrapperMarginStylesTab,
+		dimensionStylesMobile: wrapperMarginStylesMobile,
+	} = generateDimensionsControlStyles({
+		controlName: "margin",
+		styleFor: "margin",
+		attributes,
+	});
+
+	//Generate Padding
+	const {
+		dimensionStylesDesktop: wrapperPaddingStylesDesktop,
+		dimensionStylesTab: wrapperPaddingStylesTab,
+		dimensionStylesMobile: wrapperPaddingStylesMobile,
+	} = generateDimensionsControlStyles({
+		controlName: "padding",
+		styleFor: "padding",
+		attributes,
+	});
+
 	/**
 	 * Assign CSS in variable for use in Markup
 	*/
@@ -189,10 +183,8 @@ const Edit = (props) => {
 			background-size: ${bgSize === "custom" ? bgWidth + bgWidthUnit : "auto"};
 			background-repeat: ${bgRepeat || "inherit"};
 			background-attachment: ${bgAttachment || "unset"};
-			margin: ${marginTop || 10}${marginUnit}  ${marginRight || 10}${marginUnit} 
-			${marginBottom || 10}${marginUnit} ${marginLeft || 10}${marginUnit};
-			padding: ${paddingTop || 10}${paddingUnit}  ${paddingRight || 10}${paddingUnit} 
-					${paddingBottom || 10}${paddingUnit} ${paddingLeft || 10}${paddingUnit};
+			${wrapperMarginStylesDesktop}
+			${wrapperPaddingStylesDesktop}
 			box-shadow: ${shadowHOffset || 0}px ${shadowVOffset || 0}px ${shadowBlur || 0}px 
 					${shadowSpread || 0}px ${shadowColor || DEFAULT_SHADOW_COLOR};
 		}
@@ -200,19 +192,15 @@ const Edit = (props) => {
 
 	const tabContainerStyle = `
 		.eb-testimonial-wrapper.${blockId} {
-			margin: ${tabMarginTop || 10}${tabMarginUnit}  ${tabMarginRight || 10}${tabMarginUnit} 
-			${tabMarginBottom || 10}${tabMarginUnit} ${tabMarginLeft || 10}${tabMarginUnit};
-			padding: ${tabPaddingTop || 10}${tabPaddingUnit}  ${tabPaddingRight || 10}${tabPaddingUnit} 
-					${tabPaddingBottom || 10}${tabPaddingUnit} ${tabPaddingLeft || 10}${tabPaddingUnit};
+			${wrapperMarginStylesTab}
+			${wrapperPaddingStylesTab}
 		}
 	`;
 
 	const mobContainerStyle = `
 		.eb-testimonial-wrapper.${blockId} {
-			margin: ${mobMarginTop || 10}${mobMarginUnit}  ${mobMarginRight || 10}${mobMarginUnit} 
-			${mobMarginBottom || 10}${mobMarginUnit} ${mobMarginLeft || 10}${mobMarginUnit};
-			padding: ${mobPaddingTop || 10}${mobPaddingUnit} ${mobPaddingRight || 10}${mobPaddingUnit} 
-					${mobPaddingBottom || 10}${mobPaddingUnit} ${mobPaddingLeft || 10}${mobPaddingUnit};
+			${wrapperMarginStylesMobile}
+			${wrapperPaddingStylesMobile}
 		}
 	`;
 
