@@ -2106,7 +2106,7 @@ var Edit = function Edit(props) {
   }))), /*#__PURE__*/React.createElement("div", {
     className: "eb-description-container"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "fas fa-quote-left eb-testimonial-quote-style"
+    className: "eb-testimonial-quote-style"
   }, /*#__PURE__*/React.createElement(_quoteIconSVG__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"], {
     tagName: "p",
     className: "eb-testimonial-description",
@@ -3203,10 +3203,12 @@ function QuoteSVG() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _quoteIconSVG__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./quoteIconSVG */ "./src/quoteIconSVG.js");
 /**
  * WordPress dependencies
  */
 var RichText = wp.blockEditor.RichText;
+
 
 var Save = function Save(_ref) {
   var attributes = _ref.attributes;
@@ -3239,7 +3241,7 @@ var Save = function Save(_ref) {
   }))), /*#__PURE__*/React.createElement("div", {
     className: "eb-description-container"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "fas fa-quote-left eb-testimonial-quote-style"
+    className: "eb-testimonial-quote-style"
   }), /*#__PURE__*/React.createElement(RichText.Content, {
     tagName: "p",
     className: "eb-testimonial-description",

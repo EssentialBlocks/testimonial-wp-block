@@ -3,6 +3,8 @@
  */
 const { RichText } = wp.blockEditor;
 
+import QuoteSVG from "./quoteIconSVG";
+
 const Save = ({ attributes }) => {
 	const {
 		blockId,
@@ -40,7 +42,7 @@ const Save = ({ attributes }) => {
 
 				<div className="eb-description-container">
 					<div
-						className="fas fa-quote-left eb-testimonial-quote-style"
+						className="eb-testimonial-quote-style"
 					/>
 					<RichText.Content
 						tagName="p"

@@ -418,7 +418,7 @@ const Edit = (props) => {
 					</div>
 
 					<div className="eb-description-container">
-						<div className="fas fa-quote-left eb-testimonial-quote-style">
+						<div className="eb-testimonial-quote-style">
 							<QuoteSVG />
 						</div>
 						<RichText
