@@ -1,9 +1,11 @@
 {
+	"apiVersion": 2,
 	"name": "block/testimonial-wp-block",
 	"title": "Testimonial",
 	"category": "widgets",
 	"description": "Display testimonials & gain instant credibility",
 	"textdomain": "testimonial-wp-block",
 	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"
 }
