@@ -41,9 +41,9 @@ const Save = ({ attributes }) => {
 				</div>
 
 				<div className="eb-description-container">
-					<div
-						className="eb-testimonial-quote-style"
-					/>
+					<div className="eb-testimonial-quote-style">
+						<QuoteSVG />
+					</div>
 					<RichText.Content
 						tagName="p"
 						className="eb-testimonial-description"

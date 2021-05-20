@@ -5,7 +5,7 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
 import { useEffect } from "@wordpress/element";
 
 /**
- * WordPress dependencies 
+ * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { MediaUpload } = wp.blockEditor;
@@ -188,7 +188,7 @@ const Edit = (props) => {
 			background-attachment: ${bgAttachment || "unset"};
 			${wrapperMarginStylesDesktop}
 			${wrapperPaddingStylesDesktop}
-			box-shadow: ${shadowHOffset || 0}px ${shadowVOffset || 0}px ${shadowBlur || 0}px 
+			box-shadow: ${shadowHOffset || 0}px ${shadowVOffset || 0}px ${shadowBlur || 0}px
 					${shadowSpread || 0}px ${shadowColor || DEFAULT_SHADOW_COLOR};
 		}
 	`;
@@ -258,18 +258,18 @@ const Edit = (props) => {
 	`;
 
 	const companyNameStyle = `
-		.${blockId} .eb-testimonial-company { 
+		.${blockId} .eb-testimonial-company {
 			${companyTypoStylesDesktop}
 			color: ${companyColor};
 		}
 	`;
 	const companyNameStyleTab = `
-		.${blockId} .eb-testimonial-company { 
+		.${blockId} .eb-testimonial-company {
 			${companyTypoStylesTab}
 		}
 	`;
 	const companyNameStyleMobile = `
-		.${blockId} .eb-testimonial-company { 
+		.${blockId} .eb-testimonial-company {
 			${companyTypoStylesMobile}
 		}
 	`;
@@ -282,12 +282,12 @@ const Edit = (props) => {
 		}
 	`;
 	const descriptionStyleTab = `
-		.${blockId} .eb-description-container p { 
+		.${blockId} .eb-description-container p {
 			${descriptionTypoStylesTab}
 		}
 	`;
 	const descriptionStyleMobile = `
-		.${blockId} .eb-description-container p { 
+		.${blockId} .eb-description-container p {
 			${descriptionTypoStylesMobile}
 		}
 	`;
@@ -295,8 +295,9 @@ const Edit = (props) => {
 	const quoteStyle = `
 		.${blockId} .eb-testimonial-quote-style svg {
 			fill: ${quoteColor};
-			width: ${quoteSize || DEFAULT_QUOTE_SIZE}${quoteSizeUnit};
-			height: ${quoteSize || DEFAULT_QUOTE_SIZE}${quoteSizeUnit};
+			width: ${quoteSize}${quoteSizeUnit};
+			height: ${quoteSize}${quoteSizeUnit};
+			max-width: ${quoteSize}${quoteSizeUnit};
 		}
 	`;
 
@@ -355,20 +356,20 @@ const Edit = (props) => {
 
 				/* mimmikcssEnd */
 
-				@media all and (max-width: 1024px) {	
+				@media all and (max-width: 1024px) {
 
-					/* tabcssStart */			
+					/* tabcssStart */
 					${softMinifyCssStrings(tabAllStyles)}
-					/* tabcssEnd */			
-				
+					/* tabcssEnd */
+
 				}
-				
+
 				@media all and (max-width: 767px) {
-					
-					/* mobcssStart */			
+
+					/* mobcssStart */
 					${softMinifyCssStrings(mobileAllStyles)}
-					/* mobcssEnd */			
-				
+					/* mobcssEnd */
+
 				}
 				`}
 			</style>
