@@ -43,6 +43,14 @@ function create_block_testimonial_block_init() {
 		$script_asset['version']
 	);
 
+	$editor_css = 'build/index.css';
+	wp_register_style(
+		'create-block-testimonial-block-editor',
+		plugins_url($editor_css, __FILE__),
+		array(),
+		filemtime("$dir/$editor_css")
+	);
+
 	$style_css = 'build/style-index.css';
 	wp_register_style(
 		'create-block-testimonial-block',
@@ -51,9 +59,10 @@ function create_block_testimonial_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
-	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'testimonial-wp-block/testimonial' ) ) {
-    register_block_type( 'block/testimonial-wp-block', array(
+	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/testimonial' ) ) {
+    register_block_type( 'testimonial-wp-block/testimonial', array(
       'editor_script' => 'create-block-testimonial-block-editor',
+      'editor_style' => 'create-block-testimonial-block-editor',
       'style'         => 'create-block-testimonial-block',
     ) );
   }

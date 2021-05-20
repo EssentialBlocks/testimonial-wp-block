@@ -11,6 +11,9 @@ const { __ } = wp.i18n;
 const { MediaUpload } = wp.blockEditor;
 const { Button } = wp.components;
 
+/* Editor CSS */
+import "./editor.scss";
+
 /**
  * Internal dependencies
  */
