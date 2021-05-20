@@ -59,8 +59,8 @@ function create_block_testimonial_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
-	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'testimonial-wp-block/testimonial' ) ) {
-    register_block_type( 'block/testimonial-wp-block', array(
+	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/testimonial' ) ) {
+    register_block_type( 'testimonial-wp-block/testimonial', array(
       'editor_script' => 'create-block-testimonial-block-editor',
       'editor_style' => 'create-block-testimonial-block-editor',
       'style'         => 'create-block-testimonial-block',

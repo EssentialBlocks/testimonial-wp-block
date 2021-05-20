@@ -1,6 +1,6 @@
 {
 	"apiVersion": 2,
-	"name": "block/testimonial-wp-block",
+	"name": "testimonial-wp-block/testimonial",
 	"title": "Testimonial",
 	"category": "widgets",
 	"description": "Display testimonials & gain instant credibility",
