@@ -1,4 +1,9 @@
 const { __ } = wp.i18n;
+const {Dashicon} = wp.components;
+
+export const WrpBdShadow = "wrp_";
+
+export const TestimonialWrapBg = "wrp_";
 
 export const COLUMN_NUMBERS = [
 	{ label: __("One"), value: 1 },
@@ -12,15 +17,20 @@ export const DESC_POSITIONS = [
 ];
 
 export const TEXT_ALIGN = [
-	{ label: "Left", value: "left" },
-	{ label: "Center", value: "center" },
-	{ label: "Right", value: "right" },
+	{ label: __(<Dashicon icon={"editor-alignleft"} />), value: "left" },
+	{ label: __(<Dashicon icon={"editor-aligncenter"} />), value: "center" },
+	{ label: __(<Dashicon icon={"editor-alignright"} />), value: "right" },
 ];
 
 export const ALIGN_ITEMS = [
 	{ label: __("Start"), value: "flex-start" },
 	{ label: __("Center"), value: "center" },
 	{ label: __("End"), value: "flex-end" },
+];
+export const ALIGN_ITEMS_VERTICAL = [
+	{ label: __("Top"), value: "flex-start" },
+	{ label: __("Middle"), value: "center" },
+	{ label: __("Bottom"), value: "flex-end" },
 ];
 
 export const IMG_POSITIONS = [

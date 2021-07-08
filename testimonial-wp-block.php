@@ -39,7 +39,12 @@ function create_block_testimonial_block_init() {
 	wp_register_script(
 		'create-block-testimonial-block-editor',
 		plugins_url( $index_js, __FILE__ ),
-		$script_asset['dependencies'],
+		array(
+			'wp-blocks',
+			'wp-i18n',
+			'wp-element',
+			'wp-block-editor',
+		),
 		$script_asset['version']
 	);
 
