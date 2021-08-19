@@ -358,6 +358,7 @@
 										 <BackgroundControl
 											 controlName={TestimonialWrapBg}
 											 resRequiredProps={resRequiredProps}
+											 noOverlay
 										 />
 									 </PanelBody>
  

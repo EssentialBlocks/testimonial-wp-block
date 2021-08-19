@@ -83,6 +83,10 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
+= 1.1.1 - 22/08/2021 =
+* Fixed: Style Handler bug
+* Fixed: Wrapper Background Issue
+
 = 1.1.0 - 20/05/2021 =
 * Added: Dynamic asset generation for inline styles
 * Added: Responsive control

@@ -236,8 +236,8 @@ const attributes = {
 
 	// background attributes ⬇
 	...generateBackgroundAttributes(TestimonialWrapBg, {
-		defaultFillColor: "#fff",
-		defaultBgGradient: "linear-gradient(45deg,#fff,#fff)",
+		defaultBgGradient: "linear-gradient(45deg,#ffffff,#ffffff)",
+		noOverlay : true,
 	}),
 };
 

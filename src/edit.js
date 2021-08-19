@@ -2,7 +2,7 @@
  * Import React Features
  */
  const { useBlockProps, RichText } = wp.blockEditor;
- const { useEffect } = wp.element;
+ const { useEffect } = wp.element; 
  
  /**
   * WordPress dependencies
@@ -177,15 +177,10 @@
 		 hoverBackgroundStylesTab,
 		 backgroundStylesMobile,
 		 hoverBackgroundStylesMobile,
-		 overlayStylesDesktop,
-		 hoverOverlayStylesDesktop,
-		 overlayStylesTab,
-		 hoverOverlayStylesTab,
-		 overlayStylesMobile,
-		 hoverOverlayStylesMobile,
 	 } = generateBackgroundControlStyles({
 		 attributes,
 		 controlName: TestimonialWrapBg,
+		 noOverlay : true,
 	 });
  
 	 /**
@@ -203,14 +198,6 @@
 			 ${hoverBackgroundStylesDesktop}
 			 ${bdShadowStylesHoverDesktop}
 		 }
-		 
-		 .eb-testimonial-wrapper.${blockId}:before{
-			 ${overlayStylesDesktop}
-		 }
-		 
-		 .eb-testimonial-wrapper.${blockId}:hover:before{
-			 ${hoverOverlayStylesDesktop}
-		 }
 	 `;
  
 	 const tabContainerStyle = `
@@ -225,14 +212,6 @@
 			 ${hoverBackgroundStylesTab}
 			 ${bdShadowStylesHoverTab}
 		 }
-		 
-		 .eb-testimonial-wrapper.${blockId}:before{
-			 ${overlayStylesTab}
-		 }
-		 
-		 .eb-testimonial-wrapper.${blockId}:hover:before{
-			 ${hoverOverlayStylesTab}
-		 }
 	 `;
  
 	 const mobContainerStyle = `
@@ -246,14 +225,6 @@
 		 .eb-testimonial-wrapper.${blockId}:hover{		
 			 ${hoverBackgroundStylesMobile}
 			 ${bdShadowStylesHoverMobile}
-		 }
-		 
-		 .eb-testimonial-wrapper.${blockId}:before{
-			 ${overlayStylesMobile}
-		 }
-		 
-		 .eb-testimonial-wrapper.${blockId}:hover:before{
-			 ${hoverOverlayStylesMobile}
 		 }
 	 `;
  
