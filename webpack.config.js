@@ -9,7 +9,7 @@ const plugins = defaultConfig.plugins.filter(
 );
 
 let allEntries = {
-	dist: ["./src/index.js", "./src/style.scss"],
+	dist: "./src/index.js",
 	"lib/style-handler/dist": "./lib/style-handler/style-handler.js",
 };
 

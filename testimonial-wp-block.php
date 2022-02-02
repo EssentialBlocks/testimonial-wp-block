@@ -66,16 +66,19 @@ function create_block_testimonial_block_init()
 	);
 
 	if (!WP_Block_Type_Registry::get_instance()->is_registered('essential-blocks/testimonial')) {
-		register_block_type('testimonial-wp-block/testimonial', array(
-			'editor_script'	=> 'create-block-testimonial-block-editor-script',
-			'editor-style' 	=> 'create-block-testimonial-block-frontend-style',
-			'render_callback' => function ($attributes, $content) {
-				if (!is_admin()) {
-					wp_enqueue_style('create-block-testimonial-block-frontend-style');
+		register_block_type(
+			Testimonial_Enqueue::get_block_register_path(),
+			array(
+				'editor_script'	=> 'create-block-testimonial-block-editor-script',
+				'editor-style' 	=> 'create-block-testimonial-block-frontend-style',
+				'render_callback' => function ($attributes, $content) {
+					if (!is_admin()) {
+						wp_enqueue_style('create-block-testimonial-block-frontend-style');
+					}
+					return $content;
 				}
-				return $content;
-			}
-		));
+			)
+		);
 	}
 }
 

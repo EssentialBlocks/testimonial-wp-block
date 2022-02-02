@@ -68,5 +68,13 @@ class Testimonial_Enqueue
             );
         }
     }
+    public static function get_block_register_path()
+    {
+        if ( (float) get_bloginfo('version') <= 5.6) {
+            return 'testimonial-wp-block/testimonial';
+        } else {
+            return TESTIMONIAL_BLOCKS_ADMIN_PATH;
+        }
+    }
 }
 Testimonial_Enqueue::register();
