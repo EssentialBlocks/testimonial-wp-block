@@ -57,20 +57,20 @@ function create_block_testimonial_block_init()
 		true
 	);
 
-	$style_css = 'style-dist/style.css';
+	$style_css = TESTIMONIAL_BLOCKS_ADMIN_URL . 'style-dist/style.css';
 	wp_register_style(
 		'create-block-testimonial-block-frontend-style',
-		plugins_url($style_css, __FILE__),
+		$style_css,
 		array(),
 		TESTIMONIAL_BLOCKS_VERSION
 	);
 
 	if (!WP_Block_Type_Registry::get_instance()->is_registered('essential-blocks/testimonial')) {
 		register_block_type(
-			Testimonial_Helper::get_block_register_path(),
+			Testimonial_Helper::get_block_register_path("testimonial-wp-block/testimonial", TESTIMONIAL_BLOCKS_ADMIN_PATH),
 			array(
 				'editor_script'	=> 'create-block-testimonial-block-editor-script',
-				'editor-style' 	=> 'create-block-testimonial-block-frontend-style',
+				'editor_style' 	=> 'create-block-testimonial-block-frontend-style',
 				'render_callback' => function ($attributes, $content) {
 					if (!is_admin()) {
 						wp_enqueue_style('create-block-testimonial-block-frontend-style');

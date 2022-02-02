@@ -45,8 +45,8 @@ node_modules export-ignore
 gulpfile.js export-ignore
 .git export-ignore
 node_modules/**/*.* export-ignore
-dist/**/*.* export-ignore
 **/*.zip export-ignore
 src export-ignore
-util	export-ignore
-.wordpress-org	export-ignore
+controls/src export-ignore
+lib/style-handler.js export-ignore
+.wordpress-org export-ignore
