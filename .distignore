@@ -43,10 +43,11 @@ node_modules
 *.tar.gz
 *.zip
 gulpfile.js
-.git
+*.git
 node_modules/**/*.*
 **/*.zip
 src
 controls/src
-lib/style-handler.js
+controls/LICENSE
+lib/style-handler/style-handler.js
 .wordpress-org
