@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { RichText } = wp.blockEditor;
+import { RichText } from "@wordpress/block-editor";
 
 import QuoteSVG from "./quoteIconSVG";
 
@@ -11,8 +11,10 @@ const Save = ({ attributes }) => {
 		avatarInline,
 		userName,
 		companyName,
-		description
+		description,
+		enableQuote,
 	} = attributes;
+
 
 	return (
 		<div className={`eb-testimonial-wrapper ${blockId}`} data-id={blockId}>
@@ -41,9 +43,11 @@ const Save = ({ attributes }) => {
 				</div>
 
 				<div className="eb-description-container">
-					<div className="eb-testimonial-quote-style">
-						<QuoteSVG />
-					</div>
+					{enableQuote && (
+						<div className="eb-testimonial-quote-style">
+							<QuoteSVG />
+						</div>
+					)}
 					<RichText.Content
 						tagName="p"
 						className="eb-testimonial-description"

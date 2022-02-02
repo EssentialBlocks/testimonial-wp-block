@@ -1,24 +1,24 @@
-const { registerBlockType } = wp.blocks;
-const { __ } = wp.i18n;
+import { __ } from "@wordpress/i18n";
+
 import "./style.scss";
 
 import Edit from "./edit";
-import save from "./save";
-import icon from "./icon";
+import Save from "./save";
+import { TestimonialIcon } from "./icon";
 import attributes from "./attributes";
+import metadata from "../block.json";
 import Example from "./example";
+const { ebConditionalRegisterBlockType } = EBControls;
 
-registerBlockType("testimonial-wp-block/testimonial", {
-	title: __("Testimonial", "block"),
-	description: __("Display testimonials & gain instant credibility", "block"),
-	category: "widgets",
-	keywords: [
-		__("testimonial", "testimonial"),
-		__("quote", "testimonial"),
-	],
-	icon,
+ebConditionalRegisterBlockType(metadata, {
+	icon: TestimonialIcon,
 	attributes,
+	keywords: [
+		__("testimonial", "testimonial-wp-block"),
+		__("about", "testimonial-wp-block"),
+		__("eb quote", "testimonial-wp-block"),
+	],
 	edit: Edit,
-	save,
+	save: Save,
 	example: Example,
 });

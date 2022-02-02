@@ -42,6 +42,9 @@
 	display: flex;
 	flex-direction: column;
 }
+.eb-testimonial-wrapper .eb-userinfo-container > * {
+	margin: 0 0 5px 0;
+}
 
 .eb-img-placeholder {
 	background-color: grey;
