@@ -46,7 +46,7 @@ function create_block_testimonial_block_init()
 		'wp-i18n',
 		'wp-element',
 		'wp-block-editor',
-		'essential-blocks-controls-util',
+		'testimonial-blocks-controls-util',
 	));
 
 	wp_register_script(

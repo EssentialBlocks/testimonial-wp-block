@@ -1,11 +1,18 @@
 const {
-	//
 	generateDimensionsAttributes,
 	generateTypographyAttributes,
 	generateBackgroundAttributes,
 	generateBorderShadowAttributes,
 	generateResponsiveRangeAttributes,
-} = window.EBControls;
+} = window.EBTestimonialControls;
+
+// import {
+// 	generateDimensionsAttributes,
+// 	generateTypographyAttributes,
+// 	generateBackgroundAttributes,
+// 	generateBorderShadowAttributes,
+// 	generateResponsiveRangeAttributes,
+// } from "../controls/src/index";
 
 import { WrpBdShadow, TestimonialWrapBg, QUOTE_SIZE } from "./constants";
 

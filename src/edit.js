@@ -15,7 +15,6 @@ import { select } from "@wordpress/data";
 import Inspector from "./inspector";
 
 const {
-	//
 	softMinifyCssStrings,
 	generateBackgroundControlStyles,
 	generateDimensionsControlStyles,
@@ -23,7 +22,17 @@ const {
 	generateResponsiveRangeStyles,
 	generateBorderShadowStyles,
 	duplicateBlockIdFix,
-} = window.EBControls;
+} = window.EBTestimonialControls;
+
+// import {
+// 	softMinifyCssStrings,
+// 	generateBackgroundControlStyles,
+// 	generateDimensionsControlStyles,
+// 	generateTypographyStyles,
+// 	generateResponsiveRangeStyles,
+// 	generateBorderShadowStyles,
+// 	duplicateBlockIdFix,
+// } from "../controls/src/index";
 
 const editorStoreForGettingPreivew =
 	eb_style_handler.editor_type === "edit-site"

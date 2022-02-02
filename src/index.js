@@ -8,7 +8,8 @@ import { TestimonialIcon } from "./icon";
 import attributes from "./attributes";
 import metadata from "../block.json";
 import Example from "./example";
-const { ebConditionalRegisterBlockType } = EBControls;
+const { ebConditionalRegisterBlockType } = EBTestimonialControls;
+// import { ebConditionalRegisterBlockType } from "../controls/src/helpers/index";
 
 ebConditionalRegisterBlockType(metadata, {
 	icon: TestimonialIcon,

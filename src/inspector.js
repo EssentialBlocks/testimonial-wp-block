@@ -37,10 +37,6 @@ import {
 } from "./constants";
 
 const {
-	// mimmikCssForResBtns,
-	// mimmikCssOnPreviewBtnClickWhileBlockSelected,
-
-	// 
 	ImageAvatar,
 	ResponsiveDimensionsControl,
 	TypographyDropdown,
@@ -48,7 +44,25 @@ const {
 	BorderShadowControl,
 	BackgroundControl,
 	ResponsiveRangeController,
-} = window.EBControls;
+} = window.EBTestimonialControls;
+
+// import {
+// 	ImageAvatar,
+// 	ResponsiveDimensionsControl,
+// 	TypographyDropdown,
+// 	ToggleButton,
+// 	BorderShadowControl,
+// 	BackgroundControl,
+// 	ResponsiveRangeController,
+// } from "../controls/src/index";
+
+// import { ImageAvatar } from "../controls/src/controls/image-avatar";
+// import { ResponsiveDimensionsControl } from "../controls/src/controls/dimensions-control-v2";
+// import { TypographyDropdown } from "../controls/src/controls/typography-control-v2";
+// import { ToggleButton } from "../controls/src/controls/toggle-button";
+// import { BorderShadowControl } from "../controls/src/controls/border-shadow-control";
+// import { BackgroundControl } from "../controls/src/controls/background-control";
+// import { ResponsiveRangeController } from "../controls/src/controls/responsive-range-control";
 
 const editorStoreForGettingPreivew =
 	eb_style_handler.editor_type === "edit-site"
