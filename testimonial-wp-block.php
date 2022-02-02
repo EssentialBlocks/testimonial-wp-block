@@ -23,7 +23,7 @@
 
 require_once __DIR__ . '/includes/font-loader.php';
 require_once __DIR__ . '/includes/post-meta.php';
-require_once __DIR__ . '/includes/enqueue.php';
+require_once __DIR__ . '/includes/helpers.php';
 require_once __DIR__ . '/lib/style-handler/style-handler.php';
 
 function create_block_testimonial_block_init()
@@ -67,7 +67,7 @@ function create_block_testimonial_block_init()
 
 	if (!WP_Block_Type_Registry::get_instance()->is_registered('essential-blocks/testimonial')) {
 		register_block_type(
-			Testimonial_Enqueue::get_block_register_path(),
+			Testimonial_Helper::get_block_register_path(),
 			array(
 				'editor_script'	=> 'create-block-testimonial-block-editor-script',
 				'editor-style' 	=> 'create-block-testimonial-block-frontend-style',

@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Testimonial_Enqueue
+class Testimonial_Helper
 {
 
     private static $instance;
@@ -77,4 +77,4 @@ class Testimonial_Enqueue
         }
     }
 }
-Testimonial_Enqueue::register();
+Testimonial_Helper::register();
