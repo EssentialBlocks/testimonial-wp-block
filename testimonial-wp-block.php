@@ -57,7 +57,7 @@ function create_block_testimonial_block_init()
 		true
 	);
 
-	$style_css = TESTIMONIAL_BLOCKS_ADMIN_URL . 'style-dist/style.css';
+	$style_css = TESTIMONIAL_BLOCKS_ADMIN_URL . 'dist/style.css';
 	wp_register_style(
 		'create-block-testimonial-block-frontend-style',
 		$style_css,
