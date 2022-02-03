@@ -47,7 +47,7 @@ gulpfile.js
 node_modules/**/*.*
 **/*.zip
 src
-controls/src
-controls/LICENSE
+controls
 lib/style-handler/style-handler.js
+lib/style-handler/helpers.js
 .wordpress-org
