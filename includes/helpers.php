@@ -45,10 +45,10 @@ class Testimonial_Helper
          */
         if ($hook == 'post-new.php' || $hook == 'post.php' || $hook == 'site-editor.php') {
 
-            $controls_dependencies = include_once TESTIMONIAL_BLOCKS_ADMIN_PATH . '/controls/dist/index.asset.php';
+            $controls_dependencies = include_once TESTIMONIAL_BLOCKS_ADMIN_PATH . '/dist/controls.asset.php';
             wp_register_script(
                 "testimonial-blocks-controls-util",
-                TESTIMONIAL_BLOCKS_ADMIN_URL . '/controls/dist/index.js',
+                TESTIMONIAL_BLOCKS_ADMIN_URL . '/dist/controls.js',
                 array_merge($controls_dependencies['dependencies'], array("essential-blocks-edit-post")),
                 $controls_dependencies['version'],
                 true
@@ -61,7 +61,7 @@ class Testimonial_Helper
 
             wp_enqueue_style(
                 'essential-blocks-editor-css',
-                TESTIMONIAL_BLOCKS_ADMIN_URL . '/controls/dist/index.css',
+                TESTIMONIAL_BLOCKS_ADMIN_URL . '/dist/controls.css',
                 array(),
                 $controls_dependencies['version'],
                 'all'
