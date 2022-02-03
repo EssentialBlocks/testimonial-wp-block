@@ -83,6 +83,13 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
+=1.2.0 - 07/02/2022
+* Added: Content position controls
+* Added: Quote icon position, size, show/hide controls
+* Added: Margin, Padding, Background, Border control
+* Added: Tab View mode in controls
+* Improved: Controls and structure
+
 = 1.1.1 - 22/08/2021 =
 * Fixed: Style Handler bug
 * Fixed: Wrapper Background Issue
