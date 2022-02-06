@@ -8,6 +8,7 @@ export { default as ResponsiveDimensionsControl } from "../controls/src/controls
 export { default as ResponsiveRangeController } from "../controls/src/controls/responsive-range-control";
 export { default as ToggleButton } from "../controls/src/controls/toggle-button";
 export { default as TypographyDropdown } from "../controls/src/controls/typography-control-v2";
+export { default as ImageAvatar } from "../controls/src/controls/image-avatar";
 
 //Export Helper Functions
 export {

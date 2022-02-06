@@ -46,24 +46,6 @@ const {
 	ResponsiveRangeController,
 } = window.EBTestimonialControls;
 
-// import {
-// 	ImageAvatar,
-// 	ResponsiveDimensionsControl,
-// 	TypographyDropdown,
-// 	ToggleButton,
-// 	BorderShadowControl,
-// 	BackgroundControl,
-// 	ResponsiveRangeController,
-// } from "../controls/src/index";
-
-// import { ImageAvatar } from "../controls/src/controls/image-avatar";
-// import { ResponsiveDimensionsControl } from "../controls/src/controls/dimensions-control-v2";
-// import { TypographyDropdown } from "../controls/src/controls/typography-control-v2";
-// import { ToggleButton } from "../controls/src/controls/toggle-button";
-// import { BorderShadowControl } from "../controls/src/controls/border-shadow-control";
-// import { BackgroundControl } from "../controls/src/controls/background-control";
-// import { ResponsiveRangeController } from "../controls/src/controls/responsive-range-control";
-
 const editorStoreForGettingPreivew =
 	eb_style_handler.editor_type === "edit-site"
 		? "core/edit-site"
@@ -98,26 +80,6 @@ function Inspector(props) {
 			resOption: select(editorStoreForGettingPreivew).__experimentalGetPreviewDeviceType(),
 		});
 	}, []);
-
-	// // this useEffect is for mimmiking css for all the eb blocks on resOption changing
-	// useEffect(() => {
-	// 	mimmikCssForResBtns({
-	// 		domObj: document,
-	// 		resOption,
-	// 	});
-	// }, [resOption]);
-
-	// // this useEffect is to mimmik css for responsive preview in the editor page when clicking the buttons in the 'Preview button of wordpress' located beside the 'update' button while any block is selected and it's inspector panel is mounted in the DOM
-	// useEffect(() => {
-	// 	const cleanUp = mimmikCssOnPreviewBtnClickWhileBlockSelected({
-	// 		domObj: document,
-	// 		select,
-	// 		setAttributes,
-	// 	});
-	// 	return () => {
-	// 		cleanUp();
-	// 	};
-	// }, []);
 
 	const resRequiredProps = {
 		attributes,
