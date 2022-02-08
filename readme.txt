@@ -1,9 +1,9 @@
 === Testimonial Block ===
-Contributors: wpdevteam, re_enter_rupok, Asif2BD, alam789
+Contributors: wpdevteam, re_enter_rupok, Asif2BD, jamilbd07, rahat89
 Tags: block, blocks, testimonial, testimonials, testimony, testimonial showcase, gutenberg, gutenberg blocks
 Requires at least: 5.0
-Tested up to: 5.5
-Stable tag: 1.0.0
+Tested up to: 5.9
+Stable tag: 1.2.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -13,7 +13,7 @@ Display testimonials & gain instant credibility for your website or service.
 
 Want to display testimonials on your website & gain instant credibility? Use this **Testimonial** block within Gutenberg & present the reviews of your happy customers as social proof.
 
-Using this, it will take you a few minutes to create stunning Testimonial sections within WordPress Block Editor and improve the conversion rates. 
+Using this, it will take you a few minutes to create stunning Testimonial sections within WordPress Block Editor and improve the conversion rates.
 
 **Completely Customizable:** You can customize the with image, size, color, content etc. to make it suitable for your website.
 
@@ -22,7 +22,7 @@ Using this, it will take you a few minutes to create stunning Testimonial sectio
 **Dedicated Support:** We’ve an extraordinary support team ready to help you. Ask your questions in the support forum, we’ll get back to you immediately.
 
 
-## 🚀 BACKED BY A TRUSTED TEAM ## 
+## 🚀 BACKED BY A TRUSTED TEAM ##
 
 This Block is brought to you by [WPDeveloper](https://wpdeveloper.net), the team behind the most popular elements library [Essential Addons for Elementor](https://wordpress.org/plugins/essential-addons-for-elementor-lite/) (used by almost 700,000 happy users from 180+ countries).
 
@@ -63,7 +63,7 @@ Consider checking out our other WordPress solutions & boost your WordPress websi
 
 = Modern Way: =
 1. Go to the WordPress Block/Gutenberg Editor
-2. Search For "Testimonial". 
+2. Search For "Testimonial".
 3. Install in 1-click
 
 = Old Way: =
@@ -82,6 +82,22 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+
+=1.2.0 - 08/02/2022
+* Added: Content position controls
+* Added: Quote icon position, size, show/hide controls
+* Added: Margin, Padding, Background, Border control
+* Added: Tab View mode in controls
+* Improved: Controls and structure
+
+= 1.1.1 - 22/08/2021 =
+* Fixed: Style Handler bug
+* Fixed: Wrapper Background Issue
+
+= 1.1.0 - 20/05/2021 =
+* Added: Dynamic asset generation for inline styles
+* Added: Responsive control
+* Improved: Controls and structure
 
 = 1.0.0 =
 * Initial Release

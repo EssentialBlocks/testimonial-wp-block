@@ -1,5 +1,37 @@
+const {
+	generateDimensionsAttributes,
+	generateTypographyAttributes,
+	generateBackgroundAttributes,
+	generateBorderShadowAttributes,
+	generateResponsiveRangeAttributes,
+} = window.EBTestimonialControls;
+
+// import {
+// 	generateDimensionsAttributes,
+// 	generateTypographyAttributes,
+// 	generateBackgroundAttributes,
+// 	generateBorderShadowAttributes,
+// 	generateResponsiveRangeAttributes,
+// } from "../controls/src/index";
+
+import { WrpBdShadow, TestimonialWrapBg, QUOTE_SIZE } from "./constants";
+
 const attributes = {
-	fontSize: {
+	resOption: {
+		type: "string",
+		default: "Desktop",
+	},
+	blockId: {
+		type: "string",
+	},
+	blockRoot: {
+		type: "string",
+		default: "essential_block",
+	},
+	blockMeta: {
+		type: "object",
+	},
+	avaterContainerFontSize: {
 		type: "number",
 		default: 16,
 	},
@@ -34,20 +66,24 @@ const attributes = {
 		default: 1,
 	},
 	userName: {
-		selector: ".username-one",
+		selector: ".eb-testimonial-username",
 		source: "html",
 		default: "John Doe",
 	},
 	companyName: {
-		selector: ".company-one",
+		selector: ".eb-testimonial-company",
 		source: "html",
 		default: "Company Name",
 	},
 	description: {
-		selector: ".description-one",
+		selector: ".eb-testimonial-description",
 		source: "html",
 		default:
 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	},
+	descTextAlign: {
+		type: "string",
+		default: "center",
 	},
 	textAlign: {
 		type: "string",
@@ -63,87 +99,68 @@ const attributes = {
 	},
 	userNameColor: {
 		type: "string",
+		default: "#7967ff",
 	},
 	descriptionColor: {
 		type: "string",
+		default: "#4a5059",
+	},
+	enableQuote: {
+		type: "boolean",
+		default: true,
 	},
 	quoteColor: {
 		type: "string",
-	},
-	userNameFontSize: {
-		type: "number",
-	},
-	companyFontSize: {
-		type: "number",
-	},
-	descriptionFontSize: {
-		type: "number",
+		default: "#edf1f7",
 	},
 	quoteSize: {
 		type: "number",
+		default: 60,
+	},
+	quoteHorizontalPosition: {
+		type: "string",
+		default: "flex-start"
+	},
+	quoteVerticalPosition: {
+		type: "number",
+		default: 1
 	},
 	userInfoAlign: {
 		type: "string",
 		default: "center",
 	},
-	backgroundColor: {
-		type: "string",
-	},
-	backgroundImageURL: {
-		type: "string",
-	},
+	//Margin
 	linkedMargin: {
 		type: "boolean",
 		default: false,
 	},
-	marginTop: {
-		type: "number",
-	},
-	marginRight: {
-		type: "number",
-	},
-	marginBottom: {
-		type: "number",
-	},
-	marginLeft: {
-		type: "number",
-	},
+	//Padding
 	linkedPadding: {
 		type: "boolean",
 		default: false,
 	},
-	paddingTop: {
-		type: "number",
-	},
-	paddingRight: {
-		type: "number",
-	},
-	paddingBottom: {
-		type: "number",
-	},
-	paddingLeft: {
-		type: "number",
-	},
-	shadowColor: {
-		type: "string",
-	},
-	shadowHOffset: {
-		type: "number",
-	},
-	shadowVOffset: {
-		type: "number",
-	},
-	shadowBlur: {
-		type: "number",
-	},
-	shadowSpread: {
-		type: "number",
-	},
+
 	marginUnit: {
 		type: "string",
 		default: "px",
 	},
+	tabMarginUnit: {
+		type: "string",
+		default: "px",
+	},
+	mobMarginUnit: {
+		type: "string",
+		default: "px",
+	},
 	paddingUnit: {
+		type: "string",
+		default: "px",
+	},
+	tabPaddingUnit: {
+		type: "string",
+		default: "px",
+	},
+	mobPaddingUnit: {
 		type: "string",
 		default: "px",
 	},
@@ -165,142 +182,52 @@ const attributes = {
 	},
 	companyColor: {
 		type: "string",
+		default: "#4a5059",
 	},
-	backgroundType: {
-		type: "string",
-		default: "color",
-	},
-	nameFontFamily: {
-		type: "string",
-	},
-	nameFontWeight: {
-		type: "string",
-		default: "normal",
-	},
-	nameFontSize: {
-		type: "number",
-	},
-	nameFontSizeUnit: {
-		type: "string",
-		default: "string",
-	},
-	nameTextTransform: {
-		type: "string",
-	},
-	nameTextDecoration: {
-		type: "string",
-	},
-	nameLetterSpacing: {
-		type: "number",
-	},
-	nameLetterSpacingUnit: {
-		type: "string",
-		default: "px",
-	},
-	nameLineHeight: {
-		type: "number",
-	},
-	nameLineHeightUnit: {
-		type: "string",
-		default: "px",
-	},
-	companyFontFamily: {
-		type: "string",
-	},
-	companyFontWeight: {
-		type: "string",
-		default: "normal",
-	},
-	companyFontSizeUnit: {
-		type: "string",
-		default: "string",
-	},
-	companyTextTransform: {
-		type: "string",
-	},
-	companyTextDecoration: {
-		type: "string",
-	},
-	companyLetterSpacing: {
-		type: "number",
-	},
-	companyLetterSpacingUnit: {
-		type: "string",
-		default: "px",
-	},
-	companyLineHeight: {
-		type: "number",
-	},
-	companyLineHeightUnit: {
-		type: "string",
-		default: "px",
-	},
-	descriptionFontFamily: {
-		type: "string",
-	},
-	descriptionFontWeight: {
-		type: "string",
-		default: "normal",
-	},
-	descriptionFontSizeUnit: {
-		type: "string",
-		default: "string",
-	},
-	descriptionTextTransform: {
-		type: "string",
-	},
-	descriptionTextDecoration: {
-		type: "string",
-	},
-	descriptionLetterSpacing: {
-		type: "number",
-	},
-	descriptionLetterSpacingUnit: {
-		type: "string",
-		default: "px",
-	},
-	descriptionLineHeight: {
-		type: "number",
-	},
-	descriptionLineHeightUnit: {
-		type: "string",
-		default: "px",
-	},
+	
 	bgPositon: {
 		type: "string",
 	},
-	bgXPos: {
-		type: "number",
-		default: 0,
-	},
-	bgXPosUnit: {
-		type: "string",
-		default: "%",
-	},
-	bgYPos: {
-		type: "number",
-		default: 0,
-	},
-	bgYPosUnit: {
-		type: "string",
-		default: "%",
-	},
-	bgSize: {
-		type: "string",
-	},
-	bgWidth: {
-		type: "number",
-	},
-	bgWidthUnit: {
-		type: "string",
-		default: "%",
-	},
-	bgRepeat: {
-		type: "string",
-	},
-	bgAttachment: {
-		type: "string",
-	},
+	
+	/**
+	 * Autogenerated Attributes
+	 */
+	// margin attributes ⬇
+	...generateDimensionsAttributes("margin", {
+		top: 10,
+		bottom: 10,
+		right: 10,
+		left: 10,
+	}),
+	// padding attributes ⬇
+	...generateDimensionsAttributes("padding", {
+		top: 10,
+		bottom: 10,
+		right: 10,
+		left: 10,
+	}),
+	// typography attributes ⬇
+	...generateTypographyAttributes(
+		Object.values({
+			username: "username",
+			company: "company",
+			description: "description",
+		})
+	),
+
+	//Generate Border & Shadow
+	...generateBorderShadowAttributes(WrpBdShadow, {}),
+
+	// background attributes ⬇
+	...generateBackgroundAttributes(TestimonialWrapBg, {
+		defaultFillColor: "#fff",
+		defaultBgGradient: "linear-gradient(45deg,#fff,#fff)",
+	}),
+
+	// range controller
+	...generateResponsiveRangeAttributes(QUOTE_SIZE, {
+		defaultRange: 60,
+	}),
 };
 
 export default attributes;
