@@ -8,18 +8,19 @@ import { TestimonialIcon } from "./icon";
 import attributes from "./attributes";
 import metadata from "../block.json";
 import Example from "./example";
+import Deprecated from "./deprecated";
 const { ebConditionalRegisterBlockType } = EBTestimonialControls;
-// import { ebConditionalRegisterBlockType } from "../controls/src/helpers/index";
 
 ebConditionalRegisterBlockType(metadata, {
 	icon: TestimonialIcon,
 	attributes,
 	keywords: [
-		__("testimonial", "testimonial-wp-block"),
-		__("about", "testimonial-wp-block"),
-		__("eb quote", "testimonial-wp-block"),
+		__("testimonial", "essential-blocks"),
+		__("about", "essential-blocks"),
+		__("eb quote", "essential-blocks"),
 	],
 	edit: Edit,
 	save: Save,
 	example: Example,
+	deprecated: Deprecated,
 });

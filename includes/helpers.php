@@ -40,10 +40,12 @@ class Testimonial_Helper
      */
     public function enqueues($hook)
     {
+        global $pagenow;
+
         /**
          * Only for Admin Add/Edit Pages 
          */
-        if ($hook == 'post-new.php' || $hook == 'post.php' || $hook == 'site-editor.php') {
+        if ($pagenow == 'post-new.php' || $pagenow == 'post.php' || $pagenow == 'site-editor.php' || ($pagenow == 'themes.php' && !empty($_SERVER['QUERY_STRING']) && str_contains($_SERVER['QUERY_STRING'], 'gutenberg-edit-site'))) {
 
             $controls_dependencies = include_once TESTIMONIAL_BLOCKS_ADMIN_PATH . '/dist/controls.asset.php';
             wp_register_script(
@@ -58,6 +60,16 @@ class Testimonial_Helper
                 'eb_wp_version' => (float) get_bloginfo('version'),
                 'rest_rootURL' => get_rest_url(),
             ));
+
+            if ($pagenow == 'post-new.php' || $pagenow == 'post.php') {
+                wp_localize_script('testimonial-blocks-controls-util', 'eb_conditional_localize', array(
+                    'editor_type' => 'edit-post'
+                ));
+            } else if ($pagenow == 'site-editor.php' || $pagenow == 'themes.php') {
+                wp_localize_script('testimonial-blocks-controls-util', 'eb_conditional_localize', array(
+                    'editor_type' => 'edit-site'
+                ));
+            }
 
             wp_enqueue_style(
                 'essential-blocks-editor-css',

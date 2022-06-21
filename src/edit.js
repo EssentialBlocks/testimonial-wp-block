@@ -1,5 +1,5 @@
 /**
- * WordPress dependencies 
+ * WordPress dependencies
  */
 import { __ } from "@wordpress/i18n";
 import { useEffect } from "@wordpress/element";
@@ -10,35 +10,26 @@ import { select } from "@wordpress/data";
 /**
  * Internal dependencies
  */
- import classnames from "classnames";
+import classnames from "classnames";
 
 import Inspector from "./inspector";
 
 const {
+	//
 	softMinifyCssStrings,
 	generateBackgroundControlStyles,
 	generateDimensionsControlStyles,
 	generateTypographyStyles,
 	generateResponsiveRangeStyles,
 	generateBorderShadowStyles,
+	// mimmikCssForPreviewBtnClick,
 	duplicateBlockIdFix,
 } = window.EBTestimonialControls;
 
-// import {
-// 	softMinifyCssStrings,
-// 	generateBackgroundControlStyles,
-// 	generateDimensionsControlStyles,
-// 	generateTypographyStyles,
-// 	generateResponsiveRangeStyles,
-// 	generateBorderShadowStyles,
-// 	duplicateBlockIdFix,
-// } from "../controls/src/index";
-
 const editorStoreForGettingPreivew =
-	eb_style_handler.editor_type === "edit-site"
+	eb_conditional_localize.editor_type === "edit-site"
 		? "core/edit-site"
 		: "core/edit-post";
-
 
 import { WrpBdShadow, TestimonialWrapBg, QUOTE_SIZE } from "./constants";
 
@@ -76,12 +67,15 @@ const Edit = (props) => {
 		companyColor,
 		quoteHorizontalPosition,
 		quoteVerticalPosition,
+		classHook,
 	} = attributes;
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
 	useEffect(() => {
 		setAttributes({
-			resOption: select(editorStoreForGettingPreivew).__experimentalGetPreviewDeviceType(),
+			resOption: select(
+				editorStoreForGettingPreivew
+			).__experimentalGetPreviewDeviceType(),
 		});
 	}, []);
 
@@ -165,7 +159,7 @@ const Edit = (props) => {
 		// noBorder: true,
 	});
 
-	// responsive range controller 
+	// responsive range controller
 	const {
 		rangeStylesDesktop: quoteHeightStylesDesktop,
 		rangeStylesTab: quoteHeightStylesTab,
@@ -352,18 +346,18 @@ const Edit = (props) => {
 			padding-right: 20px;
 			word-break: break-word;
 		}
-		${quoteHorizontalPosition === "flex-end" ? 
-			`.${blockId} .eb-description-container {
+		${quoteHorizontalPosition === "flex-end"
+			? `.${blockId} .eb-description-container {
 				flex-direction: row-reverse;
 			}
 			.${blockId} .eb-description-container .eb-testimonial-quote-style {
 				transform: rotateY(180deg);
 			}`
-			: quoteHorizontalPosition === "center" ?
-				quoteVerticalPosition == 1 ?
-					`.${blockId} .eb-description-container {
+			: quoteHorizontalPosition === "center"
+				? quoteVerticalPosition == 1
+					? `.${blockId} .eb-description-container {
 						flex-direction: column;
-					}` 
+					}`
 					: `.${blockId} .eb-description-container {
 						flex-direction: column-reverse;
 					}`
@@ -451,11 +445,22 @@ const Edit = (props) => {
 		className: classnames(className, `eb-guten-block-main-parent-wrapper`),
 	});
 
-	return [
-		isSelected && <Inspector {...props} />,
-		<div {...blockProps}>
-			<style>
-				{`
+	const replaceString = (str, find, replace) => {
+		return str.replace(new RegExp(find, "g"), replace);
+	}
+
+	blockProps.className = replaceString(blockProps.className, "eb-testimonial-wrapper", "");
+	blockProps.className = replaceString(blockProps.className, blockId, "");
+
+	return (
+		<>
+			{isSelected && (
+				<Inspector attributes={attributes} setAttributes={setAttributes} />
+			)}
+			<div {...blockProps}>
+
+				<style>
+					{`
 				${desktopAllStyles}
 
 				/* mimmikcssStart */
@@ -481,69 +486,74 @@ const Edit = (props) => {
 				
 				}
 				`}
-			</style>
-			<div className={`eb-testimonial-wrapper ${blockId}`} data-id={blockId}>
-				<div className="eb-testimonial-container">
-					<div className="eb-avatar-container">
-						<div className="image-container">
-							<div className="eb-avatar-style" />
-							<MediaUpload
-								onSelect={(media) =>
-									setAttributes({
-										imageUrl: media.url,
-										imageId: media.id,
-									})
-								}
-								type="image"
-								value={imageId}
-								render={({ open }) =>
-									!imageUrl && (
-										<Button
-											className="eb-testimonial-image components-button"
-											label={__("Upload Image", "essential-blocks")}
-											icon="format-image"
-											onClick={open}
-										/>
-									)
-								}
-							/>
-						</div>
+				</style>
+				<div className={`eb-parent-wrapper eb-parent-${blockId} ${classHook}`}>
+					<div className={`eb-testimonial-wrapper ${blockId}`} data-id={blockId}>
+						<div className="eb-testimonial-container">
+							<div className="eb-avatar-container">
+								<div className="image-container">
+									<div className="eb-avatar-style" />
+									<MediaUpload
+										onSelect={(media) =>
+											setAttributes({
+												imageUrl: media.url,
+												imageId: media.id,
+											})
+										}
+										type="image"
+										value={imageId}
+										render={({ open }) =>
+											!imageUrl && (
+												<Button
+													className="eb-testimonial-image components-button"
+													label={__("Upload Image", "essential-blocks")}
+													icon="format-image"
+													onClick={open}
+												/>
+											)
+										}
+									/>
+								</div>
 
-						<div className="eb-userinfo-container">
-							<RichText
-								tagName="p"
-								className="eb-testimonial-username"
-								value={userName}
-								onChange={(newName) => setAttributes({ userName: newName })}
-							/>
+								<div className="eb-userinfo-container">
+									<RichText
+										tagName="p"
+										className="eb-testimonial-username"
+										value={userName}
+										onChange={(newName) => setAttributes({ userName: newName })}
+									/>
 
-							<RichText
-								tagName="p"
-								className="eb-testimonial-company"
-								value={companyName}
-								onChange={(newName) => setAttributes({ companyName: newName })}
-							/>
-						</div>
-					</div>
-
-					<div className="eb-description-container">
-						{enableQuote && (
-							<div className="eb-testimonial-quote-style">
-								<QuoteSVG />
+									<RichText
+										tagName="p"
+										className="eb-testimonial-company"
+										value={companyName}
+										onChange={(newName) =>
+											setAttributes({ companyName: newName })
+										}
+									/>
+								</div>
 							</div>
-						)}
-						
-						<RichText
-							tagName="p"
-							className="eb-testimonial-description"
-							value={description}
-							onChange={(newText) => setAttributes({ description: newText })}
-						/>
+
+							<div className="eb-description-container">
+								{enableQuote && (
+									<div className="eb-testimonial-quote-style">
+										<QuoteSVG />
+									</div>
+								)}
+
+								<RichText
+									tagName="p"
+									className="eb-testimonial-description"
+									value={description}
+									onChange={(newText) => setAttributes({ description: newText })}
+								/>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>,
-	];
+		</>
+	);
 };
 
 export default Edit;
