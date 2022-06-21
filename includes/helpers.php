@@ -49,7 +49,7 @@ class Testimonial_Helper
             wp_register_script(
                 "testimonial-blocks-controls-util",
                 TESTIMONIAL_BLOCKS_ADMIN_URL . '/dist/controls.js',
-                array_merge($controls_dependencies['dependencies'], array("essential-blocks-edit-post")),
+                array_merge($controls_dependencies['dependencies']),
                 $controls_dependencies['version'],
                 true
             );
@@ -70,7 +70,7 @@ class Testimonial_Helper
     }
     public static function get_block_register_path($blockname, $blockPath)
     {
-        if ( (float) get_bloginfo('version') <= 5.6) {
+        if ((float) get_bloginfo('version') <= 5.6) {
             return $blockname;
         } else {
             return $blockPath;
