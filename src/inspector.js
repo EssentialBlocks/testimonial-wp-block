@@ -44,10 +44,11 @@ const {
 	BorderShadowControl,
 	BackgroundControl,
 	ResponsiveRangeController,
+	AdvancedControls,
 } = window.EBTestimonialControls;
 
 const editorStoreForGettingPreivew =
-	eb_style_handler.editor_type === "edit-site"
+	eb_conditional_localize.editor_type === "edit-site"
 		? "core/edit-site"
 		: "core/edit-post";
 
@@ -122,9 +123,9 @@ function Inspector(props) {
 										{avatarInline && (
 											<BaseControl label={__("User Info Position", "essential-blocks")}>
 												<ButtonGroup>
-													{ALIGN_ITEMS.map((item) => (
+													{ALIGN_ITEMS.map((item, index) => (
 														<Button
-															// isLarge
+															key={index}
 															isSecondary={avatarPosition !== item.value}
 															isPrimary={avatarPosition === item.value}
 															onClick={() =>
@@ -145,9 +146,9 @@ function Inspector(props) {
 												label={avatarInline ? __("User Info Align", "essential-blocks") : __("Image Align", "essential-blocks")}
 											>
 												<ButtonGroup>
-													{ALIGN_ITEMS.map((item) => (
+													{ALIGN_ITEMS.map((item, index) => (
 														<Button
-															// isLarge
+															key={index}
 															isSecondary={avatarAlign !== item.value}
 															isPrimary={avatarAlign === item.value}
 															onClick={() =>
@@ -165,9 +166,9 @@ function Inspector(props) {
 
 										<BaseControl label={__("Description Position", "essential-blocks")}>
 											<ButtonGroup>
-												{DESC_POSITIONS.map((item) => (
+												{DESC_POSITIONS.map((item, index) => (
 													<Button
-														// isLarge
+														key={index}
 														isSecondary={avatarOrder !== item.value}
 														isPrimary={avatarOrder === item.value}
 														onClick={() =>
@@ -184,9 +185,9 @@ function Inspector(props) {
 
 										<BaseControl label={__("Description Align", "essential-blocks")}>
 											<ButtonGroup>
-												{TEXT_ALIGN.map((option) => (
+												{TEXT_ALIGN.map((option, index) => (
 													<Button
-														// isLarge
+														key={index}
 														isSecondary={descTextAlign !== option.value}
 														isPrimary={descTextAlign === option.value}
 														onClick={() =>
@@ -203,9 +204,9 @@ function Inspector(props) {
 
 										<BaseControl label={__("User Name Align", "essential-blocks")}>
 											<ButtonGroup>
-												{TEXT_ALIGN.map((option) => (
+												{TEXT_ALIGN.map((option, index) => (
 													<Button
-														// isLarge
+														key={index}
 														isSecondary={textAlign !== option.value}
 														isPrimary={textAlign === option.value}
 														onClick={() =>
@@ -222,9 +223,9 @@ function Inspector(props) {
 
 										<BaseControl label={__("User Info Align", "essential-blocks")}>
 											<ButtonGroup>
-												{ALIGN_ITEMS_VERTICAL.map((item) => (
+												{ALIGN_ITEMS_VERTICAL.map((item, index) => (
 													<Button
-														// isLarge
+														key={index}
 														isSecondary={userInfoAlign !== item.value}
 														isPrimary={userInfoAlign === item.value}
 														onClick={() =>
@@ -249,9 +250,9 @@ function Inspector(props) {
 											<>
 												<BaseControl label={__("Quote Horizontal Align", "essential-blocks")}>
 													<ButtonGroup>
-														{ALIGN_ITEMS.map((item) => (
+														{ALIGN_ITEMS.map((item, index) => (
 															<Button
-																// isLarge
+																key={index}
 																isSecondary={quoteHorizontalPosition !== item.value}
 																isPrimary={quoteHorizontalPosition === item.value}
 																onClick={() =>
@@ -269,9 +270,9 @@ function Inspector(props) {
 												{quoteHorizontalPosition === "center" && (
 													<BaseControl label={__("Quote Vertical Position", "essential-blocks")}>
 														<ButtonGroup>
-															{DESC_POSITIONS.map((item) => (
+															{DESC_POSITIONS.map((item, index) => (
 																<Button
-																	// isLarge
+																	key={index}
 																	isSecondary={quoteVerticalPosition !== item.value}
 																	isPrimary={quoteVerticalPosition === item.value}
 																	onClick={() =>
@@ -441,6 +442,8 @@ function Inspector(props) {
 										// noBorder
 										/>
 									</PanelBody>
+
+									<AdvancedControls attributes={attributes} setAttributes={setAttributes} />
 								</>
 							)}
 						</div>

@@ -4,7 +4,7 @@
  * Plugin Name:     Testimonial Block 
  * Plugin URI:      https://essential-blocks.com
  * Description:     Display testimonials & gain instant credibility
- * Version:         1.2.0
+ * Version:         1.2.1
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net
  * License:         GPL-3.0-or-later
@@ -29,7 +29,7 @@ require_once __DIR__ . '/lib/style-handler/style-handler.php';
 function create_block_testimonial_block_init()
 {
 
-	define('TESTIMONIAL_BLOCKS_VERSION', "1.2.0");
+	define('TESTIMONIAL_BLOCKS_VERSION', "1.2.1");
 	define('TESTIMONIAL_BLOCKS_ADMIN_URL', plugin_dir_url(__FILE__));
 	define('TESTIMONIAL_BLOCKS_ADMIN_PATH', dirname(__FILE__));
 
@@ -47,6 +47,7 @@ function create_block_testimonial_block_init()
 		'wp-element',
 		'wp-block-editor',
 		'testimonial-blocks-controls-util',
+		'essential-blocks-eb-animation'
 	));
 
 	wp_register_script(
@@ -57,11 +58,28 @@ function create_block_testimonial_block_init()
 		true
 	);
 
+	$load_animation_js = TESTIMONIAL_BLOCKS_ADMIN_URL . 'assets/js/eb-animation-load.js';
+	wp_register_script(
+		'essential-blocks-eb-animation',
+		$load_animation_js,
+		array(),
+		TESTIMONIAL_BLOCKS_VERSION,
+		true
+	);
+
+	$animate_css = TESTIMONIAL_BLOCKS_ADMIN_URL . 'assets/css/animate.min.css';
+	wp_register_style(
+		'essential-blocks-animation',
+		$animate_css,
+		array(),
+		TESTIMONIAL_BLOCKS_VERSION
+	);
+
 	$style_css = TESTIMONIAL_BLOCKS_ADMIN_URL . 'dist/style.css';
 	wp_register_style(
 		'create-block-testimonial-block-frontend-style',
 		$style_css,
-		array(),
+		array('essential-blocks-animation'),
 		TESTIMONIAL_BLOCKS_VERSION
 	);
 
@@ -74,6 +92,7 @@ function create_block_testimonial_block_init()
 				'render_callback' => function ($attributes, $content) {
 					if (!is_admin()) {
 						wp_enqueue_style('create-block-testimonial-block-frontend-style');
+						wp_enqueue_script('essential-blocks-eb-animation');
 					}
 					return $content;
 				}

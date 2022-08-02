@@ -1,6 +1,6 @@
 {
 	"name": "testimonial-wp-block",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "Example block written with ESNext standard and JSX support – build step required.",
 	"author": "WPDeveloper",
 	"license": "GPL-2.0-or-later",

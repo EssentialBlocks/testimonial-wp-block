@@ -2,8 +2,8 @@
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, jamilbd07, rahat89
 Tags: block, blocks, testimonial, testimonials, testimony, testimonial showcase, gutenberg, gutenberg blocks
 Requires at least: 5.0
-Tested up to: 5.9
-Stable tag: 1.2.0
+Tested up to: 6.0
+Stable tag: 1.2.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -83,7 +83,12 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
-=1.2.0 - 08/02/2022
+= 1.2.1 - 02/08/2022 =
+* Added: Animation, responsive controls and custom CSS
+* Added: Converted style-handler to php for working perfectly with Reusable blocks and FSE
+* Improved: Controls and structure
+
+= 1.2.0 - 08/02/2022
 * Added: Content position controls
 * Added: Quote icon position, size, show/hide controls
 * Added: Margin, Padding, Background, Border control
