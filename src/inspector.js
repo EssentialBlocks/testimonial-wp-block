@@ -14,7 +14,7 @@ import {
 	Button,
 	BaseControl,
 	ButtonGroup,
-	TabPanel
+	TabPanel,
 } from "@wordpress/components";
 import { select } from "@wordpress/data";
 
@@ -74,42 +74,46 @@ function Inspector(props) {
 		attributes,
 		setAttributes,
 		resOption,
-		objAttributes
+		objAttributes,
 	};
 
 	return (
 		<InspectorControls key="controls">
 			<div className="eb-panel-control">
-
 				<TabPanel
 					className="eb-parent-tab-panel"
 					activeClass="active-tab"
 					// onSelect={onSelect}
 					tabs={[
 						{
-							name: 'general',
-							title: 'General',
-							className: 'eb-tab general',
+							name: "general",
+							title: "General",
+							className: "eb-tab general",
 						},
 						{
-							name: 'styles',
-							title: 'Style',
-							className: 'eb-tab styles',
+							name: "styles",
+							title: "Style",
+							className: "eb-tab styles",
 						},
 						{
-							name: 'advance',
-							title: 'Advanced',
-							className: 'eb-tab advance',
+							name: "advance",
+							title: "Advanced",
+							className: "eb-tab advance",
 						},
 					]}
 				>
-					{(tab) =>
+					{(tab) => (
 						<div className={"eb-tab-controls" + tab.name}>
 							{tab.name === "general" && (
 								<>
-									<PanelBody title={__("Layout Settings", "essential-blocks")} initialOpen={true}>
+									<PanelBody
+										title={__("Layout Settings", "essential-blocks")}
+										initialOpen={true}
+									>
 										{avatarInline && (
-											<BaseControl label={__("User Info Position", "essential-blocks")}>
+											<BaseControl
+												label={__("User Info Position", "essential-blocks")}
+											>
 												<ButtonGroup>
 													{ALIGN_ITEMS.map((item, index) => (
 														<Button
@@ -131,7 +135,11 @@ function Inspector(props) {
 
 										{!avatarInline && displayAvatar && (
 											<BaseControl
-												label={avatarInline ? __("User Info Align", "essential-blocks") : __("Image Align", "essential-blocks")}
+												label={
+													avatarInline
+														? __("User Info Align", "essential-blocks")
+														: __("Image Align", "essential-blocks")
+												}
 											>
 												<ButtonGroup>
 													{ALIGN_ITEMS.map((item, index) => (
@@ -152,7 +160,9 @@ function Inspector(props) {
 											</BaseControl>
 										)}
 
-										<BaseControl label={__("Description Position", "essential-blocks")}>
+										<BaseControl
+											label={__("Description Position", "essential-blocks")}
+										>
 											<ButtonGroup>
 												{DESC_POSITIONS.map((item, index) => (
 													<Button
@@ -171,7 +181,9 @@ function Inspector(props) {
 											</ButtonGroup>
 										</BaseControl>
 
-										<BaseControl label={__("Description Align", "essential-blocks")}>
+										<BaseControl
+											label={__("Description Align", "essential-blocks")}
+										>
 											<ButtonGroup>
 												{TEXT_ALIGN.map((option, index) => (
 													<Button
@@ -190,7 +202,9 @@ function Inspector(props) {
 											</ButtonGroup>
 										</BaseControl>
 
-										<BaseControl label={__("User Name Align", "essential-blocks")}>
+										<BaseControl
+											label={__("User Name Align", "essential-blocks")}
+										>
 											<ButtonGroup>
 												{TEXT_ALIGN.map((option, index) => (
 													<Button
@@ -209,7 +223,9 @@ function Inspector(props) {
 											</ButtonGroup>
 										</BaseControl>
 
-										<BaseControl label={__("User Info Align", "essential-blocks")}>
+										<BaseControl
+											label={__("User Info Align", "essential-blocks")}
+										>
 											<ButtonGroup>
 												{ALIGN_ITEMS_VERTICAL.map((item, index) => (
 													<Button
@@ -231,18 +247,29 @@ function Inspector(props) {
 										<ToggleControl
 											label="Enable Quote"
 											checked={enableQuote}
-											onChange={() => setAttributes({ enableQuote: !enableQuote })}
+											onChange={() =>
+												setAttributes({ enableQuote: !enableQuote })
+											}
 										/>
 
 										{enableQuote && (
 											<>
-												<BaseControl label={__("Quote Horizontal Align", "essential-blocks")}>
+												<BaseControl
+													label={__(
+														"Quote Horizontal Align",
+														"essential-blocks"
+													)}
+												>
 													<ButtonGroup>
 														{ALIGN_ITEMS.map((item, index) => (
 															<Button
 																key={index}
-																isSecondary={quoteHorizontalPosition !== item.value}
-																isPrimary={quoteHorizontalPosition === item.value}
+																isSecondary={
+																	quoteHorizontalPosition !== item.value
+																}
+																isPrimary={
+																	quoteHorizontalPosition === item.value
+																}
 																onClick={() =>
 																	setAttributes({
 																		quoteHorizontalPosition: item.value,
@@ -256,13 +283,22 @@ function Inspector(props) {
 												</BaseControl>
 
 												{quoteHorizontalPosition === "center" && (
-													<BaseControl label={__("Quote Vertical Position", "essential-blocks")}>
+													<BaseControl
+														label={__(
+															"Quote Vertical Position",
+															"essential-blocks"
+														)}
+													>
 														<ButtonGroup>
 															{DESC_POSITIONS.map((item, index) => (
 																<Button
 																	key={index}
-																	isSecondary={quoteVerticalPosition !== item.value}
-																	isPrimary={quoteVerticalPosition === item.value}
+																	isSecondary={
+																		quoteVerticalPosition !== item.value
+																	}
+																	isPrimary={
+																		quoteVerticalPosition === item.value
+																	}
 																	onClick={() =>
 																		setAttributes({
 																			quoteVerticalPosition: item.value,
@@ -277,21 +313,27 @@ function Inspector(props) {
 												)}
 											</>
 										)}
-
 									</PanelBody>
 
-									<PanelBody title={__("Avatar", "essential-blocks")} initialOpen={false}>
+									<PanelBody
+										title={__("Avatar", "essential-blocks")}
+										initialOpen={false}
+									>
 										<ToggleControl
 											label="Display Avatar"
 											checked={displayAvatar}
-											onChange={() => setAttributes({ displayAvatar: !displayAvatar })}
+											onChange={() =>
+												setAttributes({ displayAvatar: !displayAvatar })
+											}
 										/>
 
 										{displayAvatar && (
 											<ToggleControl
 												label={__("Avatar Inline", "essential-blocks")}
 												checked={avatarInline}
-												onChange={() => setAttributes({ avatarInline: !avatarInline })}
+												onChange={() =>
+													setAttributes({ avatarInline: !avatarInline })
+												}
 											/>
 										)}
 
@@ -302,17 +344,23 @@ function Inspector(props) {
 											>
 												<ToggleButton
 													options={IMG_POSITIONS}
-													onChange={(value) => setAttributes({ imagePosition: value })}
+													onChange={(value) =>
+														setAttributes({ imagePosition: value })
+													}
 												/>
 											</BaseControl>
 										)}
 
 										{displayAvatar && imageUrl && (
-											<PanelBody title={__("Image Setting", "essential-blocks")}>
+											<PanelBody
+												title={__("Image Setting", "essential-blocks")}
+											>
 												{imageUrl && (
 													<ImageAvatar
 														imageUrl={imageUrl}
-														onDeleteImage={() => setAttributes({ imageUrl: null })}
+														onDeleteImage={() =>
+															setAttributes({ imageUrl: null })
+														}
 													/>
 												)}
 
@@ -348,12 +396,14 @@ function Inspector(props) {
 										colorSettings={[
 											{
 												value: userNameColor,
-												onChange: (userNameColor) => setAttributes({ userNameColor }),
+												onChange: (userNameColor) =>
+													setAttributes({ userNameColor }),
 												label: __("Username", "essential-blocks"),
 											},
 											{
 												value: companyColor,
-												onChange: (companyColor) => setAttributes({ companyColor }),
+												onChange: (companyColor) =>
+													setAttributes({ companyColor }),
 												label: __("Company", "essential-blocks"),
 											},
 											{
@@ -370,7 +420,10 @@ function Inspector(props) {
 										]}
 									/>
 
-									<PanelBody title={__("Typography", "essential-blocks")} initialOpen={false}>
+									<PanelBody
+										title={__("Typography", "essential-blocks")}
+										initialOpen={false}
+									>
 										<TypographyDropdown
 											baseLabel="Username"
 											typographyPrefixConstant={"username"}
@@ -415,7 +468,10 @@ function Inspector(props) {
 										/>
 									</PanelBody>
 
-									<PanelBody title={__("Background ", "essential-blocks")} initialOpen={false}>
+									<PanelBody
+										title={__("Background ", "essential-blocks")}
+										initialOpen={false}
+									>
 										<BackgroundControl
 											controlName={TestimonialWrapBg}
 											resRequiredProps={resRequiredProps}
@@ -426,17 +482,19 @@ function Inspector(props) {
 										<BorderShadowControl
 											controlName={WrpBdShadow}
 											resRequiredProps={resRequiredProps}
-										// noShadow
-										// noBorder
+											// noShadow
+											// noBorder
 										/>
 									</PanelBody>
 
-									<AdvancedControls attributes={attributes} setAttributes={setAttributes} />
+									<AdvancedControls
+										attributes={attributes}
+										setAttributes={setAttributes}
+									/>
 								</>
 							)}
 						</div>
-					}
-
+					)}
 				</TabPanel>
 			</div>
 		</InspectorControls>

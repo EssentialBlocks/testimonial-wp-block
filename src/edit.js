@@ -198,16 +198,16 @@ const Edit = (props) => {
 			transition:${bgTransitionStyle}, ${bdShadowTransitionStyle};
 		}
 
-		.eb-testimonial-wrapper.${blockId}:hover{		
+		.eb-testimonial-wrapper.${blockId}:hover{
 			${hoverBackgroundStylesDesktop}
 			${bdShadowStylesHoverDesktop}
 		}
-		
+
 		.eb-testimonial-wrapper.${blockId}:before{
 			${overlayStylesDesktop}
 			transition:${ovlTransitionStyle};
 		}
-		
+
 		.eb-testimonial-wrapper.${blockId}:hover:before{
 			${hoverOverlayStylesDesktop}
 		}
@@ -220,16 +220,16 @@ const Edit = (props) => {
 			${bdShadowStyesTab}
 			${backgroundStylesTab}
 		}
-		
-		.eb-testimonial-wrapper.${blockId}:hover{		
+
+		.eb-testimonial-wrapper.${blockId}:hover{
 			${hoverBackgroundStylesTab}
 			${bdShadowStylesHoverTab}
 		}
-		
+
 		.eb-testimonial-wrapper.${blockId}:before{
 			${overlayStylesTab}
 		}
-		
+
 		.eb-testimonial-wrapper.${blockId}:hover:before{
 			${hoverOverlayStylesTab}
 		}
@@ -243,15 +243,15 @@ const Edit = (props) => {
 			${backgroundStylesMobile}
 		}
 
-		.eb-testimonial-wrapper.${blockId}:hover{		
+		.eb-testimonial-wrapper.${blockId}:hover{
 			${hoverBackgroundStylesMobile}
 			${bdShadowStylesHoverMobile}
 		}
-		
+
 		.eb-testimonial-wrapper.${blockId}:before{
 			${overlayStylesMobile}
 		}
-		
+
 		.eb-testimonial-wrapper.${blockId}:hover:before{
 			${hoverOverlayStylesMobile}
 		}
@@ -308,18 +308,18 @@ const Edit = (props) => {
 	`;
 
 	const companyNameStyle = `
-		.${blockId} .eb-testimonial-company { 
+		.${blockId} .eb-testimonial-company {
 			${companyTypoStylesDesktop}
 			color: ${companyColor};
 		}
 	`;
 	const companyNameStyleTab = `
-		.${blockId} .eb-testimonial-company { 
+		.${blockId} .eb-testimonial-company {
 			${companyTypoStylesTab}
 		}
 	`;
 	const companyNameStyleMobile = `
-		.${blockId} .eb-testimonial-company { 
+		.${blockId} .eb-testimonial-company {
 			${companyTypoStylesMobile}
 		}
 	`;
@@ -332,14 +332,15 @@ const Edit = (props) => {
 			padding-right: 20px;
 			word-break: break-word;
 		}
-		${quoteHorizontalPosition === "flex-end"
-			? `.${blockId} .eb-description-container {
+		${
+			quoteHorizontalPosition === "flex-end"
+				? `.${blockId} .eb-description-container {
 				flex-direction: row-reverse;
 			}
 			.${blockId} .eb-description-container .eb-testimonial-quote-style {
 				transform: rotateY(180deg);
 			}`
-			: quoteHorizontalPosition === "center"
+				: quoteHorizontalPosition === "center"
 				? quoteVerticalPosition == 1
 					? `.${blockId} .eb-description-container {
 						flex-direction: column;
@@ -353,12 +354,12 @@ const Edit = (props) => {
 		}
 	`;
 	const descriptionStyleTab = `
-		.${blockId} .eb-description-container p { 
+		.${blockId} .eb-description-container p {
 			${descriptionTypoStylesTab}
 		}
 	`;
 	const descriptionStyleMobile = `
-		.${blockId} .eb-description-container p { 
+		.${blockId} .eb-description-container p {
 			${descriptionTypoStylesMobile}
 		}
 	`;
@@ -433,9 +434,13 @@ const Edit = (props) => {
 
 	const replaceString = (str, find, replace) => {
 		return str.replace(new RegExp(find, "g"), replace);
-	}
+	};
 
-	blockProps.className = replaceString(blockProps.className, "eb-testimonial-wrapper", "");
+	blockProps.className = replaceString(
+		blockProps.className,
+		"eb-testimonial-wrapper",
+		""
+	);
 	blockProps.className = replaceString(blockProps.className, blockId, "");
 
 	return (
@@ -444,7 +449,6 @@ const Edit = (props) => {
 				<Inspector attributes={attributes} setAttributes={setAttributes} />
 			)}
 			<div {...blockProps}>
-
 				<style>
 					{`
 				${desktopAllStyles}
@@ -456,25 +460,28 @@ const Edit = (props) => {
 
 				/* mimmikcssEnd */
 
-				@media all and (max-width: 1024px) {	
+				@media all and (max-width: 1024px) {
 
-					/* tabcssStart */			
+					/* tabcssStart */
 					${softMinifyCssStrings(tabAllStyles)}
-					/* tabcssEnd */			
-				
+					/* tabcssEnd */
+
 				}
-				
+
 				@media all and (max-width: 767px) {
-					
-					/* mobcssStart */			
+
+					/* mobcssStart */
 					${softMinifyCssStrings(mobileAllStyles)}
-					/* mobcssEnd */			
-				
+					/* mobcssEnd */
+
 				}
 				`}
 				</style>
 				<div className={`eb-parent-wrapper eb-parent-${blockId} ${classHook}`}>
-					<div className={`eb-testimonial-wrapper ${blockId}`} data-id={blockId}>
+					<div
+						className={`eb-testimonial-wrapper ${blockId}`}
+						data-id={blockId}
+					>
 						<div className="eb-testimonial-container">
 							<div className="eb-avatar-container">
 								<div className="image-container">
@@ -531,7 +538,9 @@ const Edit = (props) => {
 									tagName="p"
 									className="eb-testimonial-description"
 									value={description}
-									onChange={(newText) => setAttributes({ description: newText })}
+									onChange={(newText) =>
+										setAttributes({ description: newText })
+									}
 								/>
 							</div>
 						</div>
