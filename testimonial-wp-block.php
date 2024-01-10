@@ -46,7 +46,7 @@ function create_block_testimonial_block_init() {
         'wp-element',
         'wp-block-editor',
         'testimonial-blocks-controls-util',
-        'essential-blocks-eb-animation'
+        'essential-blocks-eb-animation',
     ] );
 
     wp_register_script(
@@ -74,11 +74,19 @@ function create_block_testimonial_block_init() {
         TESTIMONIAL_BLOCKS_VERSION
     );
 
+	$fontawesome = TESTIMONIAL_BLOCKS_ADMIN_URL . 'assets/css/font-awesome5.css';
+	wp_register_style(
+        'essential-blocks-fontawesome',
+        $fontawesome,
+        [],
+        TESTIMONIAL_BLOCKS_VERSION
+    );
+
     $style_css = TESTIMONIAL_BLOCKS_ADMIN_URL . 'dist/style.css';
     wp_register_style(
         'create-block-testimonial-block-frontend-style',
         $style_css,
-        [ 'essential-blocks-animation' ],
+        [ 'essential-blocks-animation', 'essential-blocks-fontawesome' ],
         TESTIMONIAL_BLOCKS_VERSION
     );
 

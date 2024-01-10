@@ -15,7 +15,15 @@ const {
 	generateResponsiveRangeAttributes,
 } = window.EBTestimonialControls;
 
-import { WrpBdShadow, TestimonialWrapBg, QUOTE_SIZE } from "./constants";
+import {
+	WrpBdShadow,
+	TestimonialWrapBg,
+	QUOTE_SIZE,
+	IMG_WIDTH,
+	ImgBdShadow,
+	RATING_SIZE,
+	IMG_GAP,
+} from "./constants";
 
 const attributes = {
 	resOption: {
@@ -183,11 +191,33 @@ const attributes = {
 	},
 	companyColor: {
 		type: "string",
-		default: "#4a5059",
+		default: "var(--eb-global-heading-color)",
 	},
 
 	bgPositon: {
 		type: "string",
+	},
+
+	showRating: {
+		type: "boolean",
+		default: false,
+	},
+	rating: {
+		type: "number",
+		default: 5,
+	},
+	ratingColor: {
+		type: "string",
+		default: "#f2b01e",
+	},
+
+	ratingIndivisual: {
+		type: "boolean",
+		default: false,
+	},
+	ratingPosition: {
+		type: "number",
+		default: 3,
 	},
 
 	/**
@@ -226,8 +256,21 @@ const attributes = {
 	}),
 
 	// range controller
+	...generateResponsiveRangeAttributes(RATING_SIZE, {
+		defaultRange: 14,
+	}),
 	...generateResponsiveRangeAttributes(QUOTE_SIZE, {
 		defaultRange: 60,
+	}),
+
+	...generateResponsiveRangeAttributes(IMG_WIDTH, {
+		// defaultRange: 60,
+	}),
+	...generateResponsiveRangeAttributes(IMG_GAP, {
+		defaultRange: 15,
+	}),
+	...generateBorderShadowAttributes(ImgBdShadow, {
+		// noBorderRadius,
 	}),
 };
 

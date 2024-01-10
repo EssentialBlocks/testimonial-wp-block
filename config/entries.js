@@ -9,6 +9,7 @@ export { default as ResponsiveRangeController } from "../controls/src/controls/r
 export { default as ToggleButton } from "../controls/src/controls/toggle-button";
 export { default as TypographyDropdown } from "../controls/src/controls/typography-control-v2";
 export { default as ImageAvatar } from "../controls/src/controls/image-avatar";
+export { default as ColorControl } from "../controls/src/controls/color-control";
 
 import "../controls/src/group-controls";
 export { default as AdvancedControls } from "../controls/src/group-controls/components/advanced-controls";
@@ -33,4 +34,5 @@ export {
 	textInsideForEdit,
 	getFlipTransform,
 	ebConditionalRegisterBlockType,
+	StyleComponent,
 } from "../controls/src/helpers";

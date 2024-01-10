@@ -9,7 +9,7 @@ import attributes from "./attributes";
 import metadata from "../block.json";
 import Example from "./example";
 import Deprecated from "./deprecated";
-const { ebConditionalRegisterBlockType } = EBTestimonialControls;
+const { ebConditionalRegisterBlockType } = window.EBTestimonialControls;
 
 ebConditionalRegisterBlockType(metadata, {
 	icon: TestimonialIcon,

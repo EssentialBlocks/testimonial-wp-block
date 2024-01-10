@@ -43,15 +43,15 @@ class Testimonial_Helper
         global $pagenow;
 
         /**
-         * Only for Admin Add/Edit Pages 
+         * Only for Admin Add/Edit Pages
          */
         if ($pagenow == 'post-new.php' || $pagenow == 'post.php' || $pagenow == 'site-editor.php' || ($pagenow == 'themes.php' && !empty($_SERVER['QUERY_STRING']) && str_contains($_SERVER['QUERY_STRING'], 'gutenberg-edit-site'))) {
 
-            $controls_dependencies = include_once TESTIMONIAL_BLOCKS_ADMIN_PATH . '/dist/controls.asset.php';
+            $controls_dependencies = include_once TESTIMONIAL_BLOCKS_ADMIN_PATH . '/dist/modules.asset.php';
             wp_register_script(
                 "testimonial-blocks-controls-util",
-                TESTIMONIAL_BLOCKS_ADMIN_URL . '/dist/controls.js',
-                array_merge($controls_dependencies['dependencies']),
+                TESTIMONIAL_BLOCKS_ADMIN_URL . '/dist/modules.js',
+                array_merge($controls_dependencies['dependencies'],['lodash']),
                 $controls_dependencies['version'],
                 true
             );
