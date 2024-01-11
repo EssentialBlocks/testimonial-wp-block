@@ -73,7 +73,7 @@ class Testimonial_Helper
 
             wp_enqueue_style(
                 'essential-blocks-editor-css',
-                TESTIMONIAL_BLOCKS_ADMIN_URL . '/dist/controls.css',
+                TESTIMONIAL_BLOCKS_ADMIN_URL . '/dist/modules.css',
                 array(),
                 $controls_dependencies['version'],
                 'all'

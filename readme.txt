@@ -1,9 +1,9 @@
 === Testimonial Block ===
-Contributors: wpdevteam, re_enter_rupok, Asif2BD, jamilbd07, rahat89
+Contributors: wpdevteam, re_enter_rupok, Asif2BD, jamilbd07, rahat89, fencermonir
 Tags: block, blocks, testimonial, testimonials, testimony, testimonial showcase, gutenberg, gutenberg blocks
 Requires at least: 5.0
-Tested up to: 6.1
-Stable tag: 1.2.4
+Tested up to: 6.4
+Stable tag: 1.2.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -82,6 +82,10 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
+
+= 1.2.5 - 11/01/2024 =
+* Added: New presets in Testimonial Block
+* Improved: Controls
 
 = 1.2.4 - 29/03/2023 =
 * Improved: Font loader and Controls
