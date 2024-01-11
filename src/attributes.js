@@ -40,6 +40,10 @@ const attributes = {
 	blockMeta: {
 		type: "object",
 	},
+	layoutPreset: {
+		type: "string",
+		default: "layout-preset-1",
+	},
 	avaterContainerFontSize: {
 		type: "number",
 		default: 16,
