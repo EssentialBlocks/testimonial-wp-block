@@ -4,7 +4,7 @@
  * Plugin Name:     Testimonial Block
  * Plugin URI:      https://essential-blocks.com
  * Description:     Display testimonials & gain instant credibility
- * Version:         1.2.5
+ * Version:         1.2.6
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net
  * License:         GPL-3.0-or-later
@@ -28,7 +28,7 @@ require_once __DIR__ . '/lib/style-handler/style-handler.php';
 
 function create_block_testimonial_block_init() {
 
-    define( 'TESTIMONIAL_BLOCKS_VERSION', "1.2.5" );
+    define( 'TESTIMONIAL_BLOCKS_VERSION', "1.2.6" );
     define( 'TESTIMONIAL_BLOCKS_ADMIN_URL', plugin_dir_url( __FILE__ ) );
     define( 'TESTIMONIAL_BLOCKS_ADMIN_PATH', dirname( __FILE__ ) );
 
@@ -47,6 +47,8 @@ function create_block_testimonial_block_init() {
         'wp-block-editor',
         'testimonial-blocks-controls-util',
         'essential-blocks-eb-animation',
+		'essential-blocks-image-loaded',
+		'essential-blocks-isotope'
     ] );
 
     wp_register_script(
@@ -61,6 +63,24 @@ function create_block_testimonial_block_init() {
     wp_register_script(
         'essential-blocks-eb-animation',
         $load_animation_js,
+        [],
+        TESTIMONIAL_BLOCKS_VERSION,
+        true
+    );
+
+	$images_loaded_js = TESTIMONIAL_BLOCKS_ADMIN_URL . 'assets/js/images-loaded.min.js';
+    wp_register_script(
+        'essential-blocks-image-loaded',
+        $images_loaded_js,
+        [],
+        TESTIMONIAL_BLOCKS_VERSION,
+        true
+    );
+
+	$isotop_js = TESTIMONIAL_BLOCKS_ADMIN_URL . 'assets/js/isotope.pkgd.min.js';
+    wp_register_script(
+        'essential-blocks-isotope',
+        $isotop_js,
         [],
         TESTIMONIAL_BLOCKS_VERSION,
         true

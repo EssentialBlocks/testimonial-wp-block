@@ -44,6 +44,10 @@ const attributes = {
 		type: "string",
 		default: "layout-preset-1",
 	},
+	imageOverlayColor: {
+		type: "string",
+		default: "#101828",
+	},
 	avaterContainerFontSize: {
 		type: "number",
 		default: 16,
@@ -195,7 +199,7 @@ const attributes = {
 	},
 	companyColor: {
 		type: "string",
-		default: "var(--eb-global-heading-color)",
+		default: "#1D2939",
 	},
 
 	bgPositon: {

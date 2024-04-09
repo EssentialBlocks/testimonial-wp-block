@@ -71,10 +71,18 @@ class Testimonial_Helper
                 ));
             }
 
+			wp_register_style(
+				'essential-blocks-iconpicker-css',
+				TESTIMONIAL_BLOCKS_ADMIN_URL . 'dist/style-modules.css',
+				[],
+				TESTIMONIAL_BLOCKS_VERSION,
+				'all'
+			);
+
             wp_enqueue_style(
                 'essential-blocks-editor-css',
                 TESTIMONIAL_BLOCKS_ADMIN_URL . '/dist/modules.css',
-                array(),
+                array('essential-blocks-iconpicker-css'),
                 $controls_dependencies['version'],
                 'all'
             );
