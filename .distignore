@@ -1,53 +1,124 @@
-# A set of files you probably don't want in your WordPress.org distribution
-.babelrc
-.deployignore
-.distignore
-.editorconfig
-.eslintignore
-.eslintrc
-.gitmodules
+# Files excluded from the production / WordPress.org distribution.
+# Everything not listed here ships in the zip.
+
+# --- Version control -------------------------------------------------------
 .git
 .gitignore
-.github
 .gitattributes
+.gitmodules
+.github
 .gitlab-ci.yml
+*.git
+
+# --- CI / deployment -------------------------------------------------------
 .travis.yml
+.circleci
+.circleci/config.yml
+bitbucket-pipelines.yml
+behat.yml
+dependencies.yml
+wp-cli.local.yml
+.deployignore
+.distignore
+.wordpress-org
+
+# --- Editor / OS -----------------------------------------------------------
+.editorconfig
+.vscode
+.idea
+*.code-workspace
 .DS_Store
 Thumbs.db
-behat.yml
-bitbucket-pipelines.yml
-bin
-.circleci/config.yml
-composer.json
-composer.lock
-dependencies.yml
+
+# --- Build toolchain config ------------------------------------------------
+.babelrc
+.babelrc.js
+babel.config.js
+babel.config.json
+webpack.config.js
 Gruntfile.js
-package.json
-package-lock.json
-phpunit.xml
-phpunit.xml.dist
-multisite.xml
-multisite.xml.dist
+gulpfile.js
+postcss.config.js
+config
+
+# --- Linting ---------------------------------------------------------------
+.eslintrc
+.eslintrc.js
+.eslintignore
+.eslintcache
+.prettierrc
+.prettierrc.js
+.prettierignore
 .phpcs.xml
 phpcs.xml
 .phpcs.xml.dist
 phpcs.xml.dist
-README.md
-webpack.config.js
-wp-cli.local.yml
+
+# --- Package managers ------------------------------------------------------
+package.json
+package-lock.json
 yarn.lock
-tests
-vendor
+pnpm-lock.yaml
+composer.json
+composer.lock
 node_modules
-*.sql
-*.tar.gz
-*.zip
-gulpfile.js
-*.git
 node_modules/**/*.*
-**/*.zip
+vendor
+
+# --- Tests -----------------------------------------------------------------
+tests
+bin
+phpunit.xml
+phpunit.xml.dist
+multisite.xml
+multisite.xml.dist
+
+# --- Sources (build inputs; compiled output lives in dist/) ----------------
 src
 /controls/
 lib/style-handler/style-handler.js
 lib/style-handler/helpers.js
-.wordpress-org
+
+# --- Source maps -----------------------------------------------------------
+# ~3.5MB of the 4.5MB dist/ folder, and they reference controls/src/ sources
+# that are not shipped, so they are unusable in production.
+*.map
+
+# --- Unreferenced webfonts -------------------------------------------------
+# Font Awesome 4 legacy set, superseded by the fa-brands/fa-regular/fa-solid
+# v5 files. No CSS, JS or PHP in this plugin references it. ~936KB.
+assets/fonts/fontawesome-webfont.eot
+assets/fonts/fontawesome-webfont.svg
+assets/fonts/fontawesome-webfont.ttf
+assets/fonts/fontawesome-webfont.woff
+assets/fonts/fontawesome-webfont.woff2
+assets/fonts/FontAwesome.otf
+# Icon-picker webfont: referenced nowhere in the shipped code.
+assets/fonts/fontIconPicker.svg
+assets/fonts/fontIconPicker.ttf
+assets/fonts/fontIconPicker.woff
+
+# --- Dead webfont formats --------------------------------------------------
+# .eot is Internet Explorer only (IE11 EOL June 2022; WordPress dropped IE11
+# in 5.8). SVG fonts were removed from Chrome in 2014 and never shipped in
+# Firefox or Edge. Nothing in this plugin's declared WP 6.0+ support window
+# requests either format -- the @font-face src chain falls through to
+# woff2 -> woff -> ttf, which covers every supported browser. ~2.15MB.
+assets/fonts/fa-brands-400.eot
+assets/fonts/fa-brands-400.svg
+assets/fonts/fa-regular-400.eot
+assets/fonts/fa-regular-400.svg
+assets/fonts/fa-solid-900.eot
+assets/fonts/fa-solid-900.svg
+
+# --- Docs / dev artifacts --------------------------------------------------
+README.md
+compatibility-report.md
+
+# --- Archives & dumps ------------------------------------------------------
+*.zip
+**/*.zip
+*.tar.gz
+*.sql
+*.tgz
+*.log
