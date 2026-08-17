@@ -4,6 +4,5 @@
 	"name": "testimonial-wp-block/testimonial",
 	"category": "widgets",
 	"description": "Display testimonials & gain instant credibility",
-	"textdomain": "testimonial-wp-block",
-	"editorScript": "file:./dist/index.js"
+	"textdomain": "testimonial-wp-block"
 }
