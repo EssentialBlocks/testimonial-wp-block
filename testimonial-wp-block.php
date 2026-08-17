@@ -176,6 +176,9 @@ function create_block_testimonial_block_init() {
                     if ( ! is_admin() ) {
                         wp_enqueue_style( 'create-block-testimonial-block-frontend-style' );
                         wp_enqueue_script( 'essential-blocks-eb-animation' );
+                        // Google fonts are derived from this block's own typography
+                        // attributes, so published posts work without a re-save.
+                        Testimonial_Font_Loader::enqueue_for_attributes( $attributes );
                     }
                     return $content;
                 }
