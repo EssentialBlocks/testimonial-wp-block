@@ -1,5 +1,5 @@
 === Testimonial Block ===
-Contributors: wpdevteam, re_enter_rupok, Asif2BD, jamilbd07, rahat89, fencermonir
+Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89
 Tags: block, blocks, testimonial, testimonials, testimony, testimonial showcase, gutenberg, gutenberg blocks
 Requires at least: 6.0
 Tested up to: 7.0.4
