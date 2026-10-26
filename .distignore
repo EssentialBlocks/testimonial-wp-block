@@ -84,6 +84,10 @@ lib/style-handler/helpers.js
 # that are not shipped, so they are unusable in production.
 *.map
 
+# Unused controls helper bundle; nothing registers or enqueues it
+dist/frontend.js
+dist/frontend.asset.php
+
 # --- Unreferenced webfonts -------------------------------------------------
 # Font Awesome 4 legacy set, superseded by the fa-brands/fa-regular/fa-solid
 # v5 files. No CSS, JS or PHP in this plugin references it. ~936KB.
