@@ -149,9 +149,11 @@ function create_block_testimonial_block_init() {
         TESTIMONIAL_BLOCKS_VERSION
     );
 
+	// Own handle: Essential Blocks registers Font Awesome 6 as `essential-blocks-fontawesome`,
+	// and the first registration wins, so sharing it blanked FA6-only icons site-wide.
 	$fontawesome = TESTIMONIAL_BLOCKS_ADMIN_URL . 'assets/css/font-awesome5.css';
 	wp_register_style(
-        'essential-blocks-fontawesome',
+        'testimonial-wp-block-fontawesome',
         $fontawesome,
         [],
         TESTIMONIAL_BLOCKS_VERSION
@@ -161,7 +163,7 @@ function create_block_testimonial_block_init() {
     wp_register_style(
         'create-block-testimonial-block-frontend-style',
         $style_css,
-        [ 'essential-blocks-animation', 'essential-blocks-fontawesome' ],
+        [ 'essential-blocks-animation', 'testimonial-wp-block-fontawesome' ],
         TESTIMONIAL_BLOCKS_VERSION
     );
 
@@ -199,7 +201,23 @@ function testimonial_block_icon_selected_style() {
         'eb-block-icon-selected',
         plugins_url( 'assets/css/block-icon-selected.css', __FILE__ ),
         [],
-        '1.0.0'
+        TESTIMONIAL_BLOCKS_VERSION
     );
 }
 add_action( 'enqueue_block_editor_assets', 'testimonial_block_icon_selected_style' );
+
+/**
+ * Let Essential Blocks' animation assets win on the front end when it is active.
+ *
+ * Both plugins register these handles and the first registration wins. This
+ * plugin's loader doesn't set `window.ebAnimationLoaded`, so Essential Blocks'
+ * failsafe would reveal every animated block without playing it. Essential Blocks
+ * registers its own at priority 20 and handles the same `.eb___animated` classes.
+ */
+function testimonial_wp_block_use_essential_blocks_animation() {
+    if ( defined( 'ESSENTIAL_BLOCKS_VERSION' ) ) {
+        wp_deregister_script( 'essential-blocks-eb-animation' );
+        wp_deregister_style( 'essential-blocks-animation' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'testimonial_wp_block_use_essential_blocks_animation', 19 );
