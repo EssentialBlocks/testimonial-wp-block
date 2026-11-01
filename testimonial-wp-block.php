@@ -167,25 +167,33 @@ function create_block_testimonial_block_init() {
         TESTIMONIAL_BLOCKS_VERSION
     );
 
-    if ( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/testimonial' ) ) {
-        register_block_type(
-            Testimonial_Helper::get_block_register_path( "testimonial-wp-block/testimonial", TESTIMONIAL_BLOCKS_ADMIN_PATH ),
-            [
-                'editor_script'   => 'create-block-testimonial-block-editor-script',
-                'editor_style'    => 'create-block-testimonial-block-frontend-style',
-                'render_callback' => function ( $attributes, $content ) {
-                    if ( ! is_admin() ) {
-                        wp_enqueue_style( 'create-block-testimonial-block-frontend-style' );
-                        wp_enqueue_script( 'essential-blocks-eb-animation' );
-                        // Google fonts are derived from this block's own typography
-                        // attributes, so published posts work without a re-save.
-                        Testimonial_Font_Loader::enqueue_for_attributes( $attributes );
-                    }
-                    return $content;
-                }
-            ]
-        );
+    $eb_has_block = WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/testimonial' );
+    $block_args   = [
+        'editor_script'   => 'create-block-testimonial-block-editor-script',
+        'editor_style'    => 'create-block-testimonial-block-frontend-style',
+        'render_callback' => function ( $attributes, $content ) {
+            if ( ! is_admin() ) {
+                wp_enqueue_style( 'create-block-testimonial-block-frontend-style' );
+                wp_enqueue_script( 'essential-blocks-eb-animation' );
+                // Google fonts are derived from this block's own typography
+                // attributes, so published posts work without a re-save.
+                Testimonial_Font_Loader::enqueue_for_attributes( $attributes );
+            }
+            return $content;
+        }
+    ];
+
+    // Essential Blocks has its own version of this block under another name. Posts saved
+    // with this one still need its render callback and front-end assets, so keep it
+    // registered, but leave out the editor bundle, which can't run beside Essential Blocks.
+    if ( $eb_has_block ) {
+        unset( $block_args['editor_script'], $block_args['editor_style'] );
     }
+
+    register_block_type(
+        Testimonial_Helper::get_block_register_path( "testimonial-wp-block/testimonial", TESTIMONIAL_BLOCKS_ADMIN_PATH ),
+        $block_args
+    );
 }
 
 add_action( 'init', 'create_block_testimonial_block_init' );
