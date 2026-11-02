@@ -125,7 +125,7 @@ class Testimonial_Helper
 			);
 
             wp_enqueue_style(
-                'essential-blocks-editor-css',
+                'testimonial-wp-block-controls-css',
                 TESTIMONIAL_BLOCKS_ADMIN_URL . '/dist/modules.css',
                 array('essential-blocks-iconpicker-css'),
                 $controls_version,
