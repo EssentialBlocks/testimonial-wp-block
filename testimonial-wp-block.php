@@ -179,7 +179,7 @@ function create_block_testimonial_block_init() {
                         // attributes, so published posts work without a re-save.
                         Testimonial_Font_Loader::enqueue_for_attributes( $attributes );
                     }
-                    return $content;
+                    return testimonial_wp_block_label_rating( $content );
                 }
             ]
         );
@@ -187,6 +187,48 @@ function create_block_testimonial_block_init() {
 }
 
 add_action( 'init', 'create_block_testimonial_block_init' );
+
+/**
+ * Give the star rating an accessible name ("Rated 4 out of 5").
+ *
+ * The stars are aria-hidden icons, so screen readers announced nothing. The label
+ * is added at render time rather than in save(): changing the saved markup would
+ * invalidate every existing block, and a translated string in save() would break
+ * validation whenever the site language changes.
+ *
+ * @param string $content Saved block markup.
+ * @return string
+ */
+function testimonial_wp_block_label_rating( $content ) {
+    if ( ! class_exists( 'WP_HTML_Tag_Processor' ) || false === strpos( $content, 'eb-testimonial-rating' ) ) {
+        return $content;
+    }
+
+    $tags = new WP_HTML_Tag_Processor( $content );
+    while ( $tags->next_tag( [ 'class_name' => 'eb-testimonial-rating' ] ) ) {
+        if ( ! preg_match( '/\brating-([1-5])\b/', (string) $tags->get_attribute( 'class' ), $match ) ) {
+            continue;
+        }
+        $tags->set_attribute( 'role', 'img' );
+        $tags->set_attribute(
+            'aria-label',
+            /* translators: %d: star rating from 1 to 5. */
+            sprintf( __( 'Rated %d out of 5', 'testimonial-wp-block' ), (int) $match[1] )
+        );
+    }
+
+    return $tags->get_updated_html();
+}
+
+/**
+ * Load JS translations for the editor script under this plugin's text domain.
+ */
+function testimonial_wp_block_script_translations() {
+    if ( function_exists( 'wp_set_script_translations' ) ) {
+        wp_set_script_translations( 'create-block-testimonial-block-editor-script', 'testimonial-wp-block' );
+    }
+}
+add_action( 'enqueue_block_editor_assets', 'testimonial_wp_block_script_translations' );
 
 /**
  * Block icons are filled #6C3BFF, which almost disappears on the highlighted row of

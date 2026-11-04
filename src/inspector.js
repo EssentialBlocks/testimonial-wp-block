@@ -327,15 +327,15 @@ function Inspector(props) {
                         <div className={"eb-tab-controls" + tab.name}>
                             {tab.name === "general" && (
                                 <>
-                                    <PanelBody title={__("Layout Settings", "essential-blocks")} initialOpen={true}>
+                                    <PanelBody title={__("Layout Settings", "testimonial-wp-block")} initialOpen={true}>
                                         <SelectControl
-                                            label={__("Preset", "essential-blocks")}
+                                            label={__("Preset", "testimonial-wp-block")}
                                             value={layoutPreset}
                                             options={LAYOUT_PRESETS}
                                             onChange={(layoutPreset) => handlePresetChange(layoutPreset)}
                                         />
                                         {avatarInline && (
-                                            <BaseControl label={__("User Info Position", "essential-blocks")}>
+                                            <BaseControl label={__("User Info Position", "testimonial-wp-block")}>
                                                 <ButtonGroup>
                                                     {ALIGN_ITEMS.map((item, index) => (
                                                         <Button
@@ -359,8 +359,8 @@ function Inspector(props) {
                                             <BaseControl
                                                 label={
                                                     avatarInline
-                                                        ? __("User Info Align", "essential-blocks")
-                                                        : __("Image Align", "essential-blocks")
+                                                        ? __("User Info Align", "testimonial-wp-block")
+                                                        : __("Image Align", "testimonial-wp-block")
                                                 }
                                             >
                                                 <ButtonGroup>
@@ -382,7 +382,7 @@ function Inspector(props) {
                                             </BaseControl>
                                         )}
 
-                                        <BaseControl label={__("Description Position", "essential-blocks")}>
+                                        <BaseControl label={__("Description Position", "testimonial-wp-block")}>
                                             <ButtonGroup>
                                                 {DESC_POSITIONS.map((item, index) => (
                                                     <Button
@@ -401,7 +401,7 @@ function Inspector(props) {
                                             </ButtonGroup>
                                         </BaseControl>
 
-                                        <BaseControl label={__("Description Align", "essential-blocks")}>
+                                        <BaseControl label={__("Description Align", "testimonial-wp-block")}>
                                             <ButtonGroup>
                                                 {TEXT_ALIGN.map((option, index) => (
                                                     <Button
@@ -420,7 +420,7 @@ function Inspector(props) {
                                             </ButtonGroup>
                                         </BaseControl>
 
-                                        <BaseControl label={__("User Name Align", "essential-blocks")}>
+                                        <BaseControl label={__("User Name Align", "testimonial-wp-block")}>
                                             <ButtonGroup>
                                                 {TEXT_ALIGN.map((option, index) => (
                                                     <Button
@@ -439,7 +439,7 @@ function Inspector(props) {
                                             </ButtonGroup>
                                         </BaseControl>
 
-                                        <BaseControl label={__("User Info Align", "essential-blocks")}>
+                                        <BaseControl label={__("User Info Align", "testimonial-wp-block")}>
                                             <ButtonGroup>
                                                 {ALIGN_ITEMS_VERTICAL.map((item, index) => (
                                                     <Button
@@ -470,7 +470,7 @@ function Inspector(props) {
 
                                         {enableQuote && (
                                             <>
-                                                <BaseControl label={__("Quote Horizontal Align", "essential-blocks")}>
+                                                <BaseControl label={__("Quote Horizontal Align", "testimonial-wp-block")}>
                                                     <ButtonGroup>
                                                         {ALIGN_ITEMS.map((item, index) => (
                                                             <Button
@@ -491,7 +491,7 @@ function Inspector(props) {
 
                                                 {quoteHorizontalPosition === "center" && (
                                                     <BaseControl
-                                                        label={__("Quote Vertical Position", "essential-blocks")}
+                                                        label={__("Quote Vertical Position", "testimonial-wp-block")}
                                                     >
                                                         <ButtonGroup>
                                                             {DESC_POSITIONS.map((item, index) => (
@@ -547,7 +547,7 @@ function Inspector(props) {
                                                 />
                                                 {ratingIndivisual && (
                                                     <>
-                                                        <BaseControl label={__("Rating Position", "essential-blocks")}>
+                                                        <BaseControl label={__("Rating Position", "testimonial-wp-block")}>
                                                             <ButtonGroup>
                                                                 {RATING_POSITION.map((item, index) => (
                                                                     <Button
@@ -571,7 +571,7 @@ function Inspector(props) {
                                         )}
                                     </PanelBody>
 
-                                    <PanelBody title={__("Avatar", "essential-blocks")} initialOpen={false}>
+                                    <PanelBody title={__("Avatar", "testimonial-wp-block")} initialOpen={false}>
                                         <ToggleControl
                                             label="Display Avatar"
                                             checked={displayAvatar}
@@ -586,7 +586,7 @@ function Inspector(props) {
                                             <>
                                                 {displayAvatar && (
                                                     <ToggleControl
-                                                        label={__("Avatar Inline", "essential-blocks")}
+                                                        label={__("Avatar Inline", "testimonial-wp-block")}
                                                         checked={avatarInline}
                                                         onChange={() =>
                                                             setAttributes({
@@ -599,7 +599,7 @@ function Inspector(props) {
                                                 {displayAvatar && (
                                                     <BaseControl
                                                         id="eb-testimonial-image-pos"
-                                                        label={__("Image Position", "essential-blocks")}
+                                                        label={__("Image Position", "testimonial-wp-block")}
                                                     >
                                                         <ToggleButton
                                                             options={IMG_POSITIONS}
@@ -615,7 +615,7 @@ function Inspector(props) {
                                         )}
 
                                         {displayAvatar && imageUrl && (
-                                            <PanelBody title={__("Image Setting", "essential-blocks")}>
+                                            <PanelBody title={__("Image Setting", "testimonial-wp-block")}>
                                                 {imageUrl && (
                                                     <ImageAvatar
                                                         imageUrl={imageUrl}
@@ -628,7 +628,7 @@ function Inspector(props) {
                                                 )}
 
                                                 <ToggleControl
-                                                    label={__("Round Avatar", "essential-blocks")}
+                                                    label={__("Round Avatar", "testimonial-wp-block")}
                                                     checked={borderRadius === 50}
                                                     onChange={() =>
                                                         setAttributes({
@@ -638,7 +638,7 @@ function Inspector(props) {
                                                 />
 
                                                 <RangeControl
-                                                    label={__("Border Radius", "essential-blocks")}
+                                                    label={__("Border Radius", "testimonial-wp-block")}
                                                     value={borderRadius}
                                                     onChange={(newValue) =>
                                                         setAttributes({
@@ -655,37 +655,37 @@ function Inspector(props) {
                             )}
                             {tab.name === "styles" && (
                                 <>
-                                    <PanelBody title={__("Color", "essential-blocks")} initialOpen={true}>
+                                    <PanelBody title={__("Color", "testimonial-wp-block")} initialOpen={true}>
                                         <ColorControl
-                                            label={__("Username Color", "essential-blocks")}
+                                            label={__("Username Color", "testimonial-wp-block")}
                                             color={userNameColor}
                                             onChange={(userNameColor) => setAttributes({
                                                 userNameColor,
                                             })}
                                         />
                                         <ColorControl
-                                            label={__("Company Color", "essential-blocks")}
+                                            label={__("Company Color", "testimonial-wp-block")}
                                             color={companyColor}
                                             onChange={(companyColor) => setAttributes({
                                                 companyColor,
                                             })}
                                         />
                                         <ColorControl
-                                            label={__("Description Color", "essential-blocks")}
+                                            label={__("Description Color", "testimonial-wp-block")}
                                             color={descriptionColor}
                                             onChange={(descriptionColor) => setAttributes({
                                                 descriptionColor,
                                             })}
                                         />
                                         <ColorControl
-                                            label={__("Quote Color", "essential-blocks")}
+                                            label={__("Quote Color", "testimonial-wp-block")}
                                             color={quoteColor}
                                             onChange={(quoteColor) => setAttributes({
                                                 quoteColor,
                                             })}
                                         />
                                         <ColorControl
-                                            label={__("Rating Color", "essential-blocks")}
+                                            label={__("Rating Color", "testimonial-wp-block")}
                                             color={ratingColor}
                                             onChange={(ratingColor) => setAttributes({
                                                 ratingColor,
@@ -693,7 +693,7 @@ function Inspector(props) {
                                         />
                                     </PanelBody>
 
-                                    <PanelBody title={__("Typography", "essential-blocks")} initialOpen={false}>
+                                    <PanelBody title={__("Typography", "testimonial-wp-block")} initialOpen={false}>
                                         <TypographyDropdown
                                             baseLabel="Username"
                                             typographyPrefixConstant={"username"}
@@ -711,7 +711,7 @@ function Inspector(props) {
                                         />
                                         {enableQuote && (
                                             <ResponsiveRangeController
-                                                baseLabel={__("Quote Size", "essential-blocks")}
+                                                baseLabel={__("Quote Size", "testimonial-wp-block")}
                                                 controlName={QUOTE_SIZE}
                                                 resRequiredProps={resRequiredProps}
                                                 units={UNIT_TYPES}
@@ -722,7 +722,7 @@ function Inspector(props) {
                                         )}
                                         {showRating && (
                                             <ResponsiveRangeController
-                                                baseLabel={__("Rating Size", "essential-blocks")}
+                                                baseLabel={__("Rating Size", "testimonial-wp-block")}
                                                 controlName={RATING_SIZE}
                                                 resRequiredProps={resRequiredProps}
                                                 units={UNIT_TYPES}
@@ -733,10 +733,10 @@ function Inspector(props) {
                                         )}
                                     </PanelBody>
 
-                                    <PanelBody title={__("Image", "essential-blocks")} initialOpen={false}>
+                                    <PanelBody title={__("Image", "testimonial-wp-block")} initialOpen={false}>
                                         {layoutPreset == "layout-preset-2" && (
                                             <ColorControl
-                                                label={__("Overlay Color", "essential-blocks")}
+                                                label={__("Overlay Color", "testimonial-wp-block")}
                                                 color={imageOverlayColor}
                                                 onChange={(newColor) => setAttributes({
                                                     imageOverlayColor: newColor,
@@ -745,7 +745,7 @@ function Inspector(props) {
 
                                         )}
                                         <ResponsiveRangeController
-                                            baseLabel={__("Width", "essential-blocks")}
+                                            baseLabel={__("Width", "testimonial-wp-block")}
                                             controlName={IMG_WIDTH}
                                             resRequiredProps={resRequiredProps}
                                             units={UNIT_TYPES}
@@ -754,7 +754,7 @@ function Inspector(props) {
                                             step={1}
                                         />
                                         <ResponsiveRangeController
-                                            baseLabel={__("Gap", "essential-blocks")}
+                                            baseLabel={__("Gap", "testimonial-wp-block")}
                                             controlName={IMG_GAP}
                                             resRequiredProps={resRequiredProps}
                                             units={UNIT_TYPES}
@@ -790,7 +790,7 @@ function Inspector(props) {
                                         />
                                     </PanelBody>
 
-                                    <PanelBody title={__("Background ", "essential-blocks")} initialOpen={false}>
+                                    <PanelBody title={__("Background ", "testimonial-wp-block")} initialOpen={false}>
                                         <BackgroundControl
                                             controlName={TestimonialWrapBg}
                                             resRequiredProps={resRequiredProps}
