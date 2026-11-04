@@ -15,9 +15,9 @@ ebConditionalRegisterBlockType(metadata, {
     icon: TestimonialIcon,
     attributes,
     keywords: [
-        __("testimonial", "essential-blocks"),
-        __("about", "essential-blocks"),
-        __("eb quote", "essential-blocks"),
+        __("testimonial", "testimonial-wp-block"),
+        __("about", "testimonial-wp-block"),
+        __("eb quote", "testimonial-wp-block"),
     ],
     edit: Edit,
     save: Save,

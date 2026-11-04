@@ -62,7 +62,21 @@ export default function Style(props) {
         ratingColor,
         ratingPosition,
         imageOverlayColor,
+        enableQuote,
     } = attributes;
+
+    // Unset numeric attributes used to leak into the CSS as "undefined".
+    const num = (v) => (v === undefined || v === null || v === "" ? 0 : v);
+    const has = (v) => v !== undefined && v !== null && v !== "";
+
+    // Size of the layout-preset-2 offset circle: avatar size minus its borders.
+    // Desktop falls back to the 55px avatar size set in style.scss.
+    const presetTwoBefore = (range, unit, top, right, bottom, left, bdrUnit) => {
+        const u = unit || "px";
+        const bu = bdrUnit || "px";
+        return `width: calc(${range}${u} - (${num(left)}${bu} + ${num(right)}${bu}));
+            height: calc(${range}${u} - (${num(top)}${bu} + ${num(bottom)}${bu}));`;
+    };
 
     //Generate Author Typography
     const {
@@ -314,7 +328,7 @@ export default function Style(props) {
 		}
 		.${blockId} .eb-avatar-style,
         .eb-testimonial-wrapper.${blockId}.layout-preset-2 .image-container .eb-avatar-style {
-			background-image: url(${imageUrl});
+			${imageUrl ? `background-image: url("${imageUrl}");` : ""}
 			border-radius: ${borderRadius}%;
 			display: ${imageUrl ? "block" : "none"};
             ${imgWidthStylesDesktop}
@@ -329,8 +343,11 @@ export default function Style(props) {
         }
 
         .${blockId}.layout-preset-2 .image-container::before {
-            width: calc(${imgWidth_Range}${imgWidth_Unit} - (${img_Bdr_Left}${img_Bdr_Unit} + ${img_Bdr_Right}${img_Bdr_Unit}));
-            height: calc(${imgWidth_Range}${imgWidth_Unit} - (${img_Bdr_Top}${img_Bdr_Unit} + ${img_Bdr_Bottom}${img_Bdr_Unit}));
+            ${presetTwoBefore(
+        has(imgWidth_Range) ? imgWidth_Range : 55,
+        has(imgWidth_Range) ? imgWidth_Unit : "px",
+        img_Bdr_Top, img_Bdr_Right, img_Bdr_Bottom, img_Bdr_Left, img_Bdr_Unit
+    )}
             background-color: ${imageOverlayColor};
         }
 
@@ -346,11 +363,19 @@ export default function Style(props) {
             ${imgShadowStyesTab}
 		}
 
-        .${blockId}.layout-preset-2 .image-container::before {
-            width: calc(${TABimgWidth_Range ? TABimgWidth_Range : imgWidth_Range}${TABimgWidth_Unit} - (${TABimg_Bdr_Left ? TABimg_Bdr_Left : img_Bdr_Left
-        }${TABimg_Bdr_Unit} + ${TABimg_Bdr_Right ? TABimg_Bdr_Right : img_Bdr_Right}${TABimg_Bdr_Unit}));
-            height: calc(${TABimgWidth_Range ? TABimgWidth_Range : imgWidth_Range}${TABimgWidth_Unit} - (${TABimg_Bdr_Top ? TABimg_Bdr_Top : img_Bdr_Top
-        }${TABimg_Bdr_Unit} + ${TABimg_Bdr_Bottom ? TABimg_Bdr_Bottom : img_Bdr_Bottom}${TABimg_Bdr_Unit}));
+        ${(has(TABimgWidth_Range) || has(TABimg_Bdr_Top) || has(TABimg_Bdr_Right) || has(TABimg_Bdr_Bottom) || has(TABimg_Bdr_Left))
+            ? `.${blockId}.layout-preset-2 .image-container::before {
+            ${presetTwoBefore(
+                has(TABimgWidth_Range) ? TABimgWidth_Range : has(imgWidth_Range) ? imgWidth_Range : 55,
+                has(TABimgWidth_Range) ? TABimgWidth_Unit : has(imgWidth_Range) ? imgWidth_Unit : "px",
+                has(TABimg_Bdr_Top) ? TABimg_Bdr_Top : img_Bdr_Top,
+                has(TABimg_Bdr_Right) ? TABimg_Bdr_Right : img_Bdr_Right,
+                has(TABimg_Bdr_Bottom) ? TABimg_Bdr_Bottom : img_Bdr_Bottom,
+                has(TABimg_Bdr_Left) ? TABimg_Bdr_Left : img_Bdr_Left,
+                TABimg_Bdr_Unit || img_Bdr_Unit
+            )}
+        }`
+            : ""
         }
 
 	`;
@@ -364,11 +389,19 @@ export default function Style(props) {
             ${imgHeightStylesMobile}
             ${imgShadowStyesMobile}
 		}
-        .${blockId}.layout-preset-2 .image-container::before {
-            width: calc(${MOBimgWidth_Range ? MOBimgWidth_Range : imgWidth_Range}${MOBimgWidth_Unit} - (${MOBimg_Bdr_Left ? MOBimg_Bdr_Left : img_Bdr_Left
-        }${MOBimg_Bdr_Unit} + ${MOBimg_Bdr_Right ? MOBimg_Bdr_Right : img_Bdr_Right}${MOBimg_Bdr_Unit}));
-            height: calc(${MOBimgWidth_Range ? MOBimgWidth_Range : imgWidth_Range}${MOBimgWidth_Unit} - (${MOBimg_Bdr_Top ? MOBimg_Bdr_Top : img_Bdr_Top
-        }${MOBimg_Bdr_Unit} + ${MOBimg_Bdr_Bottom ? MOBimg_Bdr_Bottom : img_Bdr_Bottom}${MOBimg_Bdr_Unit}));
+        ${(has(MOBimgWidth_Range) || has(MOBimg_Bdr_Top) || has(MOBimg_Bdr_Right) || has(MOBimg_Bdr_Bottom) || has(MOBimg_Bdr_Left))
+            ? `.${blockId}.layout-preset-2 .image-container::before {
+            ${presetTwoBefore(
+                has(MOBimgWidth_Range) ? MOBimgWidth_Range : has(imgWidth_Range) ? imgWidth_Range : 55,
+                has(MOBimgWidth_Range) ? MOBimgWidth_Unit : has(imgWidth_Range) ? imgWidth_Unit : "px",
+                has(MOBimg_Bdr_Top) ? MOBimg_Bdr_Top : img_Bdr_Top,
+                has(MOBimg_Bdr_Right) ? MOBimg_Bdr_Right : img_Bdr_Right,
+                has(MOBimg_Bdr_Bottom) ? MOBimg_Bdr_Bottom : img_Bdr_Bottom,
+                has(MOBimg_Bdr_Left) ? MOBimg_Bdr_Left : img_Bdr_Left,
+                MOBimg_Bdr_Unit || img_Bdr_Unit
+            )}
+        }`
+            : ""
         }
 
 	`;
@@ -468,7 +501,7 @@ export default function Style(props) {
 			${descriptionTypoStylesDesktop}
 			text-align: ${descTextAlign};
 			color: ${descriptionColor};
-			padding-right: 20px;
+			${enableQuote && quoteHorizontalPosition !== "center" ? "padding-right: 20px;" : ""}
 			word-break: break-word;
 		}
 		${quoteHorizontalPosition === "flex-end"
@@ -499,7 +532,17 @@ export default function Style(props) {
     const descriptionStyleMobile = `
 		.${blockId} .eb-description-container p {
 			${descriptionTypoStylesMobile}
+			${enableQuote && quoteHorizontalPosition !== "center" ? "padding-right: 0;" : ""}
 		}
+		${enableQuote && quoteHorizontalPosition !== "center"
+            ? `.${blockId} .eb-description-container {
+				flex-direction: column;
+			}
+			.${blockId} .eb-description-container .eb-testimonial-quote-style {
+				align-self: ${quoteHorizontalPosition === "flex-end" ? "flex-end" : "flex-start"};
+			}`
+            : ""
+        }
 	`;
 
     const quoteStyle = `
