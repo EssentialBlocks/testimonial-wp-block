@@ -108,3 +108,89 @@
 		}
 	}
 }
+
+/**
+ * Style 4: full-height image on one side, quote / description / user info on the other.
+ * Column width and gap come from the block's Width and Gap controls (style.js).
+ */
+.eb-testimonial-wrapper.layout-preset-4 {
+	.eb-testimonial-container {
+		display: grid;
+		grid-template-columns: 40% minmax(0, 1fr);
+		// Spacer, description, user info, spacer: style.js sizes the spacers
+		// (User Info Align) and swaps the middle rows (Description Position).
+		grid-template-rows: 0 auto auto 1fr;
+		column-gap: 80px;
+		align-items: start;
+		text-align: left;
+		word-break: normal;
+	}
+
+	// No image saved (or not selected in the editor): drop the empty column.
+	.eb-testimonial-container:not(:has(.image-container)) {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.eb-avatar-container {
+		grid-column: 1;
+		grid-row: 1 / -1;
+		order: 0;
+		align-self: stretch;
+		align-items: stretch;
+		gap: 0;
+	}
+
+	.image-container {
+		flex: 1;
+		display: flex;
+		min-height: 360px;
+	}
+
+	.eb-avatar-style {
+		flex: 1;
+		width: 100%;
+		height: auto;
+		margin: 0;
+	}
+
+	.eb-testimonial-image {
+		flex: 1;
+		width: 100%;
+		height: auto;
+		border-radius: 0 !important;
+	}
+
+	.eb-description-container {
+		grid-column: 2;
+		grid-row: 2;
+		margin-bottom: 30px;
+	}
+
+	.eb-testimonial-quote-style {
+		padding-left: 0;
+		padding-right: 0;
+		line-height: 0;
+	}
+
+	.eb-userinfo-container {
+		grid-column: 2;
+		grid-row: 3;
+	}
+
+	@media (max-width: 767px) {
+		.eb-testimonial-container {
+			display: flex;
+			flex-direction: column;
+			gap: 24px;
+		}
+
+		.image-container {
+			min-height: 300px;
+		}
+
+		.eb-description-container {
+			margin-bottom: 0;
+		}
+	}
+}

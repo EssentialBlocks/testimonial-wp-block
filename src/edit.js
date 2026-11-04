@@ -25,6 +25,7 @@ const {
 import Style from "./style";
 
 import QuoteSVG from "./quoteIconSVG";
+import { INFO_AFTER_DESCRIPTION } from "./constants";
 
 const Edit = (props) => {
 	const { attributes, setAttributes, className, clientId, isSelected, name } = props;
@@ -61,6 +62,8 @@ const Edit = (props) => {
 		// hard-coded blockId after mount, so two blocks from the same template
 		// would otherwise share one ID and overwrite each other's styles.
 	}, [blockId]);
+
+	const infoAfterDescription = INFO_AFTER_DESCRIPTION.includes(layoutPreset);
 
 	const blockProps = useBlockProps({
 		className: classnames(className, `eb-guten-block-main-parent-wrapper`),
@@ -122,7 +125,7 @@ const Edit = (props) => {
 										</div>
 										)}
 
-										{layoutPreset !== "layout-preset-3" && (
+										{!infoAfterDescription && (
 											<div className="eb-userinfo-container">
 												<RichText
 													tagName="p"
@@ -183,7 +186,7 @@ const Edit = (props) => {
 										)}
 									</div>
 
-									{layoutPreset == "layout-preset-3" && (
+									{infoAfterDescription && (
 										<div className="eb-userinfo-container">
 											<RichText
 												tagName="p"

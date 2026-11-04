@@ -63,6 +63,13 @@ export default function Style(props) {
         ratingPosition,
         imageOverlayColor,
         enableQuote,
+        layoutPreset,
+        imgWidth_Range: sideImgWidth,
+        imgWidth_Unit: sideImgUnit,
+        TABimgWidth_Range: tabSideImgWidth,
+        TABimgWidth_Unit: tabSideImgUnit,
+        MOBimgWidth_Range: mobSideImgWidth,
+        MOBimgWidth_Unit: mobSideImgUnit,
     } = attributes;
 
     // Unset numeric attributes used to leak into the CSS as "undefined".
@@ -205,6 +212,15 @@ export default function Style(props) {
     } = generateResponsiveRangeStyles({
         controlName: IMG_GAP,
         property: "gap",
+        attributes,
+    });
+    const {
+        rangeStylesDesktop: sideGapStylesDesktop,
+        rangeStylesTab: sideGapStylesTab,
+        rangeStylesMobile: sideGapStylesMobile,
+    } = generateResponsiveRangeStyles({
+        controlName: IMG_GAP,
+        property: "column-gap",
         attributes,
     });
     const {
@@ -406,6 +422,63 @@ export default function Style(props) {
 
 	`;
 
+    /**
+     * Style 4 (side image): the Width control sets the image column, Gap the
+     * space beside it. Grid layout and mobile stacking live in style.scss.
+     */
+    const isSideImage = layoutPreset === "layout-preset-4";
+    const sideCols = (range, unit) => `${range}${unit || "%"} minmax(0, 1fr)`;
+    // Description Position: Top (1) puts the description above the user info.
+    const descFirst = avatarOrder !== 0;
+    // User Info Align moves the text block (description + user info) to the
+    // top, middle or bottom of the image column via two flexible spacer rows.
+    const [spaceTop, spaceBottom] =
+        { "flex-start": ["0", "1fr"], center: ["1fr", "1fr"], "flex-end": ["1fr", "0"] }[userInfoAlign] || ["0", "1fr"];
+    const sideTextOrder = `
+        .eb-testimonial-wrapper.${blockId}.layout-preset-4 .eb-description-container {
+            grid-row: ${descFirst ? 2 : 3};
+            order: ${descFirst ? 1 : 2};
+            margin-bottom: ${descFirst ? "30px" : "0"};
+        }
+        .eb-testimonial-wrapper.${blockId}.layout-preset-4 .eb-userinfo-container {
+            grid-row: ${descFirst ? 3 : 2};
+            order: ${descFirst ? 2 : 1};
+            margin-bottom: ${descFirst ? "0" : "30px"};
+        }`;
+    const sideImageStyle = !isSideImage
+        ? ""
+        : displayAvatar
+            ? `.eb-testimonial-wrapper.${blockId}.layout-preset-4 .eb-testimonial-container {
+                grid-template-columns: ${sideCols(has(sideImgWidth) ? sideImgWidth : 40, has(sideImgWidth) ? sideImgUnit : "%")};
+                grid-template-rows: ${spaceTop} auto auto ${spaceBottom};
+                ${sideGapStylesDesktop}
+            }
+            ${sideTextOrder}`
+            : `.eb-testimonial-wrapper.${blockId}.layout-preset-4 .eb-testimonial-container {
+                display: flex;
+                flex-direction: column;
+            }
+            ${sideTextOrder}`;
+    const sideImageStyleTab = isSideImage && displayAvatar
+        ? `.eb-testimonial-wrapper.${blockId}.layout-preset-4 .eb-testimonial-container {
+            ${has(tabSideImgWidth) ? `grid-template-columns: ${sideCols(tabSideImgWidth, tabSideImgUnit)};` : ""}
+            ${sideGapStylesTab}
+        }`
+        : "";
+    // Phones stack everything with a flex gap, so drop the desktop margins.
+    const sideImageStyleMobile = !isSideImage
+        ? ""
+        : `${displayAvatar
+            ? `.eb-testimonial-wrapper.${blockId}.layout-preset-4 .eb-testimonial-container {
+            ${has(mobSideImgWidth) ? `grid-template-columns: ${sideCols(mobSideImgWidth, mobSideImgUnit)};` : ""}
+            ${sideGapStylesMobile}
+        }`
+            : ""}
+        .eb-testimonial-wrapper.${blockId}.layout-preset-4 .eb-description-container,
+        .eb-testimonial-wrapper.${blockId}.layout-preset-4 .eb-userinfo-container {
+            margin-bottom: 0;
+        }`;
+
     const userInfoStyle = `
 		.${blockId} .eb-userinfo-container {
 			text-align: ${textAlign};
@@ -580,6 +653,7 @@ export default function Style(props) {
 		${descriptionStyle}
 		${quoteStyle}
 		${ratingStyleDesktop}
+		${sideImageStyle}
 	`);
 
     const tabAllStyles = softMinifyCssStrings(`
@@ -590,6 +664,7 @@ export default function Style(props) {
 		${quoteStyleTab}
         ${imageContainerStyleTab}
         ${ratingStyleTab}
+        ${sideImageStyleTab}
 	`);
 
     const mobileAllStyles = softMinifyCssStrings(`
@@ -600,6 +675,7 @@ export default function Style(props) {
 		${quoteStyleMobile}
         ${imageContainerStyleMobile}
         ${ratingStyleMobile}
+        ${sideImageStyleMobile}
 	`);
 
     return (

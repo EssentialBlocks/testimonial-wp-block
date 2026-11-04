@@ -123,4 +123,15 @@ export const LAYOUT_PRESETS = [
     { label: __("Style 1", "testimonial-wp-block"), value: "layout-preset-1" },
     { label: __("Style 2", "testimonial-wp-block"), value: "layout-preset-2" },
     { label: __("Style 3", "testimonial-wp-block"), value: "layout-preset-3" },
+    { label: __("Style 4 (Side Image)", "testimonial-wp-block"), value: "layout-preset-4" },
+];
+
+// Presets whose markup puts the user info after the description instead of
+// beside the avatar.
+export const INFO_AFTER_DESCRIPTION = ["layout-preset-3", "layout-preset-4"];
+
+// The side-image column width also accepts percent.
+export const SIDE_IMAGE_UNIT_TYPES = [
+    { label: __("PX", "testimonial-wp-block"), value: "px" },
+    { label: __("%", "testimonial-wp-block"), value: "%" },
 ];

@@ -4,6 +4,7 @@
 import { RichText, useBlockProps } from "@wordpress/block-editor";
 
 import QuoteSVG from "./quoteIconSVG";
+import { INFO_AFTER_DESCRIPTION } from "./constants";
 
 const Save = ({ attributes }) => {
     const {
@@ -23,8 +24,10 @@ const Save = ({ attributes }) => {
     } = attributes;
 
     if (!showBlockContent) {
-        return
+        return null;
     }
+
+    const infoAfterDescription = INFO_AFTER_DESCRIPTION.includes(layoutPreset);
 
     const replaceString = (str, find, replace) => {
         if (!str) {
@@ -53,7 +56,7 @@ const Save = ({ attributes }) => {
                                 </div>
                             )}
 
-                            {layoutPreset !== "layout-preset-3" && (
+                            {!infoAfterDescription && (
                                 <div className="eb-userinfo-container">
                                     <RichText.Content
                                         tagName="p"
@@ -98,7 +101,7 @@ const Save = ({ attributes }) => {
                             )}
                         </div>
 
-                        {layoutPreset == "layout-preset-3" && (
+                        {infoAfterDescription && (
                             <div className="eb-userinfo-container">
                                 <RichText.Content tagName="p" className="eb-testimonial-username" value={userName} />
 

@@ -34,6 +34,7 @@ import {
     QUOTE_SIZE,
     UNIT_TYPES,
     LAYOUT_PRESETS,
+    SIDE_IMAGE_UNIT_TYPES,
     ImgBdShadow,
     IMG_WIDTH,
     RATING_SIZE,
@@ -81,6 +82,7 @@ function Inspector(props) {
         ratingColor,
         ratingIndivisual,
         ratingPosition,
+        imgWidth_Unit,
     } = attributes;
 
     const resRequiredProps = {
@@ -91,6 +93,33 @@ function Inspector(props) {
     };
 
     const handlePresetChange = (preset) => {
+        // Style 4 changes typography and colours the other presets never touch;
+        // put those back to their defaults when leaving it.
+        if (layoutPreset === "layout-preset-4" && preset !== "layout-preset-4") {
+            setAttributes({
+                descriptionFontStyle: undefined,
+                descriptionFontSize: undefined,
+                descriptionLineHeight: undefined,
+                usernameFontSize: undefined,
+                usernameFontWeight: undefined,
+                companyFontSize: undefined,
+                MOBdescriptionFontSize: undefined,
+                MOBusernameFontSize: undefined,
+                descriptionColor: "#4a5059",
+                userNameColor: "#7967ff",
+                companyColor: "#1D2939",
+                quoteColor: "#edf1f7",
+                quoteHorizontalPosition: "flex-start",
+                quoteVerticalPosition: 1,
+                userInfoAlign: "center",
+                userInfoPos: "flex-start",
+                borderRadius: 50,
+                imgWidth_Unit: "px",
+                imgGap_Range: 15,
+                imgGap_Unit: "px",
+            });
+        }
+
         switch (preset) {
             case "layout-preset-1":
                 setAttributes({
@@ -275,6 +304,79 @@ function Inspector(props) {
                     wrp_bg_hoverType: "normal",
                     wrp_backgroundType: "classic",
                     wrp_backgroundColor: "#FAEFDB",
+                });
+                break;
+            case "layout-preset-4":
+                setAttributes({
+                    displayAvatar: true,
+                    avatarInline: true,
+                    avatarOrder: 1,
+                    imagePosition: 0,
+                    textAlign: "left",
+                    descTextAlign: "left",
+                    userInfoAlign: "flex-start",
+                    userInfoPos: "flex-start",
+
+                    enableQuote: true,
+                    quoteHorizontalPosition: "center",
+                    quoteVerticalPosition: 1,
+                    quoteColor: "#101828",
+
+                    descriptionColor: "#344054",
+                    descriptionFontStyle: "italic",
+                    descriptionFontSize: 26,
+                    descriptionLineHeight: 1.6,
+                    MOBdescriptionFontSize: 20,
+                    userNameColor: "#101828",
+                    usernameFontSize: 26,
+                    usernameFontWeight: "500",
+                    MOBusernameFontSize: 22,
+                    companyColor: "#667085",
+                    companyFontSize: 16,
+
+                    // Image column width and the gap beside it.
+                    imgWidth_Range: 40,
+                    imgWidth_Unit: "%",
+                    imgGap_Range: 80,
+                    imgGap_Unit: "px",
+                    borderRadius: 0,
+
+                    img_borderStyle: "none",
+                    img_borderColor: "",
+                    img_Bdr_Bottom: "0",
+                    img_Bdr_Left: "0",
+                    img_Bdr_Right: "0",
+                    img_Bdr_Top: "0",
+                    img_Bdr_Unit: "px",
+                    img_Bdr_isLinked: true,
+                    img_shadowColor: "",
+                    img_blur: 0,
+                    img_spread: 0,
+                    img_vOffset: 0,
+
+                    paddingBottom: "20",
+                    paddingLeft: "20",
+                    paddingRight: "20",
+                    paddingTop: "20",
+                    paddingUnit: "px",
+                    paddingisLinked: true,
+
+                    MOBpaddingBottom: "20",
+                    MOBpaddingLeft: "20",
+                    MOBpaddingRight: "20",
+                    MOBpaddingTop: "20",
+                    MOBpaddingUnit: "px",
+                    MOBpaddingisLinked: true,
+
+                    wrp_borderStyle: "none",
+                    wrp_Rds_Bottom: "0",
+                    wrp_Rds_Left: "0",
+                    wrp_Rds_Right: "0",
+                    wrp_Rds_Top: "0",
+                    wrp_Rds_Unit: "px",
+                    wrp_bg_hoverType: "normal",
+                    wrp_backgroundType: "classic",
+                    wrp_backgroundColor: "#fff",
                 });
                 break;
         }
@@ -745,12 +847,16 @@ function Inspector(props) {
 
                                         )}
                                         <ResponsiveRangeController
-                                            baseLabel={__("Width", "testimonial-wp-block")}
+                                            baseLabel={
+                                                layoutPreset === "layout-preset-4"
+                                                    ? __("Image Column Width", "testimonial-wp-block")
+                                                    : __("Width", "testimonial-wp-block")
+                                            }
                                             controlName={IMG_WIDTH}
                                             resRequiredProps={resRequiredProps}
-                                            units={UNIT_TYPES}
+                                            units={layoutPreset === "layout-preset-4" ? SIDE_IMAGE_UNIT_TYPES : UNIT_TYPES}
                                             min={1}
-                                            max={200}
+                                            max={layoutPreset === "layout-preset-4" && imgWidth_Unit === "%" ? 80 : 200}
                                             step={1}
                                         />
                                         <ResponsiveRangeController
