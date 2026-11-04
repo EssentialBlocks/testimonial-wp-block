@@ -25,6 +25,7 @@ const {
 import Style from "./style";
 
 import QuoteSVG from "./quoteIconSVG";
+import { INFO_AFTER_DESCRIPTION } from "./constants";
 
 const Edit = (props) => {
 	const { attributes, setAttributes, className, clientId, isSelected, name } = props;
@@ -32,6 +33,7 @@ const Edit = (props) => {
 		resOption,
 		blockId,
 		blockMeta,
+		avatarInline,
 		imageId,
 		imageUrl,
 		userName,
@@ -56,13 +58,21 @@ const Edit = (props) => {
 			select,
 			clientId,
 		});
-	}, []);
+		// Re-run when blockId changes: inserting a template swaps in the template's
+		// hard-coded blockId after mount, so two blocks from the same template
+		// would otherwise share one ID and overwrite each other's styles.
+	}, [blockId]);
+
+	const infoAfterDescription = INFO_AFTER_DESCRIPTION.includes(layoutPreset);
 
 	const blockProps = useBlockProps({
 		className: classnames(className, `eb-guten-block-main-parent-wrapper`),
 	});
 
 	const replaceString = (str, find, replace) => {
+		if (!str || !find) {
+			return str || "";
+		}
 		return str.replace(new RegExp(find, "g"), replace);
 	};
 
@@ -88,7 +98,8 @@ const Edit = (props) => {
 						<div className={`eb-parent-wrapper eb-parent-${blockId} ${classHook}`}>
 							<div className={`eb-testimonial-wrapper ${blockId} ${layoutPreset}`} data-id={blockId}>
 								<div className="eb-testimonial-container">
-									<div className="eb-avatar-container">
+									<div className={`eb-avatar-container ${avatarInline ? "avatar-inline" : "avatar-basic"}`}>
+										{(imageUrl || isSelected) && (
 										<div className="image-container">
 											<div className="eb-avatar-style" />
 											<MediaUpload
@@ -104,7 +115,7 @@ const Edit = (props) => {
 													!imageUrl && (
 														<Button
 															className="eb-testimonial-image components-button"
-															label={__("Upload Image", "essential-blocks")}
+															label={__("Upload Image", "testimonial-wp-block")}
 															icon="format-image"
 															onClick={open}
 														/>
@@ -112,8 +123,9 @@ const Edit = (props) => {
 												}
 											/>
 										</div>
+										)}
 
-										{layoutPreset !== "layout-preset-3" && (
+										{!infoAfterDescription && (
 											<div className="eb-userinfo-container">
 												<RichText
 													tagName="p"
@@ -174,7 +186,7 @@ const Edit = (props) => {
 										)}
 									</div>
 
-									{layoutPreset == "layout-preset-3" && (
+									{infoAfterDescription && (
 										<div className="eb-userinfo-container">
 											<RichText
 												tagName="p"

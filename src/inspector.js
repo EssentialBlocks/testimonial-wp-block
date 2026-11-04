@@ -34,6 +34,7 @@ import {
     QUOTE_SIZE,
     UNIT_TYPES,
     LAYOUT_PRESETS,
+    SIDE_IMAGE_UNIT_TYPES,
     ImgBdShadow,
     IMG_WIDTH,
     RATING_SIZE,
@@ -81,6 +82,7 @@ function Inspector(props) {
         ratingColor,
         ratingIndivisual,
         ratingPosition,
+        imgWidth_Unit,
     } = attributes;
 
     const resRequiredProps = {
@@ -91,6 +93,33 @@ function Inspector(props) {
     };
 
     const handlePresetChange = (preset) => {
+        // Style 4 changes typography and colours the other presets never touch;
+        // put those back to their defaults when leaving it.
+        if (layoutPreset === "layout-preset-4" && preset !== "layout-preset-4") {
+            setAttributes({
+                descriptionFontStyle: undefined,
+                descriptionFontSize: undefined,
+                descriptionLineHeight: undefined,
+                usernameFontSize: undefined,
+                usernameFontWeight: undefined,
+                companyFontSize: undefined,
+                MOBdescriptionFontSize: undefined,
+                MOBusernameFontSize: undefined,
+                descriptionColor: "#4a5059",
+                userNameColor: "#7967ff",
+                companyColor: "#1D2939",
+                quoteColor: "#edf1f7",
+                quoteHorizontalPosition: "flex-start",
+                quoteVerticalPosition: 1,
+                userInfoAlign: "center",
+                userInfoPos: "flex-start",
+                borderRadius: 50,
+                imgWidth_Unit: "px",
+                imgGap_Range: 15,
+                imgGap_Unit: "px",
+            });
+        }
+
         switch (preset) {
             case "layout-preset-1":
                 setAttributes({
@@ -277,6 +306,79 @@ function Inspector(props) {
                     wrp_backgroundColor: "#FAEFDB",
                 });
                 break;
+            case "layout-preset-4":
+                setAttributes({
+                    displayAvatar: true,
+                    avatarInline: true,
+                    avatarOrder: 1,
+                    imagePosition: 0,
+                    textAlign: "left",
+                    descTextAlign: "left",
+                    userInfoAlign: "flex-start",
+                    userInfoPos: "flex-start",
+
+                    enableQuote: true,
+                    quoteHorizontalPosition: "center",
+                    quoteVerticalPosition: 1,
+                    quoteColor: "#101828",
+
+                    descriptionColor: "#344054",
+                    descriptionFontStyle: "italic",
+                    descriptionFontSize: 26,
+                    descriptionLineHeight: 1.6,
+                    MOBdescriptionFontSize: 20,
+                    userNameColor: "#101828",
+                    usernameFontSize: 26,
+                    usernameFontWeight: "500",
+                    MOBusernameFontSize: 22,
+                    companyColor: "#667085",
+                    companyFontSize: 16,
+
+                    // Image column width and the gap beside it.
+                    imgWidth_Range: 40,
+                    imgWidth_Unit: "%",
+                    imgGap_Range: 80,
+                    imgGap_Unit: "px",
+                    borderRadius: 0,
+
+                    img_borderStyle: "none",
+                    img_borderColor: "",
+                    img_Bdr_Bottom: "0",
+                    img_Bdr_Left: "0",
+                    img_Bdr_Right: "0",
+                    img_Bdr_Top: "0",
+                    img_Bdr_Unit: "px",
+                    img_Bdr_isLinked: true,
+                    img_shadowColor: "",
+                    img_blur: 0,
+                    img_spread: 0,
+                    img_vOffset: 0,
+
+                    paddingBottom: "20",
+                    paddingLeft: "20",
+                    paddingRight: "20",
+                    paddingTop: "20",
+                    paddingUnit: "px",
+                    paddingisLinked: true,
+
+                    MOBpaddingBottom: "20",
+                    MOBpaddingLeft: "20",
+                    MOBpaddingRight: "20",
+                    MOBpaddingTop: "20",
+                    MOBpaddingUnit: "px",
+                    MOBpaddingisLinked: true,
+
+                    wrp_borderStyle: "none",
+                    wrp_Rds_Bottom: "0",
+                    wrp_Rds_Left: "0",
+                    wrp_Rds_Right: "0",
+                    wrp_Rds_Top: "0",
+                    wrp_Rds_Unit: "px",
+                    wrp_bg_hoverType: "normal",
+                    wrp_backgroundType: "classic",
+                    wrp_backgroundColor: "#fff",
+                });
+                break;
         }
 
         setAttributes({ layoutPreset: preset });
@@ -327,15 +429,15 @@ function Inspector(props) {
                         <div className={"eb-tab-controls" + tab.name}>
                             {tab.name === "general" && (
                                 <>
-                                    <PanelBody title={__("Layout Settings", "essential-blocks")} initialOpen={true}>
+                                    <PanelBody title={__("Layout Settings", "testimonial-wp-block")} initialOpen={true}>
                                         <SelectControl
-                                            label={__("Preset", "essential-blocks")}
+                                            label={__("Preset", "testimonial-wp-block")}
                                             value={layoutPreset}
                                             options={LAYOUT_PRESETS}
                                             onChange={(layoutPreset) => handlePresetChange(layoutPreset)}
                                         />
                                         {avatarInline && (
-                                            <BaseControl label={__("User Info Position", "essential-blocks")}>
+                                            <BaseControl label={__("User Info Position", "testimonial-wp-block")}>
                                                 <ButtonGroup>
                                                     {ALIGN_ITEMS.map((item, index) => (
                                                         <Button
@@ -359,8 +461,8 @@ function Inspector(props) {
                                             <BaseControl
                                                 label={
                                                     avatarInline
-                                                        ? __("User Info Align", "essential-blocks")
-                                                        : __("Image Align", "essential-blocks")
+                                                        ? __("User Info Align", "testimonial-wp-block")
+                                                        : __("Image Align", "testimonial-wp-block")
                                                 }
                                             >
                                                 <ButtonGroup>
@@ -382,7 +484,7 @@ function Inspector(props) {
                                             </BaseControl>
                                         )}
 
-                                        <BaseControl label={__("Description Position", "essential-blocks")}>
+                                        <BaseControl label={__("Description Position", "testimonial-wp-block")}>
                                             <ButtonGroup>
                                                 {DESC_POSITIONS.map((item, index) => (
                                                     <Button
@@ -401,7 +503,7 @@ function Inspector(props) {
                                             </ButtonGroup>
                                         </BaseControl>
 
-                                        <BaseControl label={__("Description Align", "essential-blocks")}>
+                                        <BaseControl label={__("Description Align", "testimonial-wp-block")}>
                                             <ButtonGroup>
                                                 {TEXT_ALIGN.map((option, index) => (
                                                     <Button
@@ -420,7 +522,7 @@ function Inspector(props) {
                                             </ButtonGroup>
                                         </BaseControl>
 
-                                        <BaseControl label={__("User Name Align", "essential-blocks")}>
+                                        <BaseControl label={__("User Name Align", "testimonial-wp-block")}>
                                             <ButtonGroup>
                                                 {TEXT_ALIGN.map((option, index) => (
                                                     <Button
@@ -439,7 +541,7 @@ function Inspector(props) {
                                             </ButtonGroup>
                                         </BaseControl>
 
-                                        <BaseControl label={__("User Info Align", "essential-blocks")}>
+                                        <BaseControl label={__("User Info Align", "testimonial-wp-block")}>
                                             <ButtonGroup>
                                                 {ALIGN_ITEMS_VERTICAL.map((item, index) => (
                                                     <Button
@@ -470,7 +572,7 @@ function Inspector(props) {
 
                                         {enableQuote && (
                                             <>
-                                                <BaseControl label={__("Quote Horizontal Align", "essential-blocks")}>
+                                                <BaseControl label={__("Quote Horizontal Align", "testimonial-wp-block")}>
                                                     <ButtonGroup>
                                                         {ALIGN_ITEMS.map((item, index) => (
                                                             <Button
@@ -491,7 +593,7 @@ function Inspector(props) {
 
                                                 {quoteHorizontalPosition === "center" && (
                                                     <BaseControl
-                                                        label={__("Quote Vertical Position", "essential-blocks")}
+                                                        label={__("Quote Vertical Position", "testimonial-wp-block")}
                                                     >
                                                         <ButtonGroup>
                                                             {DESC_POSITIONS.map((item, index) => (
@@ -547,7 +649,7 @@ function Inspector(props) {
                                                 />
                                                 {ratingIndivisual && (
                                                     <>
-                                                        <BaseControl label={__("Rating Position", "essential-blocks")}>
+                                                        <BaseControl label={__("Rating Position", "testimonial-wp-block")}>
                                                             <ButtonGroup>
                                                                 {RATING_POSITION.map((item, index) => (
                                                                     <Button
@@ -571,7 +673,7 @@ function Inspector(props) {
                                         )}
                                     </PanelBody>
 
-                                    <PanelBody title={__("Avatar", "essential-blocks")} initialOpen={false}>
+                                    <PanelBody title={__("Avatar", "testimonial-wp-block")} initialOpen={false}>
                                         <ToggleControl
                                             label="Display Avatar"
                                             checked={displayAvatar}
@@ -586,7 +688,7 @@ function Inspector(props) {
                                             <>
                                                 {displayAvatar && (
                                                     <ToggleControl
-                                                        label={__("Avatar Inline", "essential-blocks")}
+                                                        label={__("Avatar Inline", "testimonial-wp-block")}
                                                         checked={avatarInline}
                                                         onChange={() =>
                                                             setAttributes({
@@ -599,7 +701,7 @@ function Inspector(props) {
                                                 {displayAvatar && (
                                                     <BaseControl
                                                         id="eb-testimonial-image-pos"
-                                                        label={__("Image Position", "essential-blocks")}
+                                                        label={__("Image Position", "testimonial-wp-block")}
                                                     >
                                                         <ToggleButton
                                                             options={IMG_POSITIONS}
@@ -615,7 +717,7 @@ function Inspector(props) {
                                         )}
 
                                         {displayAvatar && imageUrl && (
-                                            <PanelBody title={__("Image Setting", "essential-blocks")}>
+                                            <PanelBody title={__("Image Setting", "testimonial-wp-block")}>
                                                 {imageUrl && (
                                                     <ImageAvatar
                                                         imageUrl={imageUrl}
@@ -628,7 +730,7 @@ function Inspector(props) {
                                                 )}
 
                                                 <ToggleControl
-                                                    label={__("Round Avatar", "essential-blocks")}
+                                                    label={__("Round Avatar", "testimonial-wp-block")}
                                                     checked={borderRadius === 50}
                                                     onChange={() =>
                                                         setAttributes({
@@ -638,7 +740,7 @@ function Inspector(props) {
                                                 />
 
                                                 <RangeControl
-                                                    label={__("Border Radius", "essential-blocks")}
+                                                    label={__("Border Radius", "testimonial-wp-block")}
                                                     value={borderRadius}
                                                     onChange={(newValue) =>
                                                         setAttributes({
@@ -655,37 +757,37 @@ function Inspector(props) {
                             )}
                             {tab.name === "styles" && (
                                 <>
-                                    <PanelBody title={__("Color", "essential-blocks")} initialOpen={true}>
+                                    <PanelBody title={__("Color", "testimonial-wp-block")} initialOpen={true}>
                                         <ColorControl
-                                            label={__("Username Color", "essential-blocks")}
+                                            label={__("Username Color", "testimonial-wp-block")}
                                             color={userNameColor}
                                             onChange={(userNameColor) => setAttributes({
                                                 userNameColor,
                                             })}
                                         />
                                         <ColorControl
-                                            label={__("Company Color", "essential-blocks")}
+                                            label={__("Company Color", "testimonial-wp-block")}
                                             color={companyColor}
                                             onChange={(companyColor) => setAttributes({
                                                 companyColor,
                                             })}
                                         />
                                         <ColorControl
-                                            label={__("Description Color", "essential-blocks")}
+                                            label={__("Description Color", "testimonial-wp-block")}
                                             color={descriptionColor}
                                             onChange={(descriptionColor) => setAttributes({
                                                 descriptionColor,
                                             })}
                                         />
                                         <ColorControl
-                                            label={__("Quote Color", "essential-blocks")}
+                                            label={__("Quote Color", "testimonial-wp-block")}
                                             color={quoteColor}
                                             onChange={(quoteColor) => setAttributes({
                                                 quoteColor,
                                             })}
                                         />
                                         <ColorControl
-                                            label={__("Rating Color", "essential-blocks")}
+                                            label={__("Rating Color", "testimonial-wp-block")}
                                             color={ratingColor}
                                             onChange={(ratingColor) => setAttributes({
                                                 ratingColor,
@@ -693,7 +795,7 @@ function Inspector(props) {
                                         />
                                     </PanelBody>
 
-                                    <PanelBody title={__("Typography", "essential-blocks")} initialOpen={false}>
+                                    <PanelBody title={__("Typography", "testimonial-wp-block")} initialOpen={false}>
                                         <TypographyDropdown
                                             baseLabel="Username"
                                             typographyPrefixConstant={"username"}
@@ -711,7 +813,7 @@ function Inspector(props) {
                                         />
                                         {enableQuote && (
                                             <ResponsiveRangeController
-                                                baseLabel={__("Quote Size", "essential-blocks")}
+                                                baseLabel={__("Quote Size", "testimonial-wp-block")}
                                                 controlName={QUOTE_SIZE}
                                                 resRequiredProps={resRequiredProps}
                                                 units={UNIT_TYPES}
@@ -722,7 +824,7 @@ function Inspector(props) {
                                         )}
                                         {showRating && (
                                             <ResponsiveRangeController
-                                                baseLabel={__("Rating Size", "essential-blocks")}
+                                                baseLabel={__("Rating Size", "testimonial-wp-block")}
                                                 controlName={RATING_SIZE}
                                                 resRequiredProps={resRequiredProps}
                                                 units={UNIT_TYPES}
@@ -733,10 +835,10 @@ function Inspector(props) {
                                         )}
                                     </PanelBody>
 
-                                    <PanelBody title={__("Image", "essential-blocks")} initialOpen={false}>
+                                    <PanelBody title={__("Image", "testimonial-wp-block")} initialOpen={false}>
                                         {layoutPreset == "layout-preset-2" && (
                                             <ColorControl
-                                                label={__("Overlay Color", "essential-blocks")}
+                                                label={__("Overlay Color", "testimonial-wp-block")}
                                                 color={imageOverlayColor}
                                                 onChange={(newColor) => setAttributes({
                                                     imageOverlayColor: newColor,
@@ -745,16 +847,20 @@ function Inspector(props) {
 
                                         )}
                                         <ResponsiveRangeController
-                                            baseLabel={__("Width", "essential-blocks")}
+                                            baseLabel={
+                                                layoutPreset === "layout-preset-4"
+                                                    ? __("Image Column Width", "testimonial-wp-block")
+                                                    : __("Width", "testimonial-wp-block")
+                                            }
                                             controlName={IMG_WIDTH}
                                             resRequiredProps={resRequiredProps}
-                                            units={UNIT_TYPES}
+                                            units={layoutPreset === "layout-preset-4" ? SIDE_IMAGE_UNIT_TYPES : UNIT_TYPES}
                                             min={1}
-                                            max={200}
+                                            max={layoutPreset === "layout-preset-4" && imgWidth_Unit === "%" ? 80 : 200}
                                             step={1}
                                         />
                                         <ResponsiveRangeController
-                                            baseLabel={__("Gap", "essential-blocks")}
+                                            baseLabel={__("Gap", "testimonial-wp-block")}
                                             controlName={IMG_GAP}
                                             resRequiredProps={resRequiredProps}
                                             units={UNIT_TYPES}
@@ -790,7 +896,7 @@ function Inspector(props) {
                                         />
                                     </PanelBody>
 
-                                    <PanelBody title={__("Background ", "essential-blocks")} initialOpen={false}>
+                                    <PanelBody title={__("Background ", "testimonial-wp-block")} initialOpen={false}>
                                         <BackgroundControl
                                             controlName={TestimonialWrapBg}
                                             resRequiredProps={resRequiredProps}
