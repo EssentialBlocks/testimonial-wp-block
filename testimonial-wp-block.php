@@ -4,7 +4,7 @@
  * Plugin Name:     Testimonial Block
  * Plugin URI:      https://essential-blocks.com
  * Description:     Display testimonials & gain instant credibility
- * Version:         1.3.1
+ * Version:         1.3.2
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net
  * License:         GPL-3.0-or-later
@@ -74,7 +74,7 @@ function testimonial_wp_block_style_handler_missing_notice() {
 function create_block_testimonial_block_init() {
 
     if ( ! defined( 'TESTIMONIAL_BLOCKS_VERSION' ) ) {
-        define( 'TESTIMONIAL_BLOCKS_VERSION', '1.3.1' );
+        define( 'TESTIMONIAL_BLOCKS_VERSION', '1.3.2' );
     }
     if ( ! defined( 'TESTIMONIAL_BLOCKS_ADMIN_URL' ) ) {
         define( 'TESTIMONIAL_BLOCKS_ADMIN_URL', plugin_dir_url( __FILE__ ) );
@@ -149,9 +149,11 @@ function create_block_testimonial_block_init() {
         TESTIMONIAL_BLOCKS_VERSION
     );
 
+	// Own handle: Essential Blocks registers Font Awesome 6 as `essential-blocks-fontawesome`,
+	// and the first registration wins, so sharing it blanked FA6-only icons site-wide.
 	$fontawesome = TESTIMONIAL_BLOCKS_ADMIN_URL . 'assets/css/font-awesome5.css';
 	wp_register_style(
-        'essential-blocks-fontawesome',
+        'testimonial-wp-block-fontawesome',
         $fontawesome,
         [],
         TESTIMONIAL_BLOCKS_VERSION
@@ -161,29 +163,69 @@ function create_block_testimonial_block_init() {
     wp_register_style(
         'create-block-testimonial-block-frontend-style',
         $style_css,
-        [ 'essential-blocks-animation', 'essential-blocks-fontawesome' ],
+        [ 'essential-blocks-animation', 'testimonial-wp-block-fontawesome' ],
         TESTIMONIAL_BLOCKS_VERSION
     );
 
-    if ( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/testimonial' ) ) {
-        register_block_type(
-            Testimonial_Helper::get_block_register_path( "testimonial-wp-block/testimonial", TESTIMONIAL_BLOCKS_ADMIN_PATH ),
-            [
-                'editor_script'   => 'create-block-testimonial-block-editor-script',
-                'editor_style'    => 'create-block-testimonial-block-frontend-style',
-                'render_callback' => function ( $attributes, $content ) {
-                    if ( ! is_admin() ) {
-                        wp_enqueue_style( 'create-block-testimonial-block-frontend-style' );
-                        wp_enqueue_script( 'essential-blocks-eb-animation' );
-                        // Google fonts are derived from this block's own typography
-                        // attributes, so published posts work without a re-save.
-                        Testimonial_Font_Loader::enqueue_for_attributes( $attributes );
-                    }
-                    return $content;
-                }
-            ]
-        );
+    $eb_has_block = WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/testimonial' );
+    $block_args   = [
+        'editor_script'   => 'create-block-testimonial-block-editor-script',
+        'editor_style'    => 'create-block-testimonial-block-frontend-style',
+        'render_callback' => function ( $attributes, $content ) {
+            if ( ! is_admin() ) {
+                wp_enqueue_style( 'create-block-testimonial-block-frontend-style' );
+                wp_enqueue_script( 'essential-blocks-eb-animation' );
+                // Google fonts are derived from this block's own typography
+                // attributes, so published posts work without a re-save.
+                Testimonial_Font_Loader::enqueue_for_attributes( $attributes );
+            }
+            return $content;
+        }
+    ];
+
+    // Essential Blocks has its own version of this block under another name. Posts saved
+    // with this one still need its render callback and front-end assets, so keep it
+    // registered, but leave out the editor bundle, which can't run beside Essential Blocks.
+    if ( $eb_has_block ) {
+        unset( $block_args['editor_script'], $block_args['editor_style'] );
     }
+
+    register_block_type(
+        Testimonial_Helper::get_block_register_path( "testimonial-wp-block/testimonial", TESTIMONIAL_BLOCKS_ADMIN_PATH ),
+        $block_args
+    );
 }
 
 add_action( 'init', 'create_block_testimonial_block_init' );
+
+/**
+ * Block icons are filled #6C3BFF, which almost disappears on the highlighted row of
+ * the "/" inserter, a selected List View row and the drag chip. Recolour them there,
+ * as Essential Blocks does. The handle is shared, so the stylesheet prints once when
+ * several of these plugins are active.
+ */
+function testimonial_block_icon_selected_style() {
+    wp_enqueue_style(
+        'eb-block-icon-selected',
+        plugins_url( 'assets/css/block-icon-selected.css', __FILE__ ),
+        [],
+        TESTIMONIAL_BLOCKS_VERSION
+    );
+}
+add_action( 'enqueue_block_editor_assets', 'testimonial_block_icon_selected_style' );
+
+/**
+ * Let Essential Blocks' animation assets win on the front end when it is active.
+ *
+ * Both plugins register these handles and the first registration wins. This
+ * plugin's loader doesn't set `window.ebAnimationLoaded`, so Essential Blocks'
+ * failsafe would reveal every animated block without playing it. Essential Blocks
+ * registers its own at priority 20 and handles the same `.eb___animated` classes.
+ */
+function testimonial_wp_block_use_essential_blocks_animation() {
+    if ( defined( 'ESSENTIAL_BLOCKS_VERSION' ) ) {
+        wp_deregister_script( 'essential-blocks-eb-animation' );
+        wp_deregister_style( 'essential-blocks-animation' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'testimonial_wp_block_use_essential_blocks_animation', 19 );
