@@ -4,7 +4,7 @@
  * Plugin Name:     Testimonial Block
  * Plugin URI:      https://essential-blocks.com
  * Description:     Display testimonials & gain instant credibility
- * Version:         1.3.2
+ * Version:         1.3.3
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net
  * License:         GPL-3.0-or-later
@@ -74,7 +74,7 @@ function testimonial_wp_block_style_handler_missing_notice() {
 function create_block_testimonial_block_init() {
 
     if ( ! defined( 'TESTIMONIAL_BLOCKS_VERSION' ) ) {
-        define( 'TESTIMONIAL_BLOCKS_VERSION', '1.3.2' );
+        define( 'TESTIMONIAL_BLOCKS_VERSION', '1.3.3' );
     }
     if ( ! defined( 'TESTIMONIAL_BLOCKS_ADMIN_URL' ) ) {
         define( 'TESTIMONIAL_BLOCKS_ADMIN_URL', plugin_dir_url( __FILE__ ) );
